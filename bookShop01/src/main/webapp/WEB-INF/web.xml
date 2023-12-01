@@ -3,6 +3,11 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
    <filter>
+   <!--필터 설정해주고 있음  
+   CharacterEncodingFilter클래스는 Spring에서 제공하는 서블릿 필터 중 하나로, 주로 문자 인코딩 관련된 작업을 수행합니다.
+         </init-param>  이거 UTF-8형식으로 web.xml 실행될때 encodingFilter라는것을 초기화 시켜주라는 의미이다.
+         /* 전체 경로 인식
+      -->
         <filter-name>encodingFilter</filter-name>
         <filter-class>
             org.springframework.web.filter.CharacterEncodingFilter
@@ -18,17 +23,40 @@
 </filter-mapping>
 
 	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
+	<!--contextConfigLocation은 Spring 애플리케이션 컨텍스트를 설정하는 데 사용되는 매개변수입니다.(그냥 루트 컨텍스트 생성한다 생각하면됨)  -->
+	<!--contextConfigLocation는 루트컨텍스트를 생성해서 스프링애플리케이션 컨텍스트 객체를만들어 냅니다.  -->
+	<!--이렇게 만들어낸 애플리케이션 컨텍스트 안에 빈들이 들어 갑니다.  -->
+	<!-- 스프링 전역 스코프를 가지는 xml파일 불러온다(db관련) -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/spring/mybatis-context.xml</param-value>
 	</context-param>
-	
+		<!-- 	<listener> 이 리스너는 루트 컨텍스트 초기화 -->
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->
+	<!--왜 먼저 초기화? 미리 초기화하여 애플리케이션 전체에서 사용할 수 있는 빈들을 로드하기 위해서다.   -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
 	<!-- Processes application requests -->
+	
+	<!-- appServlet 이라는 이름의 서블릿을 스프링에서 지원하는 디스패처 클래스를 만든다. 
+		<servlet> : 서블릿 설정을 정의한다.
+		<servlet - class> : 서블릿 클래스를 지원한다.
+		<init-param> : 서블릿 초기화 매개변수를 설정한다.
+		<param-name>: 초기화 매개변수의 이름을 지정한다.
+		<param-value> : 초기화 매개변수의 값으로 spring mvc 애플리케이션 설정파일 경로를 지정한다.
+	-->
+	
+	<!--  디스패처서블릿라는 클래스를  appservlet이라는 서블릿으로 만들고 초기화할때 servlet context를 불러온다
+	이 서블릿을 초기화할때 contextConfigLocation이라는 매개변수를 지정해주고 이 매개변수의 값으로 servlet-context를 지정한다.
+	
+	맞습니다. 디스패처 서블릿(DispatcherServlet)은 Spring MVC 애플리케이션의 중심 역할을 하는데,
+	 이 서블릿이 초기화될 때 servlet-context.xml 
+	또는 다른 설정 파일에서 컨트롤러, 뷰 리졸버, 핸들러 매핑 등과 같은 Spring MVC의 구성 요소들이 정의되고 구성됩니다	
+	 -->
+	 
+	 <!-- 웹 애플리케이션 스코프를 가지는 xml파일 불러온다.  -->
 	<servlet>
 		<servlet-name>appServlet</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -38,7 +66,7 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
-		
+<!-- 이는 모든 경로에 대해서 디스패처 서블릿이 실행되도록 설정한 것입니다. -->
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>

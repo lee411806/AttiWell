@@ -8,12 +8,20 @@
 <html>
 <head>
 <meta charset="utf-8">
+
+<!-- 부트스트랩 4.3.1 적용   -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+ <style>
+    a {
+        color: grey; /* 또는 원하는 색상으로 변경 */
+    }
+</style>
 <script>
 function search_goods_list(fixeSearchPeriod){
 	var formObj=document.createElement("form");
 	var i_fixedSearch_period = document.createElement("input");
 	i_fixedSearch_period.name="fixedSearchPeriod";
-	i_fixedSearch_period.value=searchPeriod;
+	i_fixedSearch_period.value=fixeSearchPeriod;
     formObj.appendChild(i_fixedSearch_period);
     document.body.appendChild(formObj); 
     formObj.method="get";
@@ -62,9 +70,9 @@ function  calcPeriod(search_period){
 		dt.setMonth(endMonth-3);
 		beginMonth = dt.getMonth();
 		beginDay = dt.getDate();
-	}else if(search_period=='four_month'){
+	}else if(search_period=='six_month'){
 		beginYear = dt.getFullYear();
-		dt.setMonth(endMonth-4);
+		dt.setMonth(endMonth-6);
 		beginMonth = dt.getMonth();
 		beginDay = dt.getDate();
 	}
@@ -87,103 +95,48 @@ function  calcPeriod(search_period){
 	return beginDate+","+endDate;
 }
 </script>
+
+
+<style>
+    .custom-btn {
+        background-color: #1b7340; /* 초록색 배경색 설정 */
+         border: none; /* 테두리 없애기 */
+         border-radius: 15px; /* radius 설정 */ 
+    }
+    
+    
+</style>
 </head>
 <body>
-	<H3>상품 조회</H3>
+	<H2>상품 관리</H2><br>
+	
 	<form  method="post">	
 		<TABLE cellpadding="10" cellspacing="10"  >
 			<TBODY>
-				<TR >
-					<TD>
-						<input type="radio" name="r_search"  checked/> 등록일로조회 &nbsp;&nbsp;&nbsp;
-						<input type="radio" name="r_search" />상세조회 &nbsp;&nbsp;&nbsp;
-					</TD>
-				</TR>
-				<TR >
-					<TD>
-					  <select name="curYear">
-					    <c:forEach   var="i" begin="0" end="5">
-					      <c:choose>
-					        <c:when test="${endYear==endYear-i}">
-					          <option value="${endYear}" selected>${endYear}</option>
-					        </c:when>
-					        <c:otherwise>
-					          <option value="${endYear-i }">${endYear-i }</option>
-					        </c:otherwise>
-					      </c:choose>
-					    </c:forEach>
-					</select>년 <select name="curMonth" >
-						 <c:forEach   var="i" begin="1" end="12">
-					      <c:choose>
-					        <c:when test="${endMonth==i }">
-					          <option value="${i }"  selected>${i }</option>
-					        </c:when>
-					        <c:otherwise>
-					          <option value="${i }">${i }</option>
-					        </c:otherwise>
-					      </c:choose>
-					    </c:forEach>					
-					</select>월
+			
+			
 					
-					 <select name="curDay">
-					  <c:forEach   var="i" begin="1" end="31">
-					      <c:choose>
-					        <c:when test="${endDay==i}">
-					          <option value="${i }"  selected>${i }</option>
-					        </c:when>
-					        <c:otherwise>
-					          <option value="${i }">${i }</option>
-					        </c:otherwise>
-					      </c:choose>
-					    </c:forEach>	
-					</select>일  &nbsp;이전&nbsp;&nbsp;&nbsp;&nbsp; 
-					<a href="javascript:search_goods_list('today')">
-					   <img   src="${contextPath}/resources/image/btn_search_one_day.jpg">
-					</a>
-					<a href="javascript:search_goods_list('one_week')">
-					   <img   src="${contextPath}/resources/image/btn_search_1_week.jpg">
-					</a>
-					<a href="javascript:search_goods_list('two_week')">
-					   <img   src="${contextPath}/resources/image/btn_search_2_week.jpg">
-					</a>
-					<a href="javascript:search_goods_list('one_month')">
-					   <img   src="${pageContext.request.contextPath}/resources/image/btn_search_1_month.jpg">
-					</a>
-					<a href="javascript:search_goods_list('two_month')">
-					   <img   src="${contextPath}/resources/image/btn_search_2_month.jpg">
-					</a>
-					<a href="javascript:search_goods_list('three_month')">
-					   <img   src="${contextPath}/resources/image/btn_search_3_month.jpg">
-					</a>
-					<a href="javascript:search_goods_list('four_month')">
-					   <img   src="${contextPath}/resources/image/btn_search_4_month.jpg">
-					</a>
-					&nbsp;까지 조회
-					</TD>
+		<!-- 		<div class="btn-group" role="group" aria-label="Search Buttons"> -->
+    <button type="button"  class="btn btn-primary btn-sm custom-btn mr-3"  onclick="search_goods_list('today')">
+        오늘
+    </button>
+    <button type="button"  class="btn btn-primary btn-sm custom-btn mr-3"  onclick="search_goods_list('one_month')">
+        최근 1개월
+    </button>
+    <button type="button"  class="btn btn-primary btn-sm custom-btn mr-3"  onclick="search_goods_list('two_month')">
+        최근 2개월
+    </button>
+    <button type="button"  class="btn btn-primary btn-sm custom-btn mr-3"  onclick="search_goods_list('three_month')">
+        최근 3개월
+    </button>
+    <button type="button"  class="btn btn-primary btn-sm custom-btn mr-3"  onclick="search_goods_list('six_month')">
+       최근 6개월
+    </button>
+<!-- </div> -->
 				</TR>
-				<tr>
-				  <td>
-				    <select name="search_condition" disabled >
-						<option value="전체" checked>전체</option>
-						<option value="제품번호">상품번호</option>
-						<option value="제품이름">상품이름</option>
-						<option value="제조사">제조사</option>
-					</select>
-					<input  type="text"  size="30"  disabled/>  
-					<input   type="button"  value="조회" disabled/>
-				  </td>
+				
 				</tr>
-				<tr>
-				  <td>
-					조회한 기간:<input  type="text"  size="4" value="${beginYear}" />년
-							<input  type="text"  size="4" value="${beginMonth}"/>월	
-							 <input  type="text"  size="4" value="${beginDay}"/>일	
-							 &nbsp; ~
-							<input  type="text"  size="4" value="${endYear }" />년 
-							<input  type="text"  size="4" value="${endMonth }"/>월	
-							 <input  type="text"  size="4" value="${endDay }"/>일							 
-				  </td>
-				</tr>
+				
 			</TBODY>
 		</TABLE>
 		<DIV class="clear">

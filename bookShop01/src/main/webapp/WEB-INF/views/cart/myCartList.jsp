@@ -27,7 +27,7 @@
 <script type="text/javascript">
 function calcGoodsPrice(bookPrice,obj){
 	var totalPrice,final_total_price,totalNum;
-	var goods_qty=document.getElementById("select_goods_qty");
+	var goods_qty=document.getElementById("h_cart_goods_qty");
 	//alert("총 상품금액"+goods_qty.value);
 /* 	console.log(goods_qty.value);
 	console.log(typeof goods_qty.value); */
@@ -53,10 +53,12 @@ function calcGoodsPrice(bookPrice,obj){
 	//	alert("체크 했음")
 		
 	
-	totalNum=Number(goods_qty.value);
-	//	totalNum=Number(h_totalGoodsNum.value)+Number(goods_qty.value);
+	/* totalNum=Number(goods_qty.value); */
+	/* totalNum=Number(h_totalGoodsNum.value)+Number(goods_qty.value); */
 		//alert("totalNum:"+totalNum);
 		//alert("totalPrice:"+totalPrice);
+			totalNum=Number(goods_qty.value);
+			console.log(totalNum);
 		totalPrice=Number(h_totalGoodsPrice.value)
 		final_total_price=totalPrice;
 		//final_total_price=totalPrice+Number(h_totalDelivery.value);
@@ -70,7 +72,10 @@ function calcGoodsPrice(bookPrice,obj){
 		
 	
 		/* 태그 고친부분!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
-		totalNum=Number(h_totalGoodsNum.value)-Number(goods_qty.value);
+		
+		
+			totalNum=Number(h_totalGoodsNum.value)-Number(goods_qty.value);
+		/* totalNum=Number(h_totalGoodsNum.value)-Number(goods_qty.value); */
 	//	alert("totalNum:"+ totalNum);
 		console.log(totalNum); 
 		console.log(typeof totalNum); 
@@ -152,6 +157,8 @@ function modify_cart_qty(goods_id,bookPrice,index){
 			
 		}
 	}); //end ajax	
+/* 	var p_totalNum=document.getElementById("h_totalGoodsNum");
+	p_totalGoodsNum.innerHTML = new Intl.NumberFormat('ko-KR').format(_cart_goods_qty) + '개'; */
 }
 
 function delete_cart_goods(cart_id){
@@ -292,6 +299,7 @@ function fn_order_all_cart_goods(){
                </td>
                <td>
                   <input type="text" id="cart_goods_qty" name="cart_goods_qty" size=3 value="${cart_goods_qty}"><br>
+                  <input type="hidden" id="h_cart_goods_qty" name="h_cart_goods_qty" value="${cart_goods_qty}">
                 <!--   select_goods_qty -->
                  <input type="hidden" id="select_goods_qty" name="select_goods_qty" value="${cart_goods_qty}">
                   <a href="javascript:modify_cart_qty(${item.goods_id },${item.goods_sales_price*0.9 },${cnt.count-1 });" >

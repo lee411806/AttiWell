@@ -16,8 +16,6 @@
 			<li><a href="${contextPath}/admin/goods/adminGoodsMain.do">상품관리</a></li>
 			<li><a href="${contextPath}/admin/order/adminOrderMain.do">주문관리</a></li>
 			<li><a href="${contextPath}/admin/member/adminMemberMain.do">회원관리</a></li>
-			<li><a href="#">배송관리</a></li>
-			<li><a href="#">게시판관리</a></li>
 		</ul>
 	</li>
 </c:when>
