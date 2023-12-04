@@ -127,18 +127,21 @@ function fn_order_each_goods(goods_id,goods_title,goods_sales_price,fileName){
     formObj.method="post";
     formObj.action="${contextPath}/order/orderEachGoods.do";
     formObj.submit();
-	}	
+	}
 </script>
+<link rel="stylesheet" href="${contextPath}/resources/css/main.css" />
+
 </head>
+
 <body>
 	<hgroup>
-		<h1>컴퓨터와 인터넷</h1>
-		<h2>국내외 도서 &gt; 컴퓨터와 인터넷 &gt; 웹 개발</h2>
-		<h3>${goods.goods_title }</h3>
+		<h1 style="font-size:30px; color:#1b7340">${goods.goods_sort }</h1>
+		<h2>${goods.goods_sort }&gt; ${goods.goods_status }</h2>
+		<h3 style="font-size:20px">${goods.goods_title }</h3>
 	</hgroup>
 	<div id="goods_image">
 		<figure>
-			<img alt="HTML5 &amp; CSS3"
+			<img style="width:450px" 
 				src="${contextPath}/thumbnails.do?goods_id=${goods.goods_id}&fileName=${goods.goods_fileName}">
 		</figure>
 	</div>
@@ -160,7 +163,7 @@ function fn_order_each_goods(goods_id,goods_title,goods_sales_price,fileName){
 				</tr>
 				<tr>
 					<td class="fixed">포인트적립</td>
-					<td class="active">${goods.goods_point}P(10%적립)</td>
+					<td class="active">${goods.goods_point}P(5%적립)</td>
 				</tr>
 				<tr class="dot_line">
 					<td class="fixed">포인트 추가적립</td>
@@ -172,8 +175,8 @@ function fn_order_each_goods(goods_id,goods_title,goods_sales_price,fileName){
 				</tr>
 				<tr>
 					<td class="fixed">배송안내</td>
-					<td class="fixed"><strong>[당일배송]</strong> 당일배송 서비스 시작!<br> <strong>[휴일배송]</strong>
-						휴일에도 배송받는 Bookshop</TD>
+					<td class="fixed"><strong>[당일배송]</strong> 당일배송 서비스 시작!<br><br> <strong>[휴일배송]</strong>
+						휴일에도 배송받는 attiWell</TD>
 				</tr>
 				<tr>
 					<td class="fixed">도착예정일</td>
@@ -196,23 +199,21 @@ function fn_order_each_goods(goods_id,goods_title,goods_sales_price,fileName){
 		<ul>
 			<li><a class="buy" href="javascript:fn_order_each_goods('${goods.goods_id }','${goods.goods_title }','${goods.goods_sales_price}','${goods.goods_fileName}');">구매하기 </a></li>
 			<li><a class="cart" href="javascript:add_cart('${goods.goods_id }')">장바구니</a></li>
-			
-			<li><a class="wish" href="#">위시리스트</a></li>
 		</ul>
 	</div>
 	<div class="clear"></div>
 	<!-- 내용 들어 가는 곳 -->
 	<div id="container">
 		<ul class="tabs">
-			<li><a href="#tab1">책소개</a></li>
+			<li><a href="#tab1">상품소개</a></li>
 			<li><a href="#tab6">리뷰</a></li>
 		</ul>
 		<div class="tab_container">
 			<div class="tab_content" id="tab1">
-				<h4>책소개</h4>
+				<h4>상품소개</h4>
 				<p>${fn:replace(goods.goods_intro,crcn,br)}</p>
 				<c:forEach var="image" items="${imageList }">
-					<img 
+					<img style="width:900px; margin:auto"
 						src="${contextPath}/download.do?goods_id=${goods.goods_id}&fileName=${image.fileName}">
 				</c:forEach>
 			</div>

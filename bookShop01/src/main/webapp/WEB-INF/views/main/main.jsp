@@ -9,31 +9,28 @@
 
 <div id="ad_main_banner">
 	<ul class="bjqs">
-		<li><img width="960" height="345"
-			src="${contextPath}/resources/image/main_banner1.png"></li>
-		<li><img width="960" height="345"
+		<li><img  width="960" height="345"
 			src="${contextPath}/resources/image/main_banner2.png"></li>
-		<li><img width="960" height="345"
+		<li><img  width="960" height="345"
+			src="${contextPath}/resources/image/main_banner1.png"></li>
+		<li><img  width="960" height="345"
 			src="${contextPath}/resources/image/main_banner3.png"></li>
 	</ul>
 </div>
-
-
-
 
 
 <div class="main_book">
 	<c:set var="goods_count" value="0" />
 	<div style="font: bold 25px Arial, sans-serif;">인기 상품</div>
 	<hr>
-	<c:forEach var="item" items="${goodsMap.bestseller }">
+	<c:forEach var="item" items="${goodsMap.hot }">
 		<c:set var="goods_count" value="${goods_count+1 }" />
 		<div class="book">
 			<a
 				href="${contextPath}/goods/goodsDetail.do?goods_id=${item.goods_id }">
 				<img class="link" src="${contextPath}/resources/image/1px.gif">
-			</a> <img width="121" height="154"
-				src="${contextPath}/thumbnails.do?goods_id=${item.goods_id}&fileName=${item.goods_fileName}">
+			</a> <img width="220" height="240"
+				src="${contextPath}/thumbnails.do?goods_id=${item.goods_id}&fileName=${item.goods_fileName}" style="border-radius: 8px">
 
 			<div class="title">${item.goods_title }</div>
 			<div class="price">
@@ -67,19 +64,19 @@
 	<c:set var="goods_count" value="0" />
 	<div style="font: bold 25px Arial, sans-serif;">할인 상품</div>
 	<hr>
-	<c:forEach var="item" items="${goodsMap.newbook }">
+	<c:forEach var="item" items="${goodsMap.discount }">
 		<c:set var="goods_count" value="${goods_count+1 }" />
 		<div class="book">
 			<a
 				href="${contextPath}/goods/goodsDetail.do?goods_id=${item.goods_id }">
 				<img class="link" src="${contextPath}/resources/image/1px.gif">
-			</a> <img width="121" height="154"
-				src="${contextPath}/thumbnails.do?goods_id=${item.goods_id}&fileName=${item.goods_fileName}">
+			</a> <img style="size:220,250" width="220" height="240"
+				src="${contextPath}/thumbnails.do?goods_id=${item.goods_id}&fileName=${item.goods_fileName}" style="border-radius:8px">
 			<div class="title">${item.goods_title }</div>
 			<div class="price">
 				<fmt:formatNumber value="${item.goods_price}" type="number"
 					var="goods_price" />
-				${goods_price}원
+				<span style="">${goods_price}원</span>
 			</div>
 		</div>
 		<c:if test="${goods_count==15   }">
@@ -89,6 +86,7 @@
 		</c:if>
 	</c:forEach>
 </div>
+
 
 
 

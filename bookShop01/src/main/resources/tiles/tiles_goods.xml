@@ -3,7 +3,7 @@
        "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
 <tiles-definitions>
-	  <definition name="/goods/goodsDetail" extends="baseLayout">
+     <definition name="/goods/goodsDetail" extends="baseLayout">
          <put-attribute name="title" value="" />
          <put-attribute name="body" value="/WEB-INF/views/goods/goodsDetail.jsp" />
       </definition>  
@@ -18,7 +18,12 @@
          <put-attribute name="title" value="전체 상품 페이지" />
          <put-attribute name="body" value="/WEB-INF/views/goods/allGoodsList.jsp" />
       </definition>
+      
+      <!-- selectGoodsList 추가 -->
+      <definition name="/goods/selectGoodsList" extends="baseLayout">
+         <put-attribute name="title" value="전체 상품 페이지" />
+         <put-attribute name="body" value="/WEB-INF/views/goods/categoryList.jsp" />
+      </definition>
   
 </tiles-definitions>
-
 

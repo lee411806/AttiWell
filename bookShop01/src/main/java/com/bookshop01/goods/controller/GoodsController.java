@@ -1,4 +1,4 @@
-package com.bookshop01.goods.controller;
+package com.attiWell.goods.controller;
 
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 public interface GoodsController  {
-	public ModelAndView goodsDetail(@RequestParam("goods_id") String goods_id,HttpServletRequest request, HttpServletResponse response) throws Exception;
-	public @ResponseBody String keywordSearch(@RequestParam("keyword") String keyword,HttpServletRequest request, HttpServletResponse response) throws Exception;
-	public ModelAndView searchGoods(@RequestParam("searchWord") String searchWord,HttpServletRequest request, HttpServletResponse response) throws Exception;
-//	allGoodsList 추가	
-	public ModelAndView allGoodsList(HttpServletRequest request, HttpServletResponse response) throws Exception;
+   public ModelAndView goodsDetail(@RequestParam("goods_id") String goods_id,HttpServletRequest request, HttpServletResponse response) throws Exception;
+   public @ResponseBody String keywordSearch(@RequestParam("keyword") String keyword,HttpServletRequest request, HttpServletResponse response) throws Exception;
+   public ModelAndView searchGoods(@RequestParam("searchWord") String searchWord,HttpServletRequest request, HttpServletResponse response) throws Exception;
+//   allGoodsList 추가   
+   public ModelAndView allGoodsList(HttpServletRequest request, HttpServletResponse response) throws Exception;
 }

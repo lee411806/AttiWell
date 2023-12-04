@@ -22,41 +22,43 @@
 		<h3>새로나온 책</h3>
 		<div id="left_scroll">
 			<a href='javascript:slide("left");'><img
-				src="${contextPath}/resources/image/left.gif"></a>
+				src="${contextPath}/resources/image/left.gif"
+				style="width: 30px; height: 40px; margin: 45px 25px 0px 0px"></a>
 		</div>
 		<div id="carousel_inner">
 			<ul id="carousel_ul">
-					<c:forEach var="item" items="${goodsList }">
-						<li>
-							<div id="book">
+				<c:forEach var="item" items="${goodsList[category] }">
+					<li>
+						<div id="book">
+							<a
+								href="${contextPath}/goods/goodsDetail.do?goods_id=${item.goods_id}">
+								<img width="250px" alt="" style="border-radius: 8px"
+								src="${contextPath}/thumbnails.do?goods_id=${item.goods_id}&fileName=${item.goods_fileName}">
+							</a>
+							<div class="sort">${goods.goods_sort }</div>
+							<div class="title">
 								<a
-									href="${contextPath}/goods/goodsDetail.do?goods_id=${item.goods_id}">
-									<img width="75" alt=""
-									src="${contextPath}/thumbnails.do?goods_id=${item.goods_id}&fileName=${item.goods_fileName}">
-								</a>
-								<div class="sort">[컴퓨터 인터넷]</div>
-								<div class="title">
-									<a
-										href="${contextPath}/goods/goodsDetail.do?goods_id=${item.goods_id }">
-										${item.goods_title} </a>
-								</div>
-								<div class="price">
-									<span> <fmt:formatNumber value="${item.goods_price}"
-											type="number" var="goods_price" /> ${goods_price}원
-									</span> <br>
-									<fmt:formatNumber value="${item.goods_price*0.9}" type="number"
-										var="discounted_price" />
-									${discounted_price}원(10%할인)
-								</div>
+									href="${contextPath}/goods/goodsDetail.do?goods_id=${item.goods_id }">
+									${item.goods_title} </a>
 							</div>
-						</li>
-					</c:forEach>
+							<div class="price">
+								<span> <fmt:formatNumber value="${item.goods_price}"
+										type="number" var="goods_price" /> ${goods_price}원
+								</span> <br>
+								<fmt:formatNumber value="${item.goods_price*0.9}" type="number"
+									var="discounted_price" />
+								${discounted_price}원(10%할인)
+							</div>
+						</div>
+					</li>
+				</c:forEach>
 
 			</ul>
 		</div>
 		<div id="right_scroll">
 			<a href='javascript:slide("right");'><img
-				src="${contextPath}/resources/image/right.gif"></a>
+				src="${contextPath}/resources/image/right.gif"
+				style="width: 30px; height: 40px; margin-top: 45px"></a>
 		</div>
 		<input id="hidden_auto_slide_seconds" type="hidden" value="0">
 
@@ -71,13 +73,19 @@
 				href="#">최근 등록</a></li>
 		</ul>
 	</div>
+
+
+
+
 	<table id="list_view">
 		<tbody>
-			<c:forEach var="item" items="${goodsList }">
+			<div style="font: bold 25px Arial, sans-serif;"></div>
+			<c:forEach var="item" items="${goodsList[category] }">
 				<tr>
 					<td class="goods_image"><a
+					
 						href="${contextPath}/goods/goodsDetail.do?goods_id=${item.goods_id}">
-							<img width="75" alt=""
+							<img width="150" alt="" style="border-radius:8px"
 							src="${contextPath}/thumbnails.do?goods_id=${item.goods_id}&fileName=${item.goods_fileName}">
 					</a></td>
 					<td class="goods_description">
@@ -103,6 +111,41 @@
 			</c:forEach>
 		</tbody>
 	</table>
+
+
+	<%-- <div class="main_book">
+		<c:set var="goods_count" value="0" />
+		<div style="font: bold 25px Arial, sans-serif;">건강관리용품</div>
+		<hr>
+		<c:forEach var="item" items="${goodsMap.discount }">
+			<c:set var="goods_count" value="${goods_count+1 }" />
+			<div class="book">
+				<a
+					href="${contextPath}/goods/goodsDetail.do?goods_id=${item.goods_id }">
+					<img class="link" src="${contextPath}/resources/image/1px.gif">
+				</a> <img style="size: 220, 250" width="220" height="240"
+					src="${contextPath}/thumbnails.do?goods_id=${item.goods_id}&fileName=${item.goods_fileName}"
+					style="border-radius:8px">
+				<div class="title">${item.goods_title }</div>
+				<div class="price">
+					<fmt:formatNumber value="${item.goods_price}" type="number"
+						var="goods_price" />
+					<span style="">${goods_price}원</span>
+				</div>
+			</div>
+			<c:if test="${goods_count==15   }">
+				<div class="book">
+					<font size=20> <a href="#">more</a></font>
+				</div>
+			</c:if>
+		</c:forEach>
+	</div> --%>
+
+
+
+
+
+
 	<div class="clear"></div>
 	<div id="page_wrap">
 		<ul id="page_control">
