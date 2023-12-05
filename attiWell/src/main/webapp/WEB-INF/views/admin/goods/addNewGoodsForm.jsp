@@ -7,6 +7,51 @@
 
 <meta charset="utf-8">
 <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+ <style>
+    a {
+        color: grey; /* 또는 원하는 색상으로 변경 */
+    }
+    
+     .h2 {
+        font-size: 24px; /* Increase the font size to your desired value */
+        font-weight: bold; /* 굴게 만들기 */
+    }
+
+</style>
+
+
+<!-- style 파트 -->
+<style>
+
+ 
+.custom-btn {
+     
+         border-radius: 10px; /* radius 설정 */ 
+    }
+    .btn-primary.custom-btn {
+        color: #1b7340; /* 텍스트 색을 녹색으로 지정 */
+        background-color: #fff; /* 배경 색을 흰색으로 지정 */
+        border: 1px solid #1b7340 !important; /* 테두리 색을 #1b7340으로 지정 */
+          
+    }
+
+    .btn-primary.custom-btn:focus,
+    .btn-primary.custom-btn:hover {
+     color: #fff; /* 텍스트 색을 녹색으로 지정 */
+      background-color: #1b7340; /* 초록색 배경색 설정 */
+         border: none; /* 테두리 없애기 */
+        border: 1px solid #1b7340 !important; /* 호버 또는 포커스 시 테두리 색을 #1b7340으로 지정 */
+        
+    }
+    
+    
+   /* 테이블 글 씨 중앙정렬 */ 
+      .center-align {
+    text-align: center;
+  }
+</style>
+
 <script type="text/javascript">
   var cnt=0;
   function fn_addFile(){

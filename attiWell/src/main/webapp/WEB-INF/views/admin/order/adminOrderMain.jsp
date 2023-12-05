@@ -13,15 +13,44 @@
     a {
         color: grey; /* 또는 원하는 색상으로 변경 */
     }
+    
+     .h2 {
+        font-size: 24px; /* Increase the font size to your desired value */
+        font-weight: bold; /* 굴게 만들기 */
+    }
+
 </style>
+
+
+<!-- style 파트 -->
 <style>
-    .custom-btn {
-        background-color: #1b7340; /* 초록색 배경색 설정 */
+
+ 
+.custom-btn {
+     
+         border-radius: 10px; /* radius 설정 */ 
+    }
+    .btn-primary.custom-btn {
+        color: #1b7340; /* 텍스트 색을 녹색으로 지정 */
+        background-color: #fff; /* 배경 색을 흰색으로 지정 */
+        border: 1px solid #1b7340 !important; /* 테두리 색을 #1b7340으로 지정 */
+          
+    }
+
+    .btn-primary.custom-btn:focus,
+    .btn-primary.custom-btn:hover {
+     color: #fff; /* 텍스트 색을 녹색으로 지정 */
+      background-color: #1b7340; /* 초록색 배경색 설정 */
          border: none; /* 테두리 없애기 */
-         border-radius: 15px; /* radius 설정 */ 
+        border: 1px solid #1b7340 !important; /* 호버 또는 포커스 시 테두리 색을 #1b7340으로 지정 */
+        
     }
     
     
+   /* 테이블 글 씨 중앙정렬 */ 
+      .center-align {
+    text-align: center;
+  }
 </style>
 <c:choose>
 <c:when test='${not empty order_goods_list}'>
@@ -284,7 +313,9 @@ function fn_detail_search(){
 </script>
 </head>
 <body>
-	<H3>주문 조회</H3>
+<br>
+<br>
+	<p class="h2">주문 조회</p><br>
 	<form name="frm_delivery_list" action="${contextPath }/admin/admin.do" method="post">	
 		<table   >
 			
@@ -322,15 +353,18 @@ function fn_detail_search(){
 	</div>
 	
 <div class="clear"></div>
-<table class="list_view">
-		<tbody align=center >
-			<tr style="background:#33ff00" >
+<br>
+<table class="table table-hover center-align">
+		 <thead>
+			<tr style="background:#eee" >
 				<td class="fixed" >주문번호</td>
 				<td class="fixed">주문일자</td>
 				<td>주문내역</td>
 				<td>배송상태</td>
 				<td>배송수정</td>
 			</tr>
+			</thead>
+			<tbody align=center >
    <c:choose>
      <c:when test="${empty newOrderList}">			
 			<tr>
