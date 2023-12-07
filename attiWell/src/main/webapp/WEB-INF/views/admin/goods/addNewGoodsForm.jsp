@@ -7,49 +7,19 @@
 
 <meta charset="utf-8">
 <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
- <style>
-    a {
-        color: grey; /* 또는 원하는 색상으로 변경 */
-    }
-    
-     .h2 {
-        font-size: 24px; /* Increase the font size to your desired value */
-        font-weight: bold; /* 굴게 만들기 */
-    }
-
-</style>
-
-
-<!-- style 파트 -->
 <style>
-
- 
-.custom-btn {
-     
-         border-radius: 10px; /* radius 설정 */ 
-    }
-    .btn-primary.custom-btn {
-        color: #1b7340; /* 텍스트 색을 녹색으로 지정 */
-        background-color: #fff; /* 배경 색을 흰색으로 지정 */
-        border: 1px solid #1b7340 !important; /* 테두리 색을 #1b7340으로 지정 */
-          
-    }
-
-    .btn-primary.custom-btn:focus,
-    .btn-primary.custom-btn:hover {
-     color: #fff; /* 텍스트 색을 녹색으로 지정 */
-      background-color: #1b7340; /* 초록색 배경색 설정 */
-         border: none; /* 테두리 없애기 */
-        border: 1px solid #1b7340 !important; /* 호버 또는 포커스 시 테두리 색을 #1b7340으로 지정 */
-        
-    }
-    
-    
-   /* 테이블 글 씨 중앙정렬 */ 
-      .center-align {
-    text-align: center;
-  }
+.input-form {
+   max-width: 850px;
+   margin-top: 80px;
+   padding: 32px;
+   background: #fff;
+   -webkit-border-radius: 10px;
+   -moz-border-radius: 10px;
+   border-radius: 10px;
+   -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+   -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+   box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
+}
 </style>
 
 <script type="text/javascript">
@@ -79,111 +49,91 @@
 </head>
 
 <BODY>
-<form action="${contextPath}/admin/goods/addNewGoods.do" method="post"  enctype="multipart/form-data">
-		<h1>새상품 등록창</h1>
-<div class="tab_container">
-	<!-- 내용 들어 가는 곳 -->
-	<div class="tab_container" id="container">
-		<ul class="tabs">
-			<li><a href="#tab1">상품정보</a></li>
-			<li><a href="#tab4">상품소개</a></li>
-			<li><a href="#tab7">상품이미지</a></li>
-		</ul>
+<div class="input-form ">
+	<form action="${contextPath}/admin/goods/addNewGoods.do" method="post"  enctype="multipart/form-data">
+			<h1>새상품 등록창</h1>
 		<div class="tab_container">
-			<div class="tab_content" id="tab1">
-				<table >
-			<tr >
-				<td width=200 >제품분류</td>
-				<td width=500><select name="goods_sort">
-						<option value="컴퓨터와 인터넷" selected>컴퓨터와 인터넷
-						<option value="디지털 기기">디지털 기기
-					</select>
-				</td>
-			</tr>
-			<tr >
-				<td >제품이름</td>
-				<td><input name="goods_title" type="text" size="40" /></td>
-			</tr>
-			
-				<td >제품정가</td>
-				<td><input name="goods_price" type="text" size="40" /></td>
-			</tr>
-			
-			<tr>
-				<td >제품판매가격</td>
-				<td><input name="goods_sales_price" type="text" size="40" /></td>
-			</tr>
-			
-			
-			<tr>
-				<td >제품 구매 포인트</td>
-				<td><input name="goods_point" type="text" size="40" /></td>
-			</tr>
-
-			<tr>
-				<td >제품 배송비</td>
-				<td><input name="goods_delivery_price" type="text" size="40" /></td>
-			</tr>
-			<tr>
-				<td >제품 도착 예정일</td>
-				<td><input name="goods_delivery_date"  type="date" size="40" /></td>
-			</tr>
-			
-			<tr>
-				<td >제품종류</td>
-				<td>
-				<select name="goods_status">
-				  <option value="bestseller"  >베스트셀러</option>
-				  <option value="steadyseller" >스테디셀러</option>
-				  <option value="newbook" selected >신간</option>
-				  <option value="on_sale" >판매중</option>
-				  <option value="buy_out" >품절</option>
-				  <option value="out_of_print" >절판</option>
-				</select>
-				</td>
-			</tr>
-			<tr>
-			 <td>
-			   <br>
-			 </td>
-			</tr>
-				</table>	
-			</div>
-			<div class="tab_content" id="tab4">
-				<H4>제품소개</H4>
-				<table>
-					<tr>
-						<td >제품소개</td>
-						<td><textarea  rows="100" cols="80" name="goods_intro"></textarea></td>
-				    </tr>
-			    </table>
-			</div>
-			<div class="tab_content" id="tab7">
-				<h4>상품이미지</h4>
-				<table >
-					<tr>
-						<td align="right">이미지파일 첨부</td>
-			            
-			            <td  align="left"> <input type="button"  value="파일 추가" onClick="fn_addFile()"/></td>
-			            <td>
-				            <div id="d_file">
-				            </div>
-			            </td>
+			<!-- 내용 들어 가는 곳 -->
+			<div class="tab_container" id="container">
+				<ul class="tabs">
+					<li><a href="#tab1">상품정보</a></li>
+					<li><a href="#tab4">상품소개</a></li>
+					<li><a href="#tab7">상품이미지</a></li>
+				</ul>
+				<div class="tab_container">
+					<div class="tab_content" id="tab1">
+						<table >
+					<tr >
+						<td >제품이름</td>
+						<td><input name="goods_title" type="text" size="40" /></td>
 					</tr>
-				</table>
+					
+						<td >제품정가</td>
+						<td><input name="goods_price" type="text" size="40" /></td>
+					</tr>
+					
+					<tr>
+						<td >제품판매가격</td>
+						<td><input name="goods_sales_price" type="text" size="40" /></td>
+					</tr>
+					
+					<tr>
+						<td >제품종류</td>
+						<td>
+						<select name="goods_status">
+						  <option value="bestseller"  >전체상품</option>
+						  <option value="steadyseller" >전통건강식품</option>
+						  <option value="newbook" selected >일반건강식품</option>
+						  <option value="on_sale" >한방차/커피</option>
+						  <option value="buy_out" >건강관리용품</option>
+						  <option value="out_of_print" >품절</option>
+						</select>
+						</td>
+					</tr>
+					<tr>
+					 <td>
+					   <br>
+					 </td>
+					</tr>
+						</table>	
+					</div>
+					<div class="tab_content" id="tab4">
+						<H4>제품소개</H4>
+						<table>
+							<tr>
+								<td >제품소개</td>
+								<td><textarea  rows="100" cols="80" name="goods_intro"></textarea></td>
+						    </tr>
+					    </table>
+					</div>
+					<div class="tab_content" id="tab7">
+						<h4>상품이미지</h4>
+						<table >
+							<tr>
+								<td align="right">이미지파일 첨부</td>
+					            
+					            <td  align="left"> <input type="button"  value="파일 추가" onClick="fn_addFile()"/></td>
+					            <td>
+						            <div id="d_file">
+						            </div>
+					            </td>
+							</tr>
+						</table>
+					</div>
+				</div>
 			</div>
+			<div class="clear"></div>
+		<center>	
+			 <table>
+			 <tr>
+					  <td align=center>
+						<!--   <input  type="submit" value="상품 등록하기"> --> 
+						  <input  type="button" value="상품 등록하기"  onClick="fn_add_new_goods(this.form)">
+					  </td>
+					</tr>
+			 </table>
+		</center>	 
 		</div>
-	</div>
-	<div class="clear"></div>
-<center>	
-	 <table>
-	 <tr>
-			  <td align=center>
-				<!--   <input  type="submit" value="상품 등록하기"> --> 
-				  <input  type="button" value="상품 등록하기"  onClick="fn_add_new_goods(this.form)">
-			  </td>
-			</tr>
-	 </table>
-</center>	 
+
+	</form>	 
 </div>
-</form>	 

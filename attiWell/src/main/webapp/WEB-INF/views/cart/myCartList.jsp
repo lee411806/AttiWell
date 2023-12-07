@@ -22,7 +22,20 @@
           crossorigin="anonymous">
     <title>Your Page Title</title>
 
-
+<style>
+.input-form {
+   max-width: 850px;
+   margin-top: 80px;
+   padding: 32px;
+   background: #fff;
+   -webkit-border-radius: 10px;
+   -moz-border-radius: 10px;
+   border-radius: 10px;
+   -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+   -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+   box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
+}
+</style>
 
 <script type="text/javascript">
 function calcGoodsPrice(bookPrice,obj){
@@ -251,6 +264,7 @@ function fn_order_all_cart_goods(){
 </script>
 </head>
 <body>
+<div class="input-form ">
    <table class="list_view">
       <tbody align=center >
          <tr style="background:#fff" >
@@ -316,7 +330,7 @@ function fn_order_all_cart_goods(){
                
                <td>
    <a href="javascript:fn_order_each_goods('${item.goods_id }','${item.goods_title }','${item.goods_sales_price}','${item.goods_fileName}');" style="margin-bottom: 10px;">
-    <button type="button" class="btn btn-primary btn-sm">주문하기</button>
+    <button type="button" class="btn btn-primary btn-sm" style="background: #1b7340; border: none; color: white;">주문하기</button>
 </a>
 
 <a href="javascript:delete_cart_goods('${cart_id}');" style="margin-bottom: 10px;"> 
@@ -338,13 +352,12 @@ function fn_order_all_cart_goods(){
    <br>
    <br>
    
-   
-   <!-- 아래 테이블 --------------------------------------------------------------------------------------------  -->
-   
+     
+    <!-- 아래테이블 -------------------------------------------------------------------------- -->
    <table  width=80%   class="list_view" style="background:#fff">
    <tbody>
-        <tr  align=center  class="fixed" >
-          <td class="fixed">총 상품수 </td>
+        <tr  align=center  class="fixed" style="background: #1b7340; color: white;" >
+          <td class="fixed" >총 상품수 </td>
           <td>총 상품금액</td>
           <td>  </td>
           <td>총 배송비</td>
@@ -397,17 +410,13 @@ function fn_order_all_cart_goods(){
       <!-- Add your additional content here -->
 	<center>
   <br><br>
-<button type="button" class="btn btn-primary" onclick="fn_order_all_cart_goods()">
-    <%-- <img width="75" alt="" src="${contextPath}/resources/image/btn_order_final.jpg"> --%>
-    주문하기
-</button>
-<a href="${contextPath}/main/main.do" class="btn btn-primary">
-    <%-- <img width="75" alt="" src="${contextPath}/resources/image/btn_shopping_continue.jpg"> --%>
-    쇼핑계속하기
-</a>
-	<center>
-</form>   
-
-<script>
-
-</script>
+					<button type="button" class="btn btn-primary" onclick="fn_order_all_cart_goods()" style="background: #1b7340; border: none; color: white;">
+   						 <%-- <img width="75" alt="" src="${contextPath}/resources/image/btn_order_final.jpg"> --%>
+  					  주문하기
+					</button>
+					<a href="${contextPath}/main/main.do" class="btn btn-secondary btn-sm" style="height: 35px;">
+  					  <%-- <img width="75" alt="" src="${contextPath}/resources/image/btn_shopping_continue.jpg"> --%>
+  					  쇼핑계속하기
+					</a>
+	</center>
+</div>
