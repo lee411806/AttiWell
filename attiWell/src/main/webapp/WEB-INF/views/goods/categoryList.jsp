@@ -15,7 +15,7 @@
 </head>
 <body>
 	<hgroup>
-		<h1>전체 상품</h1>
+		<h1>${category }</h1>
 		<h2>오늘의 상품</h2>
 	</hgroup>
 	<section id="new_book">
@@ -42,12 +42,37 @@
 									${item.goods_title} </a>
 							</div>
 							<div class="price">
+								<c:set var="goodsPrice" value="${item.goods_price}" />
+								<c:set var="goodsSalesPrice" value="${item.goods_sales_price}" />
+								<c:set var="discountedPrice"
+									value="${goodsPrice - (goodsPrice - goodsSalesPrice)}" />
+								<c:set var="discount"
+									value="${(goodsPrice - goodsSalesPrice) / goodsPrice * 100}" />
+
+								<%
+									double roundedDiscount = Math.ceil(Double.parseDouble(pageContext.getAttribute("discount").toString()));
+										pageContext.setAttribute("roundedDiscount", roundedDiscount);
+								%>
+
+								<fmt:formatNumber value="${discountedPrice}" type="number"
+									var="formattedDiscountedPrice" />
+
+								<fmt:formatNumber value="${roundedDiscount}" type="number"
+									var="formattedRoundedDiscount" />
+
+
 								<span> <fmt:formatNumber value="${item.goods_price}"
-										type="number" var="goods_price" /> ${goods_price}원
+										type="number" var="goods_price" /> <c:choose>
+										<c:when test="${item.goods_price == item.goods_sales_price }">
+											<span style="color: red; font-weight: bold">${formattedDiscountedPrice }원</span>
+										</c:when>
+										<c:otherwise>
+											<span style="text-decoration: line-through;">${goods_price}원</span><br>
+
+											<span style="color: red; font-weight: bold">${formattedDiscountedPrice }원(${formattedRoundedDiscount}%할인)</span>
+										</c:otherwise>
+									</c:choose>
 								</span> <br>
-								<fmt:formatNumber value="${item.goods_price*0.9}" type="number"
-									var="discounted_price" />
-								${discounted_price}원(10%할인)
 							</div>
 						</div>
 					</li>
@@ -64,42 +89,65 @@
 
 		<div class="clear"></div>
 	</section>
+
+
+
+
+
+
 	<div class="clear"></div>
 	<div id="sorting">
 		<ul>
 			<li><a class="active" href="#">인기순</a></li>
-			<li><a href="#">최신 출간</a></li>
+			<li><a href="#">최신순</a></li>
 			<li><a style="border: currentColor; border-image: none;"
-				href="#">최근 등록</a></li>
+				href="#">가격순</a></li>
 		</ul>
 	</div>
 
-
-
-
 	<table id="list_view">
 		<tbody>
-			<div style="font: bold 25px Arial, sans-serif;"></div>
 			<c:forEach var="item" items="${goodsList[category] }">
 				<tr>
 					<td class="goods_image"><a
-					
 						href="${contextPath}/goods/goodsDetail.do?goods_id=${item.goods_id}">
-							<img width="150" alt="" style="border-radius:8px"
+							<img width="150" alt="" style="border-radius: 8px"
 							src="${contextPath}/thumbnails.do?goods_id=${item.goods_id}&fileName=${item.goods_fileName}">
 					</a></td>
 					<td class="goods_description">
 						<h2>
 							<a
-								href="${contextPath}/goods/goodsDetail.do?goods_id=${item.goods_id }">${item.goods_title }</a>
+								href="${contextPath}/goods/goodsDetail.do?goods_id=${item.goods_id }">&nbsp;&nbsp;${item.goods_title }</a>
 						</h2>
 					</td>
-					<td class="price"><span>${item.goods_price }원</span><br>
-						<strong> <fmt:formatNumber
-								value="${item.goods_price*0.9}" type="number"
-								var="discounted_price" /> ${discounted_price}원
-					</strong><br>(10% 할인)</td>
-					<td><input type="checkbox" value=""></td>
+					<td class="price"><c:set var="goodsPrice"
+							value="${item.goods_price}" /> <c:set var="goodsSalesPrice"
+							value="${item.goods_sales_price}" /> <c:set
+							var="discountedPrice"
+							value="${goodsPrice - (goodsPrice - goodsSalesPrice)}" /> <c:set
+							var="discount"
+							value="${(goodsPrice - goodsSalesPrice) / goodsPrice * 100}" />
+
+						<%
+							double roundedDiscount = Math.ceil(Double.parseDouble(pageContext.getAttribute("discount").toString()));
+								pageContext.setAttribute("roundedDiscount", roundedDiscount);
+						%> <fmt:formatNumber value="${discountedPrice}" type="number"
+							var="formattedDiscountedPrice" /> <fmt:formatNumber
+							value="${roundedDiscount}" type="number"
+							var="formattedRoundedDiscount" /> <span> <fmt:formatNumber
+								value="${item.goods_price}" type="number" var="goods_price" />
+							<c:choose>
+								<c:when test="${item.goods_price == item.goods_sales_price }">
+									<span style="color: red; font-weight: bold">${formattedDiscountedPrice }원</span>
+								</c:when>
+								<c:otherwise>
+									<span style="text-decoration: line-through;">${goods_price}원</span>
+
+									<span style="color: red; font-weight: bold">${formattedDiscountedPrice }원(${formattedRoundedDiscount}%할인)</span>
+								</c:otherwise>
+							</c:choose>
+					</span> <br></td>
+					<td><div></div></td>
 					<td class="buy_btns">
 						<UL>
 							<li><a href="#">장바구니</a></li>
@@ -111,39 +159,6 @@
 			</c:forEach>
 		</tbody>
 	</table>
-
-
-	<%-- <div class="main_book">
-		<c:set var="goods_count" value="0" />
-		<div style="font: bold 25px Arial, sans-serif;">건강관리용품</div>
-		<hr>
-		<c:forEach var="item" items="${goodsMap.discount }">
-			<c:set var="goods_count" value="${goods_count+1 }" />
-			<div class="book">
-				<a
-					href="${contextPath}/goods/goodsDetail.do?goods_id=${item.goods_id }">
-					<img class="link" src="${contextPath}/resources/image/1px.gif">
-				</a> <img style="size: 220, 250" width="220" height="240"
-					src="${contextPath}/thumbnails.do?goods_id=${item.goods_id}&fileName=${item.goods_fileName}"
-					style="border-radius:8px">
-				<div class="title">${item.goods_title }</div>
-				<div class="price">
-					<fmt:formatNumber value="${item.goods_price}" type="number"
-						var="goods_price" />
-					<span style="">${goods_price}원</span>
-				</div>
-			</div>
-			<c:if test="${goods_count==15   }">
-				<div class="book">
-					<font size=20> <a href="#">more</a></font>
-				</div>
-			</c:if>
-		</c:forEach>
-	</div> --%>
-
-
-
-
 
 
 	<div class="clear"></div>

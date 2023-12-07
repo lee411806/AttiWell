@@ -1,18 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8" 	isELIgnored="false"%>
-<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>    
+	pageEncoding="utf-8" isELIgnored="false"%>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
-<c:set var="goods"  value="${goodsMap.goodsVO}"  />
-<c:set var="imageList"  value="${goodsMap.imageList }"  />
- <%
-     //치환 변수 선언합니다.
-      //pageContext.setAttribute("crcn", "\r\n"); //개행문자
-      pageContext.setAttribute("crcn" , "\n"); //Ajax로 변경 시 개행 문자 
-      pageContext.setAttribute("br", "<br/>"); //br 태그
-%>  
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
+<c:set var="goods" value="${goodsMap.goodsVO}" />
+<c:set var="imageList" value="${goodsMap.imageList }" />
+<%
+	//치환 변수 선언합니다.
+	//pageContext.setAttribute("crcn", "\r\n"); //개행문자
+	pageContext.setAttribute("crcn", "\n"); //Ajax로 변경 시 개행 문자 
+	pageContext.setAttribute("br", "<br/>"); //br 태그
+%>
 <html>
 <head>
 <style>
@@ -48,21 +48,21 @@
 			async : false, //false인 경우 동기식으로 처리한다.
 			url : "${contextPath}/cart/addGoodsInCart.do",
 			data : {
-				goods_id:goods_id
-				
+				goods_id : goods_id
+
 			},
 			success : function(data, textStatus) {
 				//alert(data);
-			//	$('#message').append(data);
-				if(data.trim()=='add_success'){
-					imagePopup('open', '.layer01');	
-				}else if(data.trim()=='already_existed'){
-					alert("이미 카트에 등록된 상품입니다.");	
+				//	$('#message').append(data);
+				if (data.trim() == 'add_success') {
+					imagePopup('open', '.layer01');
+				} else if (data.trim() == 'already_existed') {
+					alert("이미 카트에 등록된 상품입니다.");
 				}
-				
+
 			},
 			error : function(data, textStatus) {
-				alert("에러가 발생했습니다."+data);
+				alert("에러가 발생했습니다." + data);
 			},
 			complete : function(data, textStatus) {
 				//alert("작업을완료 했습니다");
@@ -85,63 +85,64 @@
 			jQuery('#layer').attr('style', 'visibility:hidden');
 		}
 	}
-	
-function fn_order_each_goods(goods_id,goods_title,goods_sales_price,fileName){
-	var _isLogOn=document.getElementById("isLogOn");
-	var isLogOn=_isLogOn.value;
-	
-	 if(isLogOn=="false" || isLogOn=='' ){
-		alert("로그인 후 주문이 가능합니다!!!");
-	} 
-	
-	
-		var total_price,final_total_price;
-		var order_goods_qty=document.getElementById("order_goods_qty");
-		
-		var formObj=document.createElement("form");
-		var i_goods_id = document.createElement("input"); 
-    var i_goods_title = document.createElement("input");
-    var i_goods_sales_price=document.createElement("input");
-    var i_fileName=document.createElement("input");
-    var i_order_goods_qty=document.createElement("input");
-    
-    i_goods_id.name="goods_id";
-    i_goods_title.name="goods_title";
-    i_goods_sales_price.name="goods_sales_price";
-    i_fileName.name="goods_fileName";
-    i_order_goods_qty.name="order_goods_qty";
-    
-    i_goods_id.value=goods_id;
-    i_order_goods_qty.value=order_goods_qty.value;
-    i_goods_title.value=goods_title;
-    i_goods_sales_price.value=goods_sales_price;
-    i_fileName.value=fileName;
-    
-    formObj.appendChild(i_goods_id);
-    formObj.appendChild(i_goods_title);
-    formObj.appendChild(i_goods_sales_price);
-    formObj.appendChild(i_fileName);
-    formObj.appendChild(i_order_goods_qty);
 
-    document.body.appendChild(formObj); 
-    formObj.method="post";
-    formObj.action="${contextPath}/order/orderEachGoods.do";
-    formObj.submit();
+	function fn_order_each_goods(goods_id, goods_title, 
+			goods_sales_price,
+			fileName) {
+		var _isLogOn = document.getElementById("isLogOn");
+		var isLogOn = _isLogOn.value;
+
+		if (isLogOn == "false" || isLogOn == '') {
+			alert("로그인 후 주문이 가능합니다!!!");
+		}
+
+		var total_price, final_total_price;
+		var order_goods_qty = document.getElementById("order_goods_qty");
+
+		var formObj = document.createElement("form");
+		var i_goods_id = document.createElement("input");
+		var i_goods_title = document.createElement("input");
+		var i_goods_sales_price = document.createElement("input");
+		var i_fileName = document.createElement("input");
+		var i_order_goods_qty = document.createElement("input");
+
+		i_goods_id.name = "goods_id";
+		i_goods_title.name = "goods_title";
+		i_goods_sales_price.name = "goods_sales_price";
+		i_fileName.name = "goods_fileName";
+		i_order_goods_qty.name = "order_goods_qty";
+
+		i_goods_id.value = goods_id;
+		i_order_goods_qty.value = order_goods_qty.value;
+		i_goods_title.value = goods_title;
+		i_goods_sales_price.value = goods_sales_price;
+		i_fileName.value = fileName;
+
+		formObj.appendChild(i_goods_id);
+		formObj.appendChild(i_goods_title);
+		formObj.appendChild(i_goods_sales_price);
+		formObj.appendChild(i_fileName);
+		formObj.appendChild(i_order_goods_qty);
+
+		document.body.appendChild(formObj);
+		formObj.method = "post";
+		formObj.action = "${contextPath}/order/orderEachGoods.do";
+		formObj.submit();
 	}
 </script>
-<link rel="stylesheet" href="${contextPath}/resources/css/main.css" />
+<link rel="s7tylesheet" href="${contextPath}/resources/css/main.css" />
 
 </head>
 
 <body>
 	<hgroup>
-		<h1 style="font-size:30px; color:#1b7340">${goods.goods_sort }</h1>
-		<h2>${goods.goods_sort }&gt; ${goods.goods_status }</h2>
-		<h3 style="font-size:20px">${goods.goods_title }</h3>
+		<h1 style="font-size: 30px; color: #1b7340">${goods.goods_sort }</h1>
+		<h2>${goods.goods_sort }&gt;${goods.goods_status }</h2>
+		<h3 style="font-size: 20px">${goods.goods_title }</h3>
 	</hgroup>
 	<div id="goods_image">
 		<figure>
-			<img style="width:450px" 
+			<img style="width: 450px"
 				src="${contextPath}/thumbnails.do?goods_id=${goods.goods_id}&fileName=${goods.goods_fileName}">
 		</figure>
 	</div>
@@ -150,24 +151,55 @@ function fn_order_each_goods(goods_id,goods_title,goods_sales_price,fileName){
 			<tbody>
 				<tr>
 					<td class="fixed">정가</td>
-					<td class="active"><span >
-					   <fmt:formatNumber  value="${goods.goods_price}" type="number" var="goods_price" />
-				         ${goods_price}원
+					<td class="active"><span
+						style="text-decoration: line-through;"> <fmt:formatNumber
+								value="${goods.goods_price}" type="number" var="goods_price" />
+							${goods_price}원
 					</span></td>
 				</tr>
 				<tr class="dot_line">
 					<td class="fixed">판매가</td>
-					<td class="active"><span >
-					   <fmt:formatNumber  value="${goods.goods_price*0.9}" type="number" var="discounted_price" />
-				         ${discounted_price}원(10%할인)</span></td>
+					<td class="active"><c:set var="goodsPrice"
+							value="${goods.goods_price}" /> <c:set var="goodsSalesPrice"
+							value="${goods.goods_sales_price}" /> <c:set
+							var="discountedPrice"
+							value="${goodsPrice - (goodsPrice - goodsSalesPrice)}" /> <c:set
+							var="discount"
+							value="${(goodsPrice - goodsSalesPrice) / goodsPrice * 100}" />
+
+						<%
+							double roundedDiscount = Math.ceil(Double.parseDouble(pageContext.getAttribute("discount").toString()));
+							pageContext.setAttribute("roundedDiscount", roundedDiscount);
+						%> <fmt:formatNumber value="${discountedPrice}" type="number"
+							var="formattedDiscountedPrice" /> <fmt:formatNumber
+							value="${roundedDiscount}" type="number"
+							var="formattedRoundedDiscount" maxFractionDigits="0" /> <fmt:formatNumber
+							value="${discountedPrice}" type="number"
+							var="formattedDiscountedPrice" /> <fmt:formatNumber
+							value="${roundedDiscount}" type="number"
+							var="formattedRoundedDiscount" /> <span> <fmt:formatNumber
+								value="${item.goods_price}" type="number" var="goods_price" />
+							<c:choose>
+								<c:when test="${item.goods_price == item.goods_sales_price }">
+									<span style="color: blue; font-weight: bold">${formattedDiscountedPrice }원</span>
+								</c:when>
+								<c:otherwise>
+									<span style="text-decoration: line-through;">${goods_price}원</span>
+									<br>
+
+									<span style="color: blue; font-weight: bold">${formattedDiscountedPrice }원(${formattedRoundedDiscount}%할인)</span>
+								</c:otherwise>
+							</c:choose>
+					</span> <br>
 				</tr>
-				<tr>
+				<%-- <tr>
 					<td class="fixed">포인트적립</td>
 					<td class="active">${goods.goods_point}P(5%적립)</td>
-				</tr>
+				</tr> --%>
 				<tr class="dot_line">
 					<td class="fixed">포인트 추가적립</td>
-					<td class="fixed">만원이상 구매시 1,000P, 5만원이상 구매시 2,000P추가적립 편의점 배송 이용시 300P 추가적립</td>
+					<td class="fixed">만원이상 구매시 1,000P, 5만원이상 구매시 2,000P추가적립 편의점 배송
+						이용시 300P 추가적립</td>
 				</tr>
 				<tr>
 					<td class="fixed">배송료</td>
@@ -175,8 +207,10 @@ function fn_order_each_goods(goods_id,goods_title,goods_sales_price,fileName){
 				</tr>
 				<tr>
 					<td class="fixed">배송안내</td>
-					<td class="fixed"><strong>[당일배송]</strong> 당일배송 서비스 시작!<br><br> <strong>[휴일배송]</strong>
-						휴일에도 배송받는 attiWell</TD>
+					<td class="fixed"><strong>[당일배송]</strong> 당일배송 서비스 시작!<br>
+						<br> <strong>[휴일배송]</strong> 휴일에도 배송받는 <img
+						src="${contextPath}/resources/image/logo3_v2.png"
+						style="width: 120px; height: 50px; margin: 10px 0px 0px 30px"></TD>
 				</tr>
 				<tr>
 					<td class="fixed">도착예정일</td>
@@ -184,21 +218,23 @@ function fn_order_each_goods(goods_id,goods_title,goods_sales_price,fileName){
 				</tr>
 				<tr>
 					<td class="fixed">수량</td>
-					<td class="fixed">
-			      <select style="width: 60px;" id="order_goods_qty">
-				      <option>1</option>
+					<td class="fixed"><select style="width: 60px;"
+						id="order_goods_qty">
+							<option>1</option>
 							<option>2</option>
 							<option>3</option>
 							<option>4</option>
 							<option>5</option>
-			     </select>
-					 </td>
+					</select></td>
 				</tr>
 			</tbody>
 		</table>
 		<ul>
-			<li><a class="buy" href="javascript:fn_order_each_goods('${goods.goods_id }','${goods.goods_title }','${goods.goods_sales_price}','${goods.goods_fileName}');">구매하기 </a></li>
-			<li><a class="cart" href="javascript:add_cart('${goods.goods_id }')">장바구니</a></li>
+			<li><a class="buy"
+				href="javascript:fn_order_each_goods('${goods.goods_id }','${goods.goods_title }','${goods.goods_sales_price}','${goods.goods_fileName}');">구매하기
+			</a></li>
+			<li><a class="cart"
+				href="javascript:add_cart('${goods.goods_id }')">장바구니</a></li>
 		</ul>
 	</div>
 	<div class="clear"></div>
@@ -213,7 +249,7 @@ function fn_order_each_goods(goods_id,goods_title,goods_sales_price,fileName){
 				<h4>상품소개</h4>
 				<p>${fn:replace(goods.goods_intro,crcn,br)}</p>
 				<c:forEach var="image" items="${imageList }">
-					<img style="width:900px; margin:auto"
+					<img style="width: 900px; margin: auto"
 						src="${contextPath}/download.do?goods_id=${goods.goods_id}&fileName=${image.fileName}">
 				</c:forEach>
 			</div>
@@ -227,12 +263,13 @@ function fn_order_each_goods(goods_id,goods_title,goods_sales_price,fileName){
 		<!-- visibility:hidden 으로 설정하여 해당 div안의 모든것들을 가려둔다. -->
 		<div id="popup">
 			<!-- 팝업창 닫기 버튼 -->
-			<a href="javascript:" onClick="javascript:imagePopup('close', '.layer01');"> <img
+			<a href="javascript:"
+				onClick="javascript:imagePopup('close', '.layer01');"> <img
 				src="${contextPath}/resources/image/close.png" id="close" />
 			</a> <br /> <font size="12" id="contents">장바구니에 담았습니다.</font><br>
-<form   action='${contextPath}/cart/myCartList.do'  >				
-		<input  type="submit" value="장바구니 보기">
-</form>			
+			<form action='${contextPath}/cart/myCartList.do'>
+				<input type="submit" value="장바구니 보기">
+			</form>
 </body>
 </html>
-<input type="hidden" name="isLogOn" id="isLogOn" value="${isLogOn}"/>
+<input type="hidden" name="isLogOn" id="isLogOn" value="${isLogOn}" />
