@@ -41,7 +41,8 @@ function fn_cancel_order(order_id){
 </head>
 <body>
 <h1>최근주문내역
-    <A href="#"> <IMG  src="${contextPath}/resources/image/btn_more_see.jpg">  </A> 
+<!-- 전체 주문내역 조회 수정 -->
+    <A href="${contextPath}/mypage/listMyOrderHistoryAll.do"> <IMG  src="${contextPath}/resources/image/btn_more_see.jpg">  </A> 
 </h1>
 <table class="list_view">
 		<tbody align=center >
@@ -160,8 +161,7 @@ function fn_cancel_order(order_id){
 
 <br><br><br>	
 <h1>나의 정보
-<!-- 나의 정보(수정불가) 추가 -->
-    <a href="${contextPath}/mypage/myDetailInfoDisabled.do"> <img  src="${contextPath}/resources/image/btn_more_see.jpg" />  </a>
+    <a href="#"> <img  src="${contextPath}/resources/image/btn_more_see.jpg" />  </a>
 </h1>
 <table border=0 width=100% cellpadding=10 cellspacing=10>
   <tr>

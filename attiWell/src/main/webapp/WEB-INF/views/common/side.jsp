@@ -22,8 +22,8 @@
          <li><a href="${contextPath}/admin/goods/adminGoodsMain.do">상품관리</a></li>
          <li><a href="${contextPath}/admin/order/adminOrderMain.do">주문관리</a></li>
          <li><a href="${contextPath}/admin/member/adminMemberMain.do">회원관리</a></li>
-      <!--    <li><a href="#">배송관리</a></li>
-         <li><a href="#">게시판관리</a></li> -->
+         <li><a href="#">배송관리</a></li>
+         <li><a href="#">게시판관리</a></li>
       </ul>
    </li>
 </c:when>
@@ -36,10 +36,9 @@
                   주문내역
                </h3>
       <ul>
-         <li><a href="${contextPath}/mypage/listMyOrderHistory.do">주문내역/배송 조회</a></li>
-         <li><a href="#">반품/교환 신청 및 조회</a></li>
-         <li><a href="#">취소 주문 내역</a></li>
-         <li><a href="#">세금 계산서</a></li>
+         <li><a href="${contextPath}/mypage/listMyOrderHistory.do?delivery_state=delivery_prepared,delivering,finished_delivering">주문내역/배송 조회</a></li>
+         <li><a href="${contextPath}/mypage/listMyOrderHistory.do?delivery_state=returning_goods">반품/교환 신청 및 조회</a></li>
+         <li><a href="${contextPath}/mypage/listMyOrderHistory.do?delivery_state=cancel_order">취소 주문 내역</a></li>
       </ul>
    </li>
    <li>
