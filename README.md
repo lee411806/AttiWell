@@ -1,4 +1,4 @@
-# bookshoping3
+# 팀프로젝트 AttiWell
 
 ## 팀소개
 
