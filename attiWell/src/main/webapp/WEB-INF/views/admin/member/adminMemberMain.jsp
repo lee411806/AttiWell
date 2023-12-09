@@ -10,6 +10,86 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+ <!-- 부트스트랩 4.3.1 적용   -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        
+ <!-- style 파트 -->    
+        
+    <style>
+    	.input-form {
+		  /*  max-width: 1050px; */
+		   margin-top: 80px;
+		   padding: 32px;
+		   background: #fff;
+		   -webkit-border-radius: 10px;
+		   -moz-border-radius: 10px;
+		   border-radius: 10px;
+		   -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+		   -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+		   box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
+		}
+        a {
+            color: grey; /* 또는 원하는 색상으로 변경 */
+        }
+
+        .h2 {
+            font-size: 24px; /* Increase the font size to your desired value */
+            font-weight: bold; /* 굴게 만들기 */
+        }
+
+        #search {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #search input[type="submit"] {
+            background: #1b7340;
+            border: none;
+            color: white;
+            width: 150px;
+            height: 40px;
+            font-size: 16px;
+            /* 추가로 필요한 스타일을 여기에 추가할 수 있습니다. */
+        }
+        
+       /* 페이지 선택 호버 안먹게 해줌 */
+       .no-hover:hover {
+   	 background-color: transparent !important; /* 특정 행의 hover 배경색을 투명으로 설정 */
+  		}
+    </style>
+
+ 	  <style>
+
+        .custom-btn {
+            border-radius: 10px; /* radius 설정 */
+        }
+
+        .btn-primary.custom-btn {
+            color: #1b7340; /* 텍스트 색을 녹색으로 지정 */
+            background-color: #fff; /* 배경 색을 흰색으로 지정 */
+            border: 1px solid #1b7340 !important; /* 테두리 색을 #1b7340으로 지정 */
+        }
+
+        .btn-primary.custom-btn:focus,
+        .btn-primary.custom-btn:hover {
+            color: #fff; /* 텍스트 색을 녹색으로 지정 */
+            background-color: #1b7340; /* 초록색 배경색 설정 */
+            border: none; /* 테두리 없애기 */
+            border: 1px solid #1b7340 !important; /* 호버 또는 포커스 시 테두리 색을 #1b7340으로 지정 */
+        }
+
+        /* 테이블 글 씨 중앙정렬 */
+        .center-align {
+            text-align: center;
+        }
+        
+        td {
+		   
+		     white-space: nowrap;
+		}
+    </style>
+
 <script>
 function search_member(search_period){	
 	temp=calcPeriod(search_period);
@@ -34,7 +114,7 @@ function search_member(search_period){
     formObj.appendChild(i_endDate);
     document.body.appendChild(formObj); 
     formObj.method="get";
-    formObj.action="/bookshop01/admin/member/adminMemberMain.do";
+    formObj.action="/attiWell/admin/member/adminMemberMain.do";
     formObj.submit();
 }
 
@@ -129,134 +209,56 @@ function fn_member_detail(order_id){
     formObj.appendChild(i_order_id);
     document.body.appendChild(formObj); 
     formObj.method="post";
-    formObj.action="/bookshop01/admin/member/memberDetail.do";
+    formObj.action="/attiWell/admin/member/memberDetail.do";
     formObj.submit();
 	
 }
 
 
-function fn_enable_detail_search(r_search){
-	var frm_delivery_list=document.frm_delivery_list;
-	t_beginYear=frm_delivery_list.beginYear;
-	t_beginMonth=frm_delivery_list.beginMonth;
-	t_beginDay=frm_delivery_list.beginDay;
-	t_endYear=frm_delivery_list.endYear;
-	t_endMonth=frm_delivery_list.endMonth;
-	t_endDay=frm_delivery_list.endDay;
-	s_search_type=frm_delivery_list.s_search_type;
-	t_search_word=frm_delivery_list.t_search_word;
-	btn_search=frm_delivery_list.btn_search;
-	
-	if(r_search.value=='detail_search'){
-		//alert(r_search.value);
-		t_beginYear.disabled=false;
-		t_beginMonth.disabled=false;
-		t_beginDay.disabled=false;
-		t_endYear.disabled=false;
-		t_endMonth.disabled=false;
-		t_endDay.disabled=false;
-		
-		s_search_type.disabled=false;
-		t_search_word.disabled=false;
-		btn_search.disabled=false;
-	}else{
-		t_beginYear.disabled=true;
-		t_beginMonth.disabled=true;
-		t_beginDay.disabled=true;
-		t_endYear.disabled=true;
-		t_endMonth.disabled=true;
-		t_endDay.disabled=true;
-		
-		s_search_type.disabled=true;
-		t_search_word.disabled=true;
-		btn_search.disabled=true;
-	}
-		
-}
-
-//상세조회 버튼 클릭 시 수행
-function fn_detail_search(){
-	var frm_delivery_list=document.frm_delivery_list;
-	
-	beginYear=frm_delivery_list.beginYear.value;
-	beginMonth=frm_delivery_list.beginMonth.value;
-	beginDay=frm_delivery_list.beginDay.value;
-	endYear=frm_delivery_list.endYear.value;
-	endMonth=frm_delivery_list.endMonth.value;
-	endDay=frm_delivery_list.endDay.value;
-	search_type=frm_delivery_list.s_search_type.value;
-	search_word=frm_delivery_list.t_search_word.value;
-
-	var formObj=document.createElement("form");
-	var i_command = document.createElement("input");
-	var i_beginDate = document.createElement("input"); 
-	var i_endDate = document.createElement("input");
-	var i_search_type = document.createElement("input");
-	var i_search_word = document.createElement("input");
-    
-	
-    i_command.name="command";
-    i_beginDate.name="beginDate";
-    i_endDate.name="endDate";
-    i_search_type.name="search_type";
-    i_search_word.name="search_word";
-    
-    i_command.value="list_detail_order_goods";
-	i_beginDate.value=beginYear+"-"+beginMonth+"-"+beginDay;
-    i_endDate.value=endYear+"-"+endMonth+"-"+endDay;
-    i_search_type.value=search_type;
-    i_search_word.value=search_word;
-	
-    formObj.appendChild(i_command);
-    formObj.appendChild(i_beginDate);
-    formObj.appendChild(i_endDate);
-    formObj.appendChild(i_search_type);
-    formObj.appendChild(i_search_word);
-    document.body.appendChild(formObj); 
-    formObj.method="post";
-    formObj.action="/bookshop01/admin/member/memberDetail.do";
-    formObj.submit();
-	
-}
 </script>
 </head>
 <body>
-	<H3>회원 조회</H3>
+<div class="input-form ">
+    <br>
+    <br>
+	<!-- <H3>회원 조회</H3>  -->
+	<p class="h2">회원 조회</p><br>
 	<form name="frm_delivery_list" >	
 		<table cellpadding="10" cellspacing="10"  >
-			<tbody>
-		
-					<a href="javascript:search_member('today')">
-					   <img   src="${pageContext.request.contextPath}/resources/image/btn_search_one_day.jpg">
-					</a>
-					<a href="javascript:search_member('one_week')">
-					   <img   src="${pageContext.request.contextPath}/resources/image/btn_search_1_week.jpg">
-					</a>
-					<a href="javascript:search_member('two_week')">
-					   <img   src="${pageContext.request.contextPath}/resources/image/btn_search_2_week.jpg">
-					</a>
-					<a href="javascript:search_member('one_month')">
-					   <img   src="${pageContext.request.contextPath}/resources/image/btn_search_1_month.jpg">
-					</a>
-					<a href="javascript:search_member('two_month')">
-					   <img   src="${pageContext.request.contextPath}/resources/image/btn_search_2_month.jpg">
-					</a>
-					<a href="javascript:search_member('three_month')">
-					   <img   src="${pageContext.request.contextPath}/resources/image/btn_search_3_month.jpg">
-					</a>
-					<a href="javascript:search_member('four_month')">
-					   <img   src="${pageContext.request.contextPath}/resources/image/btn_search_4_month.jpg">
-					</a>
-					&nbsp;까지 조회
-					</td>
-				</tr>
+			  <tbody>
+
+                <!-- <div class="btn-group" role="group" aria-label="Search Buttons"> -->
+                <button type="button" class="btn btn-primary btn-sm custom-btn mr-3" onclick="search_member('today')">
+                    오늘
+                </button>
+                <button type="button" class="btn btn-primary btn-sm custom-btn mr-3"
+                    onclick="search_member('one_month')">
+                    최근 1개월
+                </button>
+                <button type="button" class="btn btn-primary btn-sm custom-btn mr-3"
+                    onclick="search_member('two_month')">
+                    최근 2개월
+                </button>
+                <button type="button" class="btn btn-primary btn-sm custom-btn mr-3"
+                    onclick="search_member('three_month')">
+                    최근 3개월
+                </button>
+                <button type="button" class="btn btn-primary btn-sm custom-btn mr-3"
+                    onclick="search_member('six_month')">
+                    최근 6개월
+                </button>
+       
+
+            </tbody>
 				
-			
+		 <br>	
+		  <br>	
+		 
 	
-<div class="clear"></div>
-<table class="list_view">
+
+<table  class="table table-hover center-align">
 		<tbody align=center >
-			<tr align=center bgcolor="#ffcc00">
+			<tr style="background:#eee">
 				<td class="fixed" >회원아이디</td>
 				<td class="fixed">회원이름</td>
 				<td>휴대폰번호</td>
@@ -311,7 +313,7 @@ function fn_detail_search(){
 		</c:forEach>
 	</c:otherwise>
   </c:choose>	
-         <tr>
+         <tr  class="no-hover">
              <td colspan=8 class="fixed">
                     <c:forEach   var="page" begin="1" end="10" step="1" >
 		         <c:if test="${section >1 && page==1 }">
@@ -327,7 +329,8 @@ function fn_detail_search(){
 		</tbody>
 	</table>
   </form>   	
-
-
+ <br>
+ <br>
+</div>
 </body>
 </html>

@@ -9,49 +9,83 @@
 
 <!-- 부트스트랩 4.3.1 적용   -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
- <style>
-    a {
-        color: grey; /* 또는 원하는 색상으로 변경 */
-    }
-    
-     .h2 {
-        font-size: 24px; /* Increase the font size to your desired value */
-        font-weight: bold; /* 굴게 만들기 */
-    }
-
-</style>
-
-
-<!-- style 파트 -->
-<style>
-
- 
-.custom-btn {
-     
-         border-radius: 10px; /* radius 설정 */ 
-    }
-    .btn-primary.custom-btn {
-        color: #1b7340; /* 텍스트 색을 녹색으로 지정 */
-        background-color: #fff; /* 배경 색을 흰색으로 지정 */
-        border: 1px solid #1b7340 !important; /* 테두리 색을 #1b7340으로 지정 */
-          
-    }
-
-    .btn-primary.custom-btn:focus,
-    .btn-primary.custom-btn:hover {
-     color: #fff; /* 텍스트 색을 녹색으로 지정 */
-      background-color: #1b7340; /* 초록색 배경색 설정 */
-         border: none; /* 테두리 없애기 */
-        border: 1px solid #1b7340 !important; /* 호버 또는 포커스 시 테두리 색을 #1b7340으로 지정 */
+ <!-- style 파트 -->    
         
-    }
-    
-    
-   /* 테이블 글 씨 중앙정렬 */ 
-      .center-align {
-    text-align: center;
-  }
-</style>
+    <style>
+    	.custom-select {
+		    width: 200px; /* 필요한 가로 길이로 조정하세요 */
+		    text-align : center;
+		}
+    	.input-form {
+		  /*  max-width: 1050px; */
+		   margin-top: 80px;
+		   padding: 32px;
+		   background: #fff;
+		   -webkit-border-radius: 10px;
+		   -moz-border-radius: 10px;
+		   border-radius: 10px;
+		   -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+		   -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+		   box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
+		}
+        a {
+            color: grey; /* 또는 원하는 색상으로 변경 */
+        }
+
+        .h2 {
+            font-size: 24px; /* Increase the font size to your desired value */
+            font-weight: bold; /* 굴게 만들기 */
+        }
+
+        #search {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #search input[type="submit"] {
+            background: #1b7340;
+            border: none;
+            color: white;
+            width: 150px;
+            height: 40px;
+            font-size: 16px;
+            /* 추가로 필요한 스타일을 여기에 추가할 수 있습니다. */
+        }
+        
+       
+    </style>
+
+ 	  <style>
+
+        .custom-btn {
+            border-radius: 10px; /* radius 설정 */
+        }
+		
+		
+        .btn-primary.custom-btn {
+            color: #1b7340; /* 텍스트 색을 녹색으로 지정 */
+            background-color: #fff; /* 배경 색을 흰색으로 지정 */
+            border: 1px solid #1b7340 !important; /* 테두리 색을 #1b7340으로 지정 */
+        }
+
+        .btn-primary.custom-btn:focus,
+        .btn-primary.custom-btn:hover {
+            color: #fff; /* 텍스트 색을 녹색으로 지정 */
+            background-color: #1b7340; /* 초록색 배경색 설정 */
+            border: none; /* 테두리 없애기 */
+            border: 1px solid #1b7340 !important; /* 호버 또는 포커스 시 테두리 색을 #1b7340으로 지정 */
+        }
+
+        /* 테이블 글 씨 중앙정렬 */
+        .center-align {
+            text-align: center;
+        }
+        
+        td {
+		   
+		     white-space: nowrap;
+		}
+    </style>
 <c:choose>
 <c:when test='${not empty order_goods_list}'>
 <script  type="text/javascript">
@@ -59,6 +93,28 @@ window.onload=function()
 {
 	init();
 }
+
+//배송상태 색 바꾸기 함수
+<script>
+function getBackgroundColor(deliveryState) {
+    switch (deliveryState) {
+        case 'delivery_prepared':
+            return 'lightgreen';
+        case 'delivering':
+            return 'lightgreen';
+        case 'finished_delivering':
+            return 'lightgray';    
+        case 'cancel_order':
+            return 'lightorange';
+        case 'returning_goods':
+            return 'lightorange';      
+        default:
+            return 'white';
+        
+        
+    }
+}
+
 
 //화면이 표시되면서  각각의 주문건에 대한 배송 상태를 표시한다.
 function init(){
@@ -75,6 +131,9 @@ function init(){
 		}
 	}
 }
+</script>
+
+
 </script>
 </c:when>
 </c:choose>
@@ -261,58 +320,11 @@ function fn_detail_order(order_id){
 	
 }
 
-//상세조회 버튼 클릭 시 수행
-function fn_detail_search(){
-	var frm_delivery_list=document.frm_delivery_list;
-	
-	beginYear=frm_delivery_list.beginYear.value;
-	beginMonth=frm_delivery_list.beginMonth.value;
-	beginDay=frm_delivery_list.beginDay.value;
-	endYear=frm_delivery_list.endYear.value;
-	endMonth=frm_delivery_list.endMonth.value;
-	endDay=frm_delivery_list.endDay.value;
-	search_type=frm_delivery_list.s_search_type.value;
-	search_word=frm_delivery_list.t_search_word.value;
 
-	var formObj=document.createElement("form");
-	var i_command = document.createElement("input");
-	var i_beginDate = document.createElement("input"); 
-	var i_endDate = document.createElement("input");
-	var i_search_type = document.createElement("input");
-	var i_search_word = document.createElement("input");
-    
-	//alert("beginYear:"+beginYear);
-	//alert("endDay:"+endDay);
-	//alert("search_type:"+search_type);
-	//alert("search_word:"+search_word);
-	
-    i_command.name="command";
-    i_beginDate.name="beginDate";
-    i_endDate.name="endDate";
-    i_search_type.name="search_type";
-    i_search_word.name="search_word";
-    
-    i_command.value="list_detail_order_goods";
-	i_beginDate.value=beginYear+"-"+beginMonth+"-"+beginDay;
-    i_endDate.value=endYear+"-"+endMonth+"-"+endDay;
-    i_search_type.value=search_type;
-    i_search_word.value=search_word;
-	
-    formObj.appendChild(i_command);
-    formObj.appendChild(i_beginDate);
-    formObj.appendChild(i_endDate);
-    formObj.appendChild(i_search_type);
-    formObj.appendChild(i_search_word);
-    document.body.appendChild(formObj); 
-    formObj.method="post";
-    formObj.action="${contextPath}/admin/order/detailOrder.do";
-    formObj.submit();
-    //alert("submit");
-	
-}
 </script>
 </head>
 <body>
+<div class="input-form ">
 <br>
 <br>
 	<p class="h2">주문 조회</p><br>
@@ -354,14 +366,14 @@ function fn_detail_search(){
 	
 <div class="clear"></div>
 <br>
-<table class="table table-hover center-align">
+<table class="table center-align">
 		 <thead>
 			<tr style="background:#eee" >
 				<td class="fixed" >주문번호</td>
 				<td class="fixed">주문일자</td>
 				<td>주문내역</td>
 				<td>배송상태</td>
-				<td>배송수정</td>
+				<td>-<!-- 배송수정 --></td>
 			</tr>
 			</thead>
 			<tbody align=center >
@@ -379,13 +391,13 @@ function fn_detail_search(){
           <c:when test="${item.order_id != pre_order_id }">  
             <c:choose>
               <c:when test="${item.delivery_state=='delivery_prepared' }">
-                <tr  bgcolor="lightgreen">    
+                <tr >    
               </c:when>
               <c:when test="${item.delivery_state=='finished_delivering' }">
-                <tr  bgcolor="lightgray">    
+                <tr  >    
               </c:when>
               <c:otherwise>
-                <tr  bgcolor="orange">   
+                <tr >   
               </c:otherwise>
             </c:choose>   
 				 <td width=10%>
@@ -410,8 +422,28 @@ function fn_detail_search(){
 				       </c:if>
 				    </c:forEach> 
 				</td>
-				<td width=10%>
-				 <select name="s_delivery_state${i.index }"  id="s_delivery_state${i.index }">
+				 <c:choose>
+              <c:when test="${item.delivery_state=='delivery_prepared' }">
+                <td width=10% bgcolor="lightgreen">    
+              </c:when>
+              <c:when test="${item.delivery_state=='finished_delivering' }">
+                <td width=10%  bgcolor="lightgray">    
+              </c:when>
+              <c:when test="${item.delivery_state=='delivering' }">
+                <td width=10%  bgcolor="lightgreen">    
+              </c:when>
+              <c:when test="${item.delivery_state=='cancel_order' }">
+                <td width=10%  bgcolor="#FFA07A">    
+              </c:when>
+                <c:when test="${item.delivery_state=='returning_goods' }">
+                <td width=10%  bgcolor="#FFA07A">    
+              </c:when>
+              <c:otherwise>
+                <td width=10% bgcolor="white">   
+              </c:otherwise>
+            </c:choose>   
+			<!-- 	<td width=10%  class="colorChange"> -->
+				 <select name="s_delivery_state${i.index }"  class="custom-select" id="s_delivery_state${i.index }" >
 				 <c:choose>
 				   <c:when test="${item.delivery_state=='delivery_prepared' }">
 				     <option  value="delivery_prepared" selected>배송준비중</option>
@@ -451,8 +483,9 @@ function fn_detail_search(){
 				   </c:choose>
 				 </select> 
 				</td>
-				<td width=10%>
-			     <input  type="button" value="배송수정"  onClick="fn_modify_order_state('${item.order_id}','s_delivery_state${i.index}')"/>
+				<td width=10% style="vertical-align: middle;">
+			     <input  type="button" value="배송수정"  onClick="fn_modify_order_state('${item.order_id}','s_delivery_state${i.index}')" class="btn btn-primary" 
+			     style="background-color: #1b7340; border: none; "/>
 			    </td>
 			</tr>
 		</c:when>
@@ -478,6 +511,8 @@ function fn_detail_search(){
 	</table>
   </form>   	
 	<div class="clear"></div>
+</div>	
+
 </body>
 </html>
 

@@ -265,6 +265,7 @@ function fn_order_all_cart_goods(){
 </head>
 <body>
 <div class="input-form ">
+ <h3 class="mb-4" style="font-size:30px; color:#660033">장바구니</h3>
    <table class="list_view">
       <tbody align=center >
          <tr style="background:#fff" >
