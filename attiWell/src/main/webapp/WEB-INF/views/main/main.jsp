@@ -24,7 +24,7 @@
 	<c:set var="goods_count" value="0" />
 	<div style="font: bold 25px Arial, sans-serif;">인기 상품</div>
 	<hr>
-	<c:forEach var="item" items="${goodsMap.hot }">
+	<c:forEach var="item" items="${goodsMap['인기상품'] }">
 		<c:set var="goods_count" value="${goods_count+1 }" />
 		<div class="book">
 			<a
@@ -97,7 +97,7 @@
 	<c:set var="goods_count" value="0" />
 	<div style="font: bold 25px Arial, sans-serif;">할인 상품</div>
 	<hr>
-	<c:forEach var="item" items="${goodsMap.discount }">
+	<c:forEach var="item" items="${goodsMap['할인상품'] }">
 		<c:set var="goods_count" value="${goods_count+1 }" />
 		<div class="book">
 			<a

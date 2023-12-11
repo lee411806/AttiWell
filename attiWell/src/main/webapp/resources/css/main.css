@@ -1,12 +1,12 @@
 @font-face {
-   font-family: 'Noto Serif KR', serif;
-   src: local('Noto Serif KR'), local('NotoSerifKR-Regular'), url(../imgs/NotoSerifKR-Regular.otf) format('opentype');
+   font-family: 'Noto Sans KR';
+   src:url(../image/NotoSansKR-Regular.otf) format('Noto');
 }
 * {
    margin: 0px; padding: 0px; vertical-align: middle;
 }
 body {
-   background-position: top; margin: 0px; padding: 0px; color: rgb(102, 102, 102); font-family: "Dotum", Arial,serif; font-size: 1em; background-image: url("../imgs/body_back.gif"); background-repeat: repeat-x; background-color: rgb(255, 255, 255);
+   background-position: top; margin: 0px; padding: 0px; color: rgb(102, 102, 102); font-family: Noto; font-size: 1em; background-image: url("../imgs/body_back.gif"); background-repeat: repeat-x; background-color: rgb(255, 255, 255);
 }
 img {
    border: currentColor; border-image: none;
@@ -27,7 +27,7 @@ a:hover {
    margin: 0px auto; padding: 0px; width: 1300px; float: left;
 }
 header {
-   margin-top: 20px;
+   margin: 20px 0px 20px 0px;
 }
 header #logo {
    margin-left: 10px; float: left;
@@ -57,7 +57,7 @@ aside {
    width: 205px; float: left;
 }
 nav {
-   margin: 25px 0px 0px 10px; font-family: 'Noto Serif KR', serif; font-size: 0.8em;
+   margin: 25px 0px 0px 10px; font-family: Noto; font-size: 0.8em;
 }
 nav ul {
    list-style: none;
@@ -84,7 +84,7 @@ aside #banner {
    margin: 20px 0px 15px 15px; font-size: 0.75em;
 }
 #notice h2 {
-   background-position: left; padding: 2px 0px 5px 10px; color: rgb(51, 102, 153); font-family: 'Noto Serif KR', serif; font-size: 1.2em; border-bottom-color: rgb(51, 102, 153); border-bottom-width: 1px; border-bottom-style: solid; background-image: url("../imgs/notice_h2.gif"); background-repeat: no-repeat;
+   background-position: left; padding: 2px 0px 5px 10px; color: rgb(51, 102, 153); font-family: Noto; font-size: 1.2em; border-bottom-color: rgb(51, 102, 153); border-bottom-width: 1px; border-bottom-style: solid; background-image: url("../imgs/notice_h2.gif"); background-repeat: no-repeat;
 }
 #notice ul {
    list-style: none; margin: 10px 0px 0px;
@@ -97,7 +97,7 @@ article {
 }
 
 .link {
-   width: 188px; height: 230px; display: block; position: absolute; z-index: 2;
+   width: 330px; height: 330px; display: block; position: absolute; z-index: 2;
 }
 
 article #ad_main_banner {
@@ -110,7 +110,7 @@ article hgroup {
    margin: 10px 0px;
 }
 article h1 {
-   padding: 0px 0px 5px; letter-spacing: 2px; font-family: 'Noto Serif KR', serif; font-size: 1.1em; border-bottom-color: rgb(102, 102, 102); border-bottom-width: 2px; border-bottom-style: solid;
+   padding: 0px 0px 5px; letter-spacing: 2px; font-family: Noto; font-size: 1.1em; border-bottom-color: rgb(102, 102, 102); border-bottom-width: 2px; border-bottom-style: solid;
 }
 article h2 {
    padding-top: 5px; font-size: 0.75em; font-weight: normal;
@@ -119,13 +119,13 @@ section#new_book {
    padding: 7px 10px; border-radius: 10px; border: 1px solid rgb(102, 102, 102); border-image: none; width: auto; overflow: hidden; font-size: 0.75em; margin-top: 10px;
 }
 section#new_book #carousel_inner {
-   width: 725px; overflow: hidden; float: left;
+   width: 880px; overflow: hidden; margin-left: 18px; float: left;
 }
 section#new_book #carousel_ul {
    margin: 0px; padding: 0px 0px 10px; left: -135px; width: 9999px; list-style-type: none; position: relative;
 }
 section#new_book #carousel_ul li {
-   margin: 10px 5px; padding: 0px; width: 135px; float: left;
+   margin: 10px 5px; padding: 0px; width: 300px; float: left;
 }
 section#new_book #left_scroll {
    width: 14px; padding-top: 70px; float: left;
@@ -137,7 +137,7 @@ section#new_book h3 {
    background-position: left; margin: 0px 0px 5px; padding: 0px 0px 5px; height: 24px; text-indent: -7000px; background-image: url("../imgs/list_box_title.png"); background-repeat: no-repeat;
 }
 section#new_book #book {
-   width: 135px; text-align: center; float: left;
+   width: 320px; text-align: center; float: left;
 }
 section#new_book #book img {
    margin: 5px 0px 0px;
@@ -167,7 +167,7 @@ section#new_book #book .price {
    color: rgb(255, 0, 0); font-weight: bold;
 }
 section#new_book #book .price span {
-   color: rgb(51, 51, 51); font-weight: normal; text-decoration: line-through;
+   color: rgb(51, 51, 51); font-weight: normal
 }
 article #sorting {
    margin: 10px 0px 5px; width: auto; font-size: 0.75em; float: right;
@@ -207,9 +207,9 @@ article table#list_view td.goods_description p {
 article table#list_view td.price {
    padding: 0px 0px 0px 10px; width: 70px;
 }
-article table#list_view td.price span {
+/* article table#list_view td.price span {
    text-decoration: line-through;
-}
+} */
 article table#list_view td.price strong {
    color: rgb(255, 0, 0); font-weight: bold;
 }
@@ -247,7 +247,7 @@ article ul#page_control li a.no_border {
    border: currentColor; border-image: none; padding-top: 3px;
 }
 .active {
-   color: rgb(255, 0, 0); font-weight: bold;font-size: 0.8em;
+   color: rgb(255, 0, 0); font-weight: bold;
 }
 article ul#page_control li .page_contrl_active {
    background: rgb(255, 255, 255); border: 1px solid rgb(255, 0, 0); border-image: none; color: rgb(255, 0, 0);
@@ -280,7 +280,7 @@ article h4 {
    border: 1px solid rgb(255, 255, 255); border-image: none; width: 150px; height: auto; box-shadow: 2px 2px 25px #666;
 }
 #detail_table {
-   width: 590px; font-size: 0.75em; float: left;
+   width: 460px; font-size: 0.75em; float: left;
 }
 #detail_table table {
    width: 95%; border-top-color: rgb(51, 51, 51); border-bottom-color: rgb(51, 51, 51); border-top-width: 2px; border-bottom-width: 1px; border-top-style: solid; border-bottom-style: solid; border-collapse: collapse;
@@ -296,7 +296,7 @@ article h4 {
    border-bottom-color: rgb(102, 102, 102); border-bottom-width: 1px; border-bottom-style: solid;
 }
 #detail_table table td span {
-   font-family: 'Noto Serif KR', serif; font-size: 1.2em; font-weight: bold;
+   font-family:Noto; font-size: 1.2em; font-weight: bold;
 }
 #detail_table table td.fixed {
    width: 110px; font-weight: bold;font-size: 0.8em;
@@ -313,7 +313,7 @@ article h4 {
    padding: 0px 10px; float: left;
 }
 #detail_table ul li a {
-   border-radius: 5px; border: 2px solid rgb(153, 153, 153); border-image: none; width: 150px; height: 25px; text-align: center; padding-top: 7px; font-family: 'Noto Serif KR', serif; font-size: 1.2em; font-weight: bold; display: block;
+   border-radius: 5px; border: 2px solid rgb(153, 153, 153); border-image: none; width: 150px; height: 25px; text-align: center; padding-top: 7px; font-family: Noto; font-size: 1.2em; font-weight: bold; display: block;
 }
 #detail_table ul li a.buy {
    background-position: 15px; background-repeat: no-repeat;
@@ -370,14 +370,14 @@ ul.tabs li.active a:hover {
    padding: 10px 10px 20px; line-height: 1.8em; font-size: 0.75em; min-height: 400px;
 }
 .tab_content h4 {
-   background-position: left top; margin: 10px 0px; padding: 20px 0px 5px 35px; height: 30px; color: rgb(255, 255, 255); letter-spacing: 4px; font-family: 'Noto Serif KR', serif; font-size: 16px; font-weight: bold; background-image: url("../imgs/h4_back.png"); background-repeat: no-repeat;
+   background-position: left top; margin: 10px 0px; padding: 20px 0px 5px 35px; height: 30px; color: rgb(255, 255, 255); letter-spacing: 4px; font-family: Noto; font-size: 16px; font-weight: bold; background-image: url("../imgs/h4_back.png"); background-repeat: no-repeat;
 }
 .tab_content p {
    margin: 10px 0px 0px;
 }
-.tab_content img {
+/* .tab_content img {
    margin: 10px; padding: 5px;
-}
+} */
 .tab_content .writer {
    margin: 10px 0px; padding: 5px; color: rgb(0, 0, 0); font-size: 1.2em; font-weight: bold; border-bottom-color: rgb(255, 153, 0); border-bottom-width: 1px; border-bottom-style: solid;
 }
@@ -388,7 +388,7 @@ footer ul {
    list-style: none; margin: 0px 0px 0px 210px;
 }
 footer ul li {
-   background-position: right; font-family: 'Noto Serif KR', serif; float: left; background-image: url("../imgs/foot_line.gif"); background-repeat: no-repeat;
+   background-position: right; font-family: Noto; float: left; background-image: url("../imgs/foot_line.gif"); background-repeat: no-repeat;
 }
 footer ul li.no_line {
    background-image: none;
@@ -456,9 +456,9 @@ footer img {
   .list_view td.price {
    padding: 0px 0px 0px 10px; width: 70px;
 }
- .list_view td.price span {
+/*  .list_view td.price span {
    text-decoration: line-through;
-}
+} */
    .list_view td.price strong {
    color: rgb(255, 0, 0); font-weight: bold;
 }
@@ -499,7 +499,7 @@ footer img {
    border-bottom-color: rgb(102, 102, 102); border-bottom-width: 1px; border-bottom-style: solid;
 }
 .detail_table table td span {
-   font-family: 'Noto Serif KR', serif; font-size: 1.2em; font-weight: bold;
+   font-family: Noto; font-size: 1.2em; font-weight: bold;
 }
 
 .detail_table table td.fixed {
@@ -519,7 +519,7 @@ footer img {
    padding: 0px 10px; float: left;
 }
 .detail_table ul li a {
-   border-radius: 5px; border: 2px solid rgb(153, 153, 153); border-image: none; width: 150px; height: 25px; text-align: center; padding-top: 7px; font-family: 'Noto Serif KR', serif; font-size: 1.2em; font-weight: bold; display: block;
+   border-radius: 5px; border: 2px solid rgb(153, 153, 153); border-image: none; width: 150px; height: 25px; text-align: center; padding-top: 7px; font-family: Noto; font-size: 1.2em; font-weight: bold; display: block;
 }
 .detail_table ul li a.buy {
    background-position: 15px; background-repeat: no-repeat;
@@ -550,7 +550,7 @@ footer img {
 }
 
 article h1_TITLE {
-   padding: 0px 0px 5px; letter-spacing: 2px; font-family: 'Noto Serif KR', serif; font-size: 1.1em; border-bottom-color: rgb(102, 102, 102); border-bottom-width: 2px;
+   padding: 0px 0px 5px; letter-spacing: 2px; font-family: Noto; font-size: 1.1em; border-bottom-color: rgb(102, 102, 102); border-bottom-width: 2px;
 }
 
 
@@ -558,14 +558,15 @@ article h1_TITLE {
    width: auto; padding-top: 7px; font-size: 0.75em;
 }
 .main_book h3 {
-   margin: 0px 0px 5px; padding: 0px 0px 5px; color: rgb(51, 102, 153); text-transform: uppercase; font-family: 'Noto Serif KR', serif; font-size: 1.2em; border-bottom-color: rgb(51, 102, 153); border-bottom-width: 1px; border-bottom-style: solid;
+   margin: 0px 0px 5px; padding: 0px 0px 5px; color: rgb(51, 102, 153); text-transform: uppercase; font-family: Noto; font-size: 1.2em; border-bottom-color: rgb(51, 102, 153); border-bottom-width: 1px; border-bottom-style: solid;
 }
 
 .main_book .book {
-   background-position: right; border: 2px solid rgb(255, 255, 255); border-image: none; width: 188px; height: 250px; text-align: center; float: left; background-image: url("../imgs/vline_grey.gif"); background-repeat: repeat-y;
+   background-position: right; border: 2px solid rgb(255, 255, 255); border-image: none; width: 310px; height: 330px; text-align: center; float: left; background-image: url("../imgs/vline_grey.gif"); background-repeat: repeat-y;
 }
 .main_book .book img {
    margin: 5px 0px 0px;
+   border-radius: 8px;
 }
 .main_book .book:hover {
    border: 2px solid rgb(255, 0, 0); border-image: none; background-image: none;
@@ -592,7 +593,7 @@ article h1_TITLE {
    font-weight: bold;
 }
 #suggest{
-display:none; position: flex; left: 620px; border: 0.1px  solid #87cb42; z-index:3;font-weight: bold;background-color:#ffffff;    
+display:none; position: absolute; width:600px; left: 600px; top:180px; border: 0.1px  solid #87cb42; z-index:3;font-weight: bold;background-color:#ffffff;    
    
 }
 

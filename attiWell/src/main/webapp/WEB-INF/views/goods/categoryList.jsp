@@ -64,7 +64,7 @@
 								<span> <fmt:formatNumber value="${item.goods_price}"
 										type="number" var="goods_price" /> <c:choose>
 										<c:when test="${item.goods_price == item.goods_sales_price }">
-											<span style="color: red; font-weight: bold">${formattedDiscountedPrice }원</span>
+											<span style="color:black; font-weight: bold">${formattedDiscountedPrice }원</span>
 										</c:when>
 										<c:otherwise>
 											<span style="text-decoration: line-through;">${goods_price}원</span><br>
@@ -138,7 +138,7 @@
 								value="${item.goods_price}" type="number" var="goods_price" />
 							<c:choose>
 								<c:when test="${item.goods_price == item.goods_sales_price }">
-									<span style="color: red; font-weight: bold">${formattedDiscountedPrice }원</span>
+									<span style="font-weight: bold">${formattedDiscountedPrice }원</span>
 								</c:when>
 								<c:otherwise>
 									<span style="text-decoration: line-through;">${goods_price}원</span>
