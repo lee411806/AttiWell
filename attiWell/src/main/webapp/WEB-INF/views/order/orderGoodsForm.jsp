@@ -6,7 +6,7 @@
 <!-- 주문자 휴대폰 번호 -->
 <c:set  var="orderer_hp" value=""/>
 <!-- 최종 결제 금액 -->
-<c:set var="final_total_order_price" value="0" />
+<c:set var="final_" value="0" />
 
 <!-- 총주문 금액 -->
 <c:set var="total_order_price" value="0" />
@@ -151,7 +151,6 @@ p {
 
 #popup_order_detail {
     z-index: 3;
-    position: fixed;
     text-align: center;
     left: 0%;
     top: 0%;
@@ -822,8 +821,6 @@ function fn_process_pay_order(){
             <td colspan=2 class="fixed">주문상품명</td>
             <td>수량</td>
             <td>주문금액</td>
-<!--             <td>배송비</td> -->
-<!--             <td>예상적립금</td> -->
             <td>주문금액합계</td>
          </tr>
          <tr>
@@ -838,43 +835,28 @@ function fn_process_pay_order(){
                
                <!-- 주문상품명 -->
                <td class="goods_buttom">
-                 <h2>
+                 
                     <a href="${pageContext.request.contextPath}/goods/goods.do?command=goods_detail&goods_id=${item.goods_id }">${item.goods_title }</A>
                      <input   type="hidden" id="h_goods_title" name="h_goods_title" value="${item.goods_title }" />
-                 </h2>
+                 
                </td>
                
                <!-- 수량 -->
                <td class="goods_buttom">
-                 <h2>${item.order_goods_qty }개<h2>
+                 ${item.order_goods_qty }개
                    <input   type="hidden" id="h_order_goods_qty" name="h_order_goods_qty" value="${item.order_goods_qty}" />
                </td>
                
                <!-- 주문금액 -->
                <td class="goods_buttom">
-               <h2>
-<!--             <script>
-               var calculatedValue = Math.floor(${item.goods_sales_price * 0.9});
-               document.write(calculatedValue);
-                pageContext.setAttribute("calculatedValue", calculatedValue);
-            </script> -->
-                  ${item.goods_sales_price}
-            원 (10% 할인)
+                  ${item.goods_sales_price}원
 
-            </h2>
             </td>
 
-               <!-- 배송비 -->
-<!--                <td class="goods_buttom"><h2>0원</h2></td> -->
-               
-               
-<%--                <!-- 예상적립금 -->
-               <td class="goods_buttom"><h2>${1500 * item.order_goods_qty}원</h2></td>
-             --%>   
                
                <!-- 주문 금액 합계 -->
                <td class="goods_buttom">
-                 <h2>${final_total_order_price + item.goods_sales_price * item.order_goods_qty}원</h2>
+                 ${final_total_order_price + item.goods_sales_price * item.order_goods_qty}원
                  <input  type="hidden" id="h_each_goods_price"  name="h_each_goods_price" value="${final_total_order_price+ item.goods_sales_price* item.order_goods_qty}" />
                </td>
          </tr>
@@ -899,8 +881,6 @@ function fn_process_pay_order(){
             <td></td>
             <td>총 배송비</td>
             <td></td>
-<!--             <td>총 할인 금액</td>
-            <td></td> -->
             <td>최종 결제금액</td>
          </tr>
          <tr align=center style="font-size: 2em">
@@ -914,9 +894,7 @@ function fn_process_pay_order(){
             </td>
             
             <td><p>+</p></td>
-            
             <td>
-            
                   <c:if test="${total_order_price > 50000}">
                       <c:set var="total_delivery_price" value="0" />
                   </c:if>
@@ -924,13 +902,6 @@ function fn_process_pay_order(){
                <p id="p_totalDelivery">${total_delivery_price }원</p> <input
                id="h_totalDelivery" type="hidden" value="${total_delivery_price}" />
             </td>
-            
-<%--             <td><p>-</p></td>
-            
-            <td>
-               <p id="p_totalSalesPrice">${total_discount_price }원</p> 
-               <input id="h_total_sales_price" type="hidden" value="${total_discount_price}" />
-            </td> --%>
             
             <td><p>=</p></td>
             
@@ -1100,7 +1071,7 @@ function fn_process_pay_order(){
                   <input type="radio" id="pay_method" name="pay_method" value="카카오페이(간편결제)"> &nbsp;<img width="90" alt="" src="${contextPath}/resources/image/kakaoPay.png"> &nbsp;&nbsp;&nbsp; 
                 </td>
                  <td>
-                  <input type="radio" id="pay_method" name="pay_method" value="페이코(간편결제)"> &nbsp;<img width="80" alt="" src="${contextPath}/resources/image/payco.PNG"> &nbsp;&nbsp;&nbsp;
+                  <input type="radio" id="pay_method" name="pay_method" value="페이코(간편결제)"> &nbsp;<img width="80" alt="" src="${contextPath}/resources/image/payco.png"> &nbsp;&nbsp;&nbsp;
                </td>
             </tr>
             
