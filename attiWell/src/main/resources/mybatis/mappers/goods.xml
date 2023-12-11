@@ -4,21 +4,23 @@
    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="mapper.goods">
-<!-- 리절트 맵 정의 -->   
+   <!-- 리절트 맵 정의 -->
    <resultMap id="goodsResult" type="goodsVO">
       <result property="goods_id" column="goods_id" />
       <result property="goods_title" column="goods_title" />
       <result property="goods_price" column="goods_price" />
-      
+
       <result property="goods_status" column="goods_status" />
       <result property="goods_sales_price" column="goods_sales_price" />
-      <result property="goods_delivery_price" column="goods_delivery_price" />
-      <result property="goods_delivery_date" column="goods_delivery_date" />
-      
+      <result property="goods_delivery_price"
+         column="goods_delivery_price" />
+      <result property="goods_delivery_date"
+         column="goods_delivery_date" />
+
       <result property="goods_fileName" column="fileName" />
       <result property="goods_sort" column="goods_sort" />
       <result property="goods_intro" column="goods_intro" />
-   </resultMap>   
+   </resultMap>
 
    <resultMap id="imageResult" type="ImageFileVO">
       <result property="goods_id" column="goods_id" />
@@ -27,22 +29,27 @@
       <result property="image_id" column="image_id" />
       <result property="fileType" column="fileType" />
    </resultMap>
-   
-<!-- allGoodsList 추가 -->
-     <select id="allGoodsList" parameterType="String" resultMap="goodsResult">
+
+   <!-- allGoodsList 추가 -->
+   <select id="allGoodsList" parameterType="String"
+      resultMap="goodsResult">
     <![CDATA[
-        select t.*
+        select * from (
+        select rowNum as recNum, t.*
           from(
          select g.*,d.fileName from t_shopping_goods g, t_goods_detail_image d
            where g.goods_id=d.goods_id 
            and d.filetype='main_image'
             order by g.goods_creDate desc)  t
-                where   rowNum < 9
+            )
+                where            
+      recNum between (#{section}-1)*100+ (#{pageNum}-1)*10+1 and (#{section}-1)*100+(#{pageNum})*10
     ]]>
-</select>
-   
-   
-      <select id="selectGoodsList" parameterType="String" resultMap="goodsResult"   >
+   </select>
+
+
+   <select id="selectGoodsList" parameterType="String"
+      resultMap="goodsResult">
         <![CDATA[
          select t.*
           from(
@@ -54,8 +61,9 @@
                 where   rowNum < 9
        ]]>
    </select>
-   
-   <select id="selectCategoryList" parameterType="String" resultMap="goodsResult"   >
+
+   <select id="selectCategoryList" parameterType="String"
+      resultMap="goodsResult">
         <![CDATA[
          select t.*
           from(
@@ -67,8 +75,9 @@
                 where   rowNum < 9
        ]]>
    </select>
-   
-   <select id="selectGoodsDetail" resultMap="goodsResult"   parameterType="String"  >
+
+   <select id="selectGoodsDetail" resultMap="goodsResult"
+      parameterType="String">
        <![CDATA[
            select g.*,d.fileName from t_shopping_goods g, t_goods_detail_image d
            where g.goods_id=d.goods_id
@@ -77,15 +86,17 @@
            order by g.goods_id
        ]]>
    </select>
-   <select id="selectGoodsDetailImage" resultMap="imageResult"   parameterType="String"  >
+   <select id="selectGoodsDetailImage" resultMap="imageResult"
+      parameterType="String">
        <![CDATA[
              select * from  t_goods_detail_image 
              where  fileType!='main_image'
             and goods_id=#{goods_id}
        ]]>
    </select>
-   
-   <select id="selectGoodsBySearchWord" resultMap="goodsResult"   parameterType="String"  >
+
+   <select id="selectGoodsBySearchWord" resultMap="goodsResult"
+      parameterType="String">
      <![CDATA[
             select g.*,d.fileName from t_shopping_goods g, t_goods_detail_image d
           where g.goods_id=d.goods_id
@@ -94,9 +105,10 @@
           order by g.goods_creDate desc
           
       ]]>
-   </select>   
-   
-   <select id="selectKeywordSearch" resultType="String"   parameterType="String"  >
+   </select>
+
+   <select id="selectKeywordSearch" resultType="String"
+      parameterType="String">
        <![CDATA[
         select goods_title from t_shopping_goods 
         where         
@@ -104,6 +116,6 @@
         order by goods_creDate desc
       ]]>
    </select>
-   
+
 
 </mapper>
