@@ -9,7 +9,6 @@ public class GoodsVO {
 	private int    goods_price;
 	private String goods_sort;
 	private int    goods_sales_price;
-	private int    goods_point;
 	private String goods_delivery_price;
 	private Date goods_delivery_date;
 	private String goods_fileName;
@@ -78,15 +77,9 @@ public class GoodsVO {
 		this.goods_sales_price = goods_sales_price;
 	}
 
-	public int getGoods_point() {
-		return goods_point;
-	}
 
 
 
-	public void setGoods_point(int goods_point) {
-		this.goods_point = goods_point;
-	}
 
 
 

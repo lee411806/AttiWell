@@ -262,44 +262,7 @@ function fn_modify_order_state(order_id,select_id){
 	}); //end ajax		
 }
 
-function fn_enable_detail_search(r_search){
-	var frm_delivery_list=document.frm_delivery_list;
-	t_beginYear=frm_delivery_list.beginYear;
-	t_beginMonth=frm_delivery_list.beginMonth;
-	t_beginDay=frm_delivery_list.beginDay;
-	t_endYear=frm_delivery_list.endYear;
-	t_endMonth=frm_delivery_list.endMonth;
-	t_endDay=frm_delivery_list.endDay;
-	s_search_type=frm_delivery_list.s_search_type;
-	t_search_word=frm_delivery_list.t_search_word;
-	btn_search=frm_delivery_list.btn_search;
-	
-	if(r_search.value=='detail_search'){
-		//alert(r_search.value);
-		t_beginYear.disabled=false;
-		t_beginMonth.disabled=false;
-		t_beginDay.disabled=false;
-		t_endYear.disabled=false;
-		t_endMonth.disabled=false;
-		t_endDay.disabled=false;
-		
-		s_search_type.disabled=false;
-		t_search_word.disabled=false;
-		btn_search.disabled=false;
-	}else{
-		t_beginYear.disabled=true;
-		t_beginMonth.disabled=true;
-		t_beginDay.disabled=true;
-		t_endYear.disabled=true;
-		t_endMonth.disabled=true;
-		t_endDay.disabled=true;
-		
-		s_search_type.disabled=true;
-		t_search_word.disabled=true;
-		btn_search.disabled=true;
-	}
-		
-}
+
 
 function fn_detail_order(order_id){
 	//alert(order_id);

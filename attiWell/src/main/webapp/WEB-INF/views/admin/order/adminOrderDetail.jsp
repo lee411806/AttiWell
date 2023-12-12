@@ -7,6 +7,88 @@
 <c:set var="deliveryInfo"  value="${orderMap.deliveryInfo}"  />
 <c:set var="orderer"  value="${orderMap.orderer}"  />
 
+
+<head>
+ <!-- 부트스트랩 4.3.1 적용   -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        
+        
+  <style>
+		  .fixed_join {
+		    background-color: #eee;
+		}
+    	.custom-select {
+		    width: 200px; /* 필요한 가로 길이로 조정하세요 */
+		    text-align : center;
+		}
+    	.input-form {
+		  /*  max-width: 1050px; */
+		   margin-top: 80px;
+		   padding: 32px;
+		   background: #fff;
+		   -webkit-border-radius: 10px;
+		   -moz-border-radius: 10px;
+		   border-radius: 10px;
+		   -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+		   -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+		   box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
+		}
+        a {
+            color: grey; /* 또는 원하는 색상으로 변경 */
+        }
+
+        .h2 {
+            font-size: 24px; /* Increase the font size to your desired value */
+            font-weight: bold; /* 굴게 만들기 */
+        }
+
+        
+       
+    </style>
+
+ 	  <style>
+	.btn-primary:hover {
+    background-color: #1b7340; /* 이 부분을 비워두거나 다른 색상으로 지정하세요 */
+    color: #ffffff; /* 이 부분을 비워두거나 다른 색상으로 지정하세요 */
+    border-color: #1b7340; /* 이 부분을 비워두거나 다른 색상으로 지정하세요 */
+}
+       .btn-primary {
+    background-color: #1b7340;
+    border: 2px solid #1b7340;
+    color: #ffffff;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+	}
+		
+		.centered {
+   		 text-align: center;
+			}
+		
+        .btn-primary.custom-btn {
+            color: #1b7340; /* 텍스트 색을 녹색으로 지정 */
+            background-color: #fff; /* 배경 색을 흰색으로 지정 */
+            border: 1px solid #1b7340 !important; /* 테두리 색을 #1b7340으로 지정 */
+        }
+
+       
+
+        /* 테이블 글 씨 중앙정렬 */
+        .center-align {
+            text-align: center;
+        }
+        
+        td {
+		   
+		     white-space: nowrap;
+		}
+		 tr h2 {
+        font-size: 15px; /* 예시로 24px로 설정. 원하는 크기로 조절하세요. */
+    }
+    </style>
+
 <script  type="text/javascript">
 function fn_modify_order_state(order_id){
 	var s_delivery_state=document.getElementById("s_delivery_state");
@@ -43,10 +125,14 @@ function fn_modify_order_state(order_id){
 </script>
 </head>
 <body>
-	<H1>1. 주문 상세정보</H1>
-	<table class="list_view">
+<div class="input-form ">
+	<!--  <H1>1. 주문 상세정보</H1> <br>
+	-->
+ 	<p class="h2">1. 주문 상세정보</p><hr><br>
+
+	<table  class="table">
 		<tbody align=center>
-			<tr style="background: #33ff00">
+			<tr style="background:#eee">
 			     <td>주문번호 </td>
 				<td colspan=2 class="fixed">주문상품명</td>
 				<td>수량</td>
@@ -85,90 +171,82 @@ function fn_modify_order_state(order_id){
 <form name="frm_delivery_list" >	
 	<br>
 	<br>
-	<h1>2.배송지 정보</h1>
-	<div class="detail_table">
 	
-		<table>
-			<tbody>
-				<tr class="dot_line">
-					<td class="fixed_join">배송방법</td>
-					<td>
-					   ${deliveryInfo.delivery_method }
-				    </td>
-				</tr>
-				<tr class="dot_line">
-					<td class="fixed_join">받으실 분</td>
-					<td>
-					${deliveryInfo.receiver_name }
-					</td>
-				</tr>
-				<tr class="dot_line">
-					<td class="fixed_join">휴대폰번호</td>
-					<td>
-					  ${deliveryInfo.receiver_hp1}-${deliveryInfo.receiver_hp2}-${deliveryInfo.receiver_hp3}</td>
-				  </tr>
-				<tr class="dot_line">
-					<td class="fixed_join">유선전화(선택)</td>
-					<td>
-					   ${deliveryInfo.receiver_tel1}-${deliveryInfo.receiver_tel2}-${deliveryInfo.receiver_tel3}</td>
-				</tr>
-
-
-				<tr class="dot_line">
-					<td class="fixed_join">주소</td>
-					<td>
-					   ${deliveryInfo.delivery_address}
-					</td>
-				</tr>
-				<tr class="dot_line">
-					<td class="fixed_join">배송 메시지</td>
-					<td>
-					${deliveryInfo.delivery_message}
-					</td>
-				</tr>
-				<tr class="dot_line">
-					<td class="fixed_join">선물 포장</td>
-					<td>
-					${deliveryInfo.gift_wrapping}
-					</td>
-				</tr>
-			</tbody>
-		</table>
-		
-	</div>
 	<div >
 	  <br><br>
-	   <h2>주문고객</h2>
-		 <table >
-		   <TBODY>
-			 <tr class="dot_line">
-				<td ><h2>이름</h2></td>
-				<td>
-				 <input  type="text" value="${orderer.member_name}" size="15" disabled />
-				</td>
-			  </tr>
-			  <tr class="dot_line">
-				<td ><h2>핸드폰</h2></td>
-				<td>
-				 <input  type="text" value="${orderer.hp1}-${orderer.hp2}-${orderer.hp3}" size="15" disabled />
-				</td>
-			  </tr>
-			  <tr class="dot_line">
-				<td><h2>이메일</h2></td>
-				<td>
-				   <input  type="text" value="${orderer.email1}@${orderer.email2}" size="15" disabled />
-				</td>
-			  </tr>
-		   </tbody>
-		</table>
+	  	<p class="h2">2. 주문고객</p>
+		<hr>
+		<br>
+		
+		<table class="table">
+    <tbody>
+        <tr  style="background:#eee">
+            <td><h2>이름</h2></td>
+             <td><h2>핸드폰</h2></td>
+             <td><h2>이메일</h2></td>
+            
+         </tr>
+          
+          <tr>
+        <td><h2>${orderer.member_name}</h2></td>
+        <td><h2>${orderer.hp1}-${orderer.hp2}-${orderer.hp3}</h2></td>
+        <td><h2>${orderer.email1}@${orderer.email2}</h2></td>
+        </tr>
+       
+    </tbody>
+</table>
 	</div>
+		<br>
+	<br>
+	<br>
+	<p class="h2">3.배송지 정보</p><hr>
+	<!-- <h1>2.배송지 정보</h1> -->
+	<div>
+	<!-- <div class="detail_table"> -->
+		<table class="table table-bordered">
+    <tbody>
+        <tr class="dot_line">
+            <td class="fixed_join">배송방법</td>
+            <td>${deliveryInfo.delivery_method}</td>
+        </tr>
+        <tr class="dot_line">
+            <td class="fixed_join">받으실 분</td>
+            <td>${deliveryInfo.receiver_name}</td>
+        </tr>
+        <tr class="dot_line">
+            <td class="fixed_join">휴대폰번호</td>
+            <td>${deliveryInfo.receiver_hp1}-${deliveryInfo.receiver_hp2}-${deliveryInfo.receiver_hp3}</td>
+        </tr>
+        <tr class="dot_line">
+            <td class="fixed_join">유선전화(선택)</td>
+            <td>${deliveryInfo.receiver_tel1}-${deliveryInfo.receiver_tel2}-${deliveryInfo.receiver_tel3}</td>
+        </tr>
+        <tr class="dot_line">
+            <td class="fixed_join">주소</td>
+            <td>${deliveryInfo.delivery_address}</td>
+        </tr>
+        <tr class="dot_line">
+            <td class="fixed_join">배송 메시지</td>
+            <td>${deliveryInfo.delivery_message}</td>
+        </tr>
+        <tr class="dot_line">
+            <td class="fixed_join">선물 포장</td>
+            <td>${deliveryInfo.gift_wrapping}</td>
+        </tr>
+    </tbody>
+</table>
+		
+	</div>
+	
 	<div class="clear"></div>
 	<br>
 	<br>
 	<br>
-	<h1>3.결제정보</h1>
-	<div class="detail_table">
-		<table>
+	
+	<p class="h2">4.결제정보</p><hr>
+	<!-- <h1>3.결제정보</h1> -->
+	<div>
+		<table class="table">
 			<tbody>
 				<tr class="dot_line">
 					<td class="fixed_join">결제방법</td>
@@ -192,10 +270,10 @@ function fn_modify_order_state(order_id){
 		</table>
 	</div>
 	<div class="clear"></div>
+	 <br>
 	<br>
-	<br>
-	<br>
-	<h1>3.배송상태</h1>
+	<br> 
+	<%-- <h1>3.배송상태</h1>
 	<div class="detail_table">
 		<table>
 			<tbody>
@@ -245,23 +323,27 @@ function fn_modify_order_state(order_id){
 				<td width=10%>
 			     <input  type="button" value="배송수정"  onClick="fn_modify_order_state('${deliveryInfo.order_id}')"/>
 			    </td>
-				</tr>
-				
+				</tr> --%>
+									<div class="centered">
+				    <a href="${contextPath}/main/main.do" class="btn btn-primary">
+				        쇼핑계속하기
+				    </a>
+</div>
 			</tbody>
 		</table>
 	</div>
 </form>
-    <div class="clear"></div>
-	<br>
-	<br>
-	<br>
-		<br>
-		<br> 
-		<a href="${contextPath}/main/main.do"> 
+  
+		<%-- <a href="${contextPath}/main/main.do"> 
 		   <IMG width="75" alt="" src="${contextPath}/resources/image/btn_shoping_continue.jpg">
-		</a>
+		</a> --%>
+			
+
 <div class="clear"></div>		
 	
 			
-			
+</div>
+<br>
+<br>
+
 			
