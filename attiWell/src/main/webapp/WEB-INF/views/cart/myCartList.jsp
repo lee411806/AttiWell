@@ -78,24 +78,9 @@
     updateTotalQuantity(); // 총 개수 업데이트 함수 호출
 }; */
 
-window.onload() = function updateTotalQuantity() {
-    var totalQuantity = 0;
-    
-    // 각 카트 항목의 개수를 읽어와서 총 개수 계산
-    <c:forEach var="item" items="${myGoodsList}" varStatus="cnt">
-        var cartGoodsQty = Number(document.getElementById("cart_goods_qty2").value);
-        totalQuantity += cartGoodsQty;
-    </c:forEach>
-    
-    // 총 개수를 표시하는 부분의 엘리먼트를 찾아서 업데이트
-    var totalQuantityElement = document.getElementById("hidden_cart_total_quantity");
-    if (totalQuantityElement) {
-        totalQuantityElement.value = totalQuantity;
-    }
-}
 
 
-function calcGoodsPrice(bookPrice, obj, index) {
+function calcGoodsPrice(goodsSalesPrice, obj, index,item) {
     var totalPrice, final_total_price, totalNum;
     var goods_qty = document.getElementById("select_goods_qty");
 
@@ -108,58 +93,42 @@ function calcGoodsPrice(bookPrice, obj, index) {
     var h_totalDelivery = document.getElementById("h_totalDelivery");
     var h_final_total_price = document.getElementById("h_final_totalPrice");
 	
-    var delivery = 2500;
+    var delivery = 0;
     
     // 이거 할인금액 가져온거임
-    var h_discounted_price = document.getElementById("h_discounted_price");
-
+    var h_discounted_price = document.getElementById("h_discounted_price").value;
     var cart_goods_qty = document.getElementById("cart_goods_qty2");
+    
 
-/*     var totalGoodsNum = 0;
     <c:forEach var="item" items="${myGoodsList}" varStatus="cnt">
-        var cartGoodsQty_${cnt.count} = Number(document.getElementById("cart_goods_qty_${cnt.count}").value);
-        console.log(cartGoodsQty_${cnt.count});
-        totalGoodsNum += cartGoodsQty_${cnt.count};
-    </c:forEach> */
+    /*  var cartGoodsQty = document.getElementById("cart_goods_qty").value; */
+     
+     var cartGoodsQty2 = ${myCartList[cnt.count-1].cart_goods_qty};
     
-    
-    p_totalDeliveryPrice.innerHTML = new Intl.NumberFormat('ko-KR').format(delivery) + '원';
-    
-    
-    // 총 상품 수량을 업데이트한 이후에 나머지 코드 실행
-    p_totalGoodsNum.innerHTML = new Intl.NumberFormat('ko-KR').format(totalGoodsNum) + '개';
-    h_totalGoodsNum = totalGoodsNum;
-/*    
-
-
-if (obj.checked == true) {
+    /*  console.log(cartGoodsQty2); */
+   
+ 
+ if (obj.checked == true) {
         //   alert("체크 했음")
 
 
-        totalNum = totalGoodsNum;
-        totalPrice = Number(h_totalGoodsPrice.value);
-        final_total_price = totalPrice;
-        //final_total_price=totalPrice+Number(h_totalDelivery.value);
-        //alert("final_total_price:"+final_total_price);
+	 totalNum = h_totalGoodsNum;
+							 	  
+     totalPrice = Number(h_totalGoodsPrice.value) + (${item.goods_sales_price} * cartGoodsQty2);
+     console.log(totalPrice);
+     final_total_price = totalPrice;
 
     } else if (obj.checked == false) {
 
      
-        totalNum = Number(h_totalGoodsNum.value) - Number(cartGoodsQty);
+    	 totalNum = Number(h_totalGoodsNum.value) - Number(cartGoodsQty2);
+    	 console.log(cartGoodsQty2);
+         totalPrice = Number(h_totalGoodsPrice.value) - h_discounted_price;
+         console.log(h_discounted_price);
+         final_total_price = totalPrice;
 
-        console.log(totalNum);
-        console.log(typeof totalNum);
-
-        //할인금액으로 바꿔준다음 그 값을 뺏다.
-        totalPrice = Number(h_totalGoodsPrice.value) - Number(h_discounted_price.value);
-
-        console.log(totalPrice);
-        console.log(typeof totalPrice);
-
-        final_total_price = totalPrice;
-
-    }
-   
+    } 
+ </c:forEach>
    
     // totalNum을 개 형식으로 포맷팅
     p_totalGoodsNum.innerHTML = new Intl.NumberFormat('ko-KR').format(totalNum) + '개';
@@ -167,7 +136,7 @@ if (obj.checked == true) {
     p_totalGoodsPrice.innerHTML = new Intl.NumberFormat('ko-KR').format(totalPrice) + '원';
     p_final_totalPrice.innerHTML = new Intl.NumberFormat('ko-KR').format(final_total_price) + '원';
     //p_final_totalPrice.innerHTML=final_total_price;
-    */
+    
 }
 
 function modify_cart_qty(goods_id,bookPrice,index){
@@ -181,8 +150,7 @@ function modify_cart_qty(goods_id,bookPrice,index){
    }
       
    var cart_goods_qty=Number(_cart_goods_qty);
-   //alert("cart_goods_qty:"+cart_goods_qty);
-   //console.log(cart_goods_qty);
+   
    $.ajax({
       type : "post",
       async : false, //false인 경우 동기식으로 처리한다.
@@ -200,7 +168,7 @@ function modify_cart_qty(goods_id,bookPrice,index){
          }else{
             alert("다시 시도해 주세요!!");   
          }
-         
+        
       },
       error : function(data, textStatus) {
          alert("에러가 발생했습니다."+data);
@@ -281,8 +249,7 @@ function fn_order_all_cart_goods(){
             order_goods_qty=cart_goods_qty[i].value;
             cart_goods_qty[i].value="";
             cart_goods_qty[i].value=order_goods_id+":"+order_goods_qty;
-            //alert(select_goods_qty[i].value);
-            console.log(cart_goods_qty[i].value);
+           
          }
       }   
    }else{
@@ -325,11 +292,11 @@ function fn_order_all_cart_goods(){
           <tr>       
                <form name="frm_order_all_cart">
                   <c:forEach var="item" items="${myGoodsList }" varStatus="cnt">
-                   <input type="hidden" id="cart_goods_qty_${cnt.count}" value="${myCartList[cnt.count-1].cart_goods_qty}">
                    <c:set var="cart_goods_qty" value="${myCartList[cnt.count-1].cart_goods_qty}" />
                    <c:set var="cart_id" value="${myCartList[cnt.count-1].cart_id}" />
                    <!--체크박스 수정-->
-               <td><input type="checkbox" name="checked_goods"  checked  value="${item.goods_id }"  onClick="calcGoodsPrice(${item.goods_sales_price },this)"></td>
+          <td><input type="checkbox"  class="mycheckbox" name="checked_goods"  checked  
+          value="${item.goods_id }"  onClick="calcGoodsPrice(${item.goods_sales_price },this)"></td>
                <td class="goods_image">
                <a href="${contextPath}/goods/goodsDetail.do?goods_id=${item.goods_id }">
                   <img width="75" alt="" src="${contextPath}/thumbnails.do?goods_id=${item.goods_id}&fileName=${item.goods_fileName}"  />
@@ -381,8 +348,8 @@ function fn_order_all_cart_goods(){
                   <a href="javascript:modify_cart_qty(${item.goods_id },${item.goods_sales_price*0.9 },${cnt.count-1 });" >
                       <img width=25 alt=""  src="${contextPath}/resources/image/btn_modify_qty.jpg">
                       
-                      
-                      <input type="hidden" id="cart_goods_qty2" value="${myCartList[cnt.count-1].cart_goods_qty}">
+                     
+                    
                   </a>
                </td>
                <td>
@@ -390,7 +357,7 @@ function fn_order_all_cart_goods(){
                    <fmt:formatNumber  value="${item.goods_sales_price*0.9*cart_goods_qty}" type="number" var="total_sales_price" />
                      ${item.goods_sales_price*cart_goods_qty}원
                </strong>
-                <input type="hidden" id="h_discounted_price" value="${item.goods_sales_price*0.9*cart_goods_qty}"> 
+                <input type="hidden" id="h_discounted_price" value="${item.goods_sales_price*cart_goods_qty}"> 
                 </td>
                
                <td>
@@ -488,7 +455,32 @@ function fn_order_all_cart_goods(){
    </center>
 </form>   
 </div>
-
+</body>
+</html>
 <script>
+function updateTotalQuantity() {
+    var totalQuantity = 0;
 
+    <c:forEach var="item" items="${myGoodsList}" varStatus="cnt">
+       /*  var cartGoodsQty = document.getElementById("cart_goods_qty").value; */
+        
+        var cartGoodsQty2 = ${myCartList[cnt.count-1].cart_goods_qty};
+            totalQuantity += cartGoodsQty2;
+      
+    </c:forEach>
+
+    // 총 개수를 표시하는 부분의 엘리먼트를 찾아서 업데이트
+    var p_totalGoodsNum = document.getElementById("p_totalGoodsNum");
+    var h_totalGoodsNum = document.getElementById("h_totalGoodsNum");
+
+    if (p_totalGoodsNum && h_totalGoodsNum) {
+        p_totalGoodsNum.innerHTML = new Intl.NumberFormat('ko-KR').format(totalQuantity) + '개';
+        h_totalGoodsNum.value = totalQuantity;
+    }
+}
+
+// 페이지 로드시 총 상품 수량 업데이트
+window.onload = function() {
+    updateTotalQuantity();
+};
 </script>

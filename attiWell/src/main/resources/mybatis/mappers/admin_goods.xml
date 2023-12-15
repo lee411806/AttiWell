@@ -5,7 +5,7 @@
 
 <mapper namespace="mapper.admin.goods">
 <!-- 리절트 맵 정의 -->   
-   <resultMap id="goodsResult" type="goodsVO">
+      <resultMap id="goodsResult" type="goodsVO">
       <result property="goods_id" column="goods_id" />
        <result property="goods_sort" column="goods_sort" />
       <result property="goods_title" column="goods_title" />
@@ -13,9 +13,9 @@
         <result property="goods_sales_price" column="goods_sales_price" />
       <result property="goods_status" column="goods_status" />
       <result property="goods_fileName" column="fileName" />
-       <result property="goods_fileName" column="credate" />
-      <result property="goods_intro" column="goods_intro" />
-   </resultMap>   
+       <result property="goods_credate" column="credate" />
+     <result property="goods_intro" column="goods_intro" />
+   </resultMap>    
 
    <resultMap id="imageResult" type="ImageFileVO">
       <result property="goods_id" column="goods_id" />
@@ -60,9 +60,10 @@
       
       <result property="goods_fileName" column="goods_fileName" />
    </resultMap>
-<insert id="insertNewGoods" parameterType="java.util.Map">
+   <insert id="insertNewGoods" parameterType="java.util.Map">
     <selectKey resultType="String" keyProperty="goods_id" order="BEFORE">
-        select seq_goods_id.nextval from dual
+<!--         select seq_goods_id.nextval from dual -->
+        select seq_goods_id.nextval as goods_id from dual
     </selectKey>
     <![CDATA[
         insert into t_shopping_goods(
@@ -72,8 +73,7 @@
             goods_price,
             goods_sales_price,
             goods_status,
-             goods_intro,
-            goods_credate
+             goods_intro
           
         ) values (
             #{goods_id},
@@ -82,8 +82,7 @@
             #{goods_price},
             #{goods_sales_price},
             #{goods_status},
-             #{goods_intro},
-            #{goods_credate}
+             #{goods_intro}
         )
     ]]>
 </insert>
@@ -152,15 +151,15 @@
  
 
    
-   <select id="selectGoodsDetail" resultMap="goodsResult"   parameterType="String"  >
-       <![CDATA[
-           select g.* as d.fileName from t_shopping_goods g, t_goods_detail_image d
-           where g.goods_id=d.goods_id
-           and d.filetype='main_image'
-           and g.goods_id=#{goods_id}
-           order by g.goods_id
-       ]]>
-   </select>
+  <select id="selectGoodsDetail" resultMap="goodsResult"   parameterType="String"  >
+	    <![CDATA[
+		     select g.*,to_char(g.goods_credate,'YYYY-MM-DD') as goods_credate, d.fileName from t_shopping_goods g, t_goods_detail_image d
+	        where g.goods_id=d.goods_id
+	        and d.filetype='main_image'
+	        and g.goods_id=#{goods_id}
+	        order by g.goods_id
+    	]]>
+	</select>
    <select id="selectGoodsImageFileList" resultMap="imageResult"   parameterType="String"  >
        <![CDATA[
              select * from  t_goods_detail_image 
@@ -189,23 +188,11 @@
          <if test=" goods_page_total!='' and goods_page_total!=null">
            goods_page_total=#{goods_page_total},
          </if>
-         <if test=" goods_delivery_price!='' and goods_delivery_price!=null">
-           goods_delivery_price=#{goods_delivery_price},
-         </if>
-         <if test=" goods_delivery_date!='' and goods_delivery_date!=null">
-           goods_delivery_date=#{goods_delivery_date},
-         </if>
          <if test=" goods_status!='' and goods_status!=null">
            goods_status=#{goods_status},
          </if>
          <if test=" goods_intro!='' and goods_intro!=null">
            goods_intro=#{goods_intro},
-         </if>
-         <if test=" publisher_comment!='' and publisher_comment!=null">
-           publisher_comment=#{publisher_comment},
-         </if>
-         <if test=" recommendation!='' and recommendation!=null">
-           recommendation=#{recommendation},
          </if>
         </set>
        where 

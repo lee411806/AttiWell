@@ -182,11 +182,11 @@
       <DIV id="container">
          <UL class="tabs">
             <li><A href="#tab1">상품정보</A></li>
-            <li><A href="#tab2">상품목차</A></li>
+        <!--     <li><A href="#tab2">상품목차</A></li>
             <li><A href="#tab3">상품저자소개</A></li>
             <li><A href="#tab4">상품소개</A></li>
             <li><A href="#tab5">출판사 상품 평가</A></li>
-            <li><A href="#tab6">추천사</A></li>
+            <li><A href="#tab6">추천사</A></li> -->
             <li><A href="#tab7">상품이미지</A></li>
          </UL>
          <DIV class="tab_container">
@@ -240,7 +240,7 @@
                   </tr>
 
 
-                  <tr>
+                  <%-- <tr>
                      <td>상품 구매 포인트</td>
                      <td><input name="goods_point" type="text" size="40"
                         value="${goods.goods_point }" /></td>
@@ -248,7 +248,7 @@
                         onClick="fn_modify_goods('${goods.goods_id }','goods_point')" />
                      </td>
 
-                  </tr>
+                  </tr> --%>
 
 
                   <tr>
@@ -260,7 +260,7 @@
                      </td>
 
                   </tr>
-                  <tr>
+                <%--   <tr>
                      <td>상품 도착 예정일</td>
                      <td><input name="goods_delivery_date" type="date"
                         value="${goods.goods_delivery_date }" /></td>
@@ -268,7 +268,7 @@
                         onClick="fn_modify_goods('${goods.goods_id }','goods_delivery_date')" />
                      </td>
 
-                  </tr>
+                  </tr> --%>
 
                   <tr>
                      <td>상품종류</td>

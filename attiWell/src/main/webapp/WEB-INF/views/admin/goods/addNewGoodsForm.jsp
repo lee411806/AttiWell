@@ -73,17 +73,12 @@
          
          
          <tr>
-            <td > 입고날짜 </td>
-            <td><input name="goods_credate"  type="date" size="40" /></td>
-         </tr>
-         
-         <tr>
             <td >제품종류</td>
             <td>
             <select name="goods_status">
-              <option value="discount"  >할인상품</option>
-              <option value="hot" >인기상품</option>
-              <option value="common" selected >일반상품</option>
+              <option value="할인상품"  >할인상품</option>
+              <option value="인기상품" >인기상품</option>
+              <option value="일반상품" selected >일반상품</option>
 <!--               <option value="on_sale" >판매중</option>
               <option value="buy_out" >품절</option> -->
             </select>

@@ -5,6 +5,87 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<!-- 부트스트랩 4.3.1 적용   -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        
+ <style>
+		  .fixed_join {
+		    background-color: #eee;
+		}
+    	.custom-select {
+		    width: 200px; /* 필요한 가로 길이로 조정하세요 */
+		    text-align : center;
+		}
+    	.input-form {
+		  /*  max-width: 1050px; */
+		   margin-top: 80px;
+		   padding: 32px;
+		   background: #fff;
+		   -webkit-border-radius: 10px;
+		   -moz-border-radius: 10px;
+		   border-radius: 10px;
+		   -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+		   -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+		   box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
+		}
+        a {
+            color: grey; /* 또는 원하는 색상으로 변경 */
+        }
+
+        .h2 {
+            font-size: 24px; /* Increase the font size to your desired value */
+            font-weight: bold; /* 굴게 만들기 */
+        }
+
+        
+       
+    </style>
+
+ 	  <style>
+	.btn-primary:hover {
+    background-color: #1b7340; /* 이 부분을 비워두거나 다른 색상으로 지정하세요 */
+    color: #ffffff; /* 이 부분을 비워두거나 다른 색상으로 지정하세요 */
+    border-color: #1b7340; /* 이 부분을 비워두거나 다른 색상으로 지정하세요 */
+}
+       .btn-primary {
+    background-color: #1b7340;
+    border: 2px solid #1b7340;
+    color: #ffffff;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+	}
+		
+		.centered {
+   		 text-align: center;
+			}
+		
+        .btn-primary.custom-btn {
+            color: #1b7340; /* 텍스트 색을 녹색으로 지정 */
+            background-color: #fff; /* 배경 색을 흰색으로 지정 */
+            border: 1px solid #1b7340 !important; /* 테두리 색을 #1b7340으로 지정 */
+        }
+
+       
+
+        /* 테이블 글 씨 중앙정렬 */
+        .center-align {
+            text-align: center;
+        }
+        
+        td {
+		   
+		     white-space: nowrap;
+		}
+		 tr h2 {
+        font-size: 15px; /* 예시로 24px로 설정. 원하는 크기로 조절하세요. */
+    }
+    </style>
+
+
+
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 
@@ -273,27 +354,29 @@ function fn_delete_member(member_id ,del_yn){
 </head>
 
 <body>
-	<h3>내 상세 정보</h3>
+<div class="input-form ">
+	<!-- <h3>내 상세 정보</h3> -->
+	<p class="h2">내 상세 정보</p><br>
 <form name="frm_mod_member">	
-	<div id="detail_table">
-		<table>
+	<div >
+		<table class="table">
 			<tbody>
-				<tr class="dot_line">
+				<tr>
 					<td class="fixed_join">아이디</td>
 					<td>
 						<input name="member_id" type="text" size="20" value="${member_info.member_id }"  disabled/>
 					</td>
 					 <td>
-					  <input type="button" value="수정하기" disabled onClick="fn_modify_member_info('${member_info.member_id }','member_name')" />
+					  <input type="button" class="btn btn-secondary"value="수정하기" disabled onClick="fn_modify_member_info('${member_info.member_id }','member_name')" />
 					</td>
 				</tr>
-				<tr class="dot_line">
+				<tr>
 					<td class="fixed_join">비밀번호</td>
 					<td>
 					  <input name="member_pw" type="password" size="20" value="${member_info.member_pw }" />
 					</td>
 					<td>
-					  <input type="button" value="수정하기" onClick="fn_modify_member_info('${member_info.member_id }','member_pw')" />
+					  <input type="button" class="btn btn-secondary" value="수정하기" onClick="fn_modify_member_info('${member_info.member_id }','member_pw')" />
 					</td>
 				</tr>
 				<tr class="dot_line">
@@ -302,10 +385,10 @@ function fn_delete_member(member_id ,del_yn){
 					  <input name="member_name" type="text" size="20" value="${member_info.member_name }"  disabled />
 					 </td>
 					 <td>
-					  <input type="button" value="수정하기" disabled onClick="fn_modify_member_info('${member_info.member_id }','member_name')" />
+					  <input type="button" class="btn btn-secondary"value="수정하기" disabled onClick="fn_modify_member_info('${member_info.member_id }','member_name')" />
 					</td>
 				</tr>
-				<tr class="dot_line">
+				<tr >
 					<td class="fixed_join">성별</td>
 					<td>
 					  <c:choose >
@@ -322,10 +405,10 @@ function fn_delete_member(member_id ,del_yn){
 					   </c:choose>
 					</td>
 					<td>
-					  <input type="button" value="수정하기" onClick="fn_modify_member_info('${member_info.member_id }','member_gender')" />
+					  <input type="button" class="btn btn-secondary"value="수정하기" onClick="fn_modify_member_info('${member_info.member_id }','member_gender')" />
 					</td>
 				</tr>
-				<tr class="dot_line">
+				<tr >
 					<td class="fixed_join">법정생년월일</td>
 					<td>
 					   <select name="member_birth_y">
@@ -381,10 +464,10 @@ function fn_delete_member(member_id ,del_yn){
 						</c:choose>
 					</td>
 					<td>
-					  <input type="button" value="수정하기" onClick="fn_modify_member_info('${member_info.member_id }','member_birth')" />
+					  <input type="button" class="btn btn-secondary"value="수정하기" onClick="fn_modify_member_info('${member_info.member_id }','member_birth')" />
 					</td>
 				</tr>
-				<tr class="dot_line">
+				<tr >
 					<td class="fixed_join">전화번호</td>
 					<td>
 					    <select  name="tel1" >
@@ -418,10 +501,10 @@ function fn_delete_member(member_id ,del_yn){
 					    - <input type="text" size=4  name="tel3" value="${member_info.tel3 }">
 					</td>
 					<td>
-					  <input type="button" value="수정하기" onClick="fn_modify_member_info('${member_info.member_id }','tel')" />
+					  <input type="button" class="btn btn-secondary"value="수정하기" onClick="fn_modify_member_info('${member_info.member_id }','tel')" />
 					</td>
 				</tr>
-				<tr class="dot_line">
+				<tr >
 					<td class="fixed_join">휴대폰번호</td>
 					<td>
 					   <select  name="hp1">
@@ -445,10 +528,10 @@ function fn_delete_member(member_id ,del_yn){
 					 </c:choose>	
 				    </td>
 					<td>
-					  <input type="button" value="수정하기" onClick="fn_modify_member_info('${member_info.member_id }','hp')" />
+					  <input type="button" class="btn btn-secondary"value="수정하기" onClick="fn_modify_member_info('${member_info.member_id }','hp')" />
 					</td>	
 				</tr>
-				<tr class="dot_line">
+				<tr >
 					<td class="fixed_join">이메일(e-mail)</td>
 					<td>
 					   <input type="text" name="email1" size=10 value="${member_info.email1 }" /> @ <input type="text" size=10  name="email2" value="${member_info.email2 }" /> 
@@ -476,10 +559,10 @@ function fn_delete_member(member_id ,del_yn){
 					 </c:choose>
 					</td>
 					<td>
-					  <input type="button" value="수정하기" onClick="fn_modify_member_info('${member_info.member_id }','email')" />
+					  <input type="button" class="btn btn-secondary"value="수정하기" onClick="fn_modify_member_info('${member_info.member_id }','email')" />
 					</td>
 				</tr>
-				<tr class="dot_line">
+				<tr >
 					<td class="fixed_join">주소</td>
 					<td>
 					   <input type="text" id="zipcode" name="zipcode" size=5 value="${member_info.zipcode }" > <a href="javascript:execDaumPostcode()">우편번호검색</a>
@@ -492,7 +575,7 @@ function fn_delete_member(member_id ,del_yn){
 					   </p>
 					</td>
 					<td>
-					  <input type="button" value="수정하기" onClick="fn_modify_member_info('${member_info.member_id }','address')" />
+					  <input type="button" class="btn btn-secondary"value="수정하기" onClick="fn_modify_member_info('${member_info.member_id }','address')" />
 					</td>
 				</tr>
 			</tbody>
@@ -506,10 +589,10 @@ function fn_delete_member(member_id ,del_yn){
 				<input type="hidden" name="command"  value="modify_my_info" /> 
 				<c:choose>
 				  <c:when test="${member_info.del_yn=='Y' }">
-				    <input  type="button"  value="회원복원" onClick="fn_delete_member('${member_info.member_id }','N')">   
+				    <input  type="button"  class="btn btn-secondary"value="회원복원" onClick="fn_delete_member('${member_info.member_id }','N')">   
 				  </c:when>
 				  <c:when  test="${member_info.del_yn=='N' }">
-				    <input  type="button"  value="회원탈퇴" onClick="fn_delete_member('${member_info.member_id }','Y')">
+				    <input  type="button"  class="btn btn-secondary"value="회원탈퇴" onClick="fn_delete_member('${member_info.member_id }','Y')">
 				  </c:when>
 				  
 				</c:choose>
@@ -521,5 +604,6 @@ function fn_delete_member(member_id ,del_yn){
 	<input  type="hidden" name="h_tel1" value="${member_info.tel1}" />
 	<input  type="hidden" name="h_hp1" value="${member_info.hp1}" />		
 </form>	
+</div>
 </body>
 </html>
