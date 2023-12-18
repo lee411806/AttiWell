@@ -18,8 +18,8 @@ public class LoggingAdvice {
 	private static final Logger logger = LoggerFactory.getLogger(LoggingAdvice.class);
 
 	// target 메서드의 파라미터등 정보를 출력합니다.
-	@Before("execution(* com.bookshop01.*.service.*.*(..)) or "
-			+ "execution(* com.bookshop01.*.dao.*.*(..))")
+	@Before("execution(* com.attiWell.*.service.*.*(..)) or "
+			+ "execution(* com.attiWell.*.dao.*.*(..))")
 	public void startLog(JoinPoint jp) {
 
 		logger.info("-------------------------------------");
@@ -42,8 +42,8 @@ public class LoggingAdvice {
 
 	}
 	
-	@After("execution(* com.bookshop01.*.service.*.*(..)) or "
-			+ "execution(* com.bookshop01.*.*.dao.*.*(..))")
+	@After("execution(* com.attiWell.*.service.*.*(..)) or "
+			+ "execution(* com.attiWell.*.*.dao.*.*(..))")
 	public void after(JoinPoint jp) { 
 		logger.info("-------------------------------------");
 		logger.info("-------------------------------------");
@@ -67,8 +67,8 @@ public class LoggingAdvice {
 
 
 	// target 메소드의 동작 시간을 측정합니다.
-	@Around("execution(* com.bookshop01.*.service.*.*(..)) or "
-			+ "execution(* com.bookshop01.*.dao.*.*(..))")
+	@Around("execution(* com.attiWell.*.service.*.*(..)) or "
+			+ "execution(* com.attiWell.*.dao.*.*(..))")
 	public Object timeLog(ProceedingJoinPoint pjp) throws Throwable {
 		long startTime = System.currentTimeMillis();
 		logger.info(Arrays.toString(pjp.getArgs()));

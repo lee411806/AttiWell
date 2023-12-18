@@ -6,6 +6,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <c:set var="goods" value="${goodsMap.goodsVO}" />
+<%-- <c:set var="cart" value="${cartMap.cartVO}" /> --%>
 <c:set var="imageList" value="${goodsMap.imageList }" />
 <%
 	//치환 변수 선언합니다.
@@ -43,13 +44,16 @@
 </style>
 <script type="text/javascript">
 	function add_cart(goods_id) {
+	
+		 var orderGoodsQty = document.getElementById('order_goods_qty').value;
+		 console.log('주문 수량:', orderGoodsQty);
 		$.ajax({
 			type : "post",
 			async : false, //false인 경우 동기식으로 처리한다.
 			url : "${contextPath}/cart/addGoodsInCart.do",
 			data : {
-				goods_id : goods_id
-
+				goods_id : goods_id,
+				orderGoodsQty : orderGoodsQty
 			},
 			success : function(data, textStatus) {
 				//alert(data);
@@ -196,11 +200,11 @@
 					<td class="fixed">포인트적립</td>
 					<td class="active">${goods.goods_point}P(5%적립)</td>
 				</tr> --%>
-				<tr class="dot_line">
+				<!-- <tr class="dot_line">
 					<td class="fixed">포인트 추가적립</td>
 					<td class="fixed">만원이상 구매시 1,000P, 5만원이상 구매시 2,000P추가적립 편의점 배송
 						이용시 300P 추가적립</td>
-				</tr>
+				</tr> -->
 				<tr>
 					<td class="fixed">배송료</td>
 					<td class="fixed"><strong>무료</strong></td>

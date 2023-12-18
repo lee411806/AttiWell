@@ -90,7 +90,16 @@ public class AdminMemberControllerImpl extends BaseController  implements AdminM
 		String member_id=request.getParameter("member_id");
 		String mod_type=request.getParameter("mod_type");
 		String value =request.getParameter("value");
-		if(mod_type.equals("member_birth")){
+		
+		if(mod_type.equals("member_pw")) {
+			val=value.split(",");
+			memberMap.put("member_pw",val[0]);
+			
+		}else if(mod_type.equals("member_gender")) {
+			val=value.split(",");
+			memberMap.put("member_gender",val[0]);
+			
+		}else if(mod_type.equals("member_birth")){
 			val=value.split(",");
 			memberMap.put("member_birth_y",val[0]);
 			memberMap.put("member_birth_m",val[1]);

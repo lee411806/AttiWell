@@ -201,7 +201,10 @@ function fn_modify_member_info(member_id,mod_type){
 	// alert("mod_type:"+mod_type);
 		var frm_mod_member=document.frm_mod_member;
 		if(mod_type=='member_pw'){
+			
 			value=frm_mod_member.member_pw.value;
+			
+			console.log(frm_mod_member.member_pw.value);
 			//alert("member_pw:"+value);
 		}else if(mod_type=='member_gender'){
 			var member_gender=frm_mod_member.member_gender;
@@ -309,7 +312,7 @@ function fn_modify_member_info(member_id,mod_type){
 		$.ajax({
 			type : "post",
 			async : false, //false인 경우 동기식으로 처리한다.
-			url : "http://localhost:8090/bookshop01/admin/member/modifyMemberInfo.do",
+			url : "http://localhost:8090/attiWell/admin/member/modifyMemberInfo.do",
 			data : {
 				member_id:member_id,
 				mod_type:mod_type,
@@ -347,7 +350,7 @@ function fn_delete_member(member_id ,del_yn){
     frm_mod_member.appendChild(i_member_id);
     frm_mod_member.appendChild(i_del_yn);
     frm_mod_member.method="post";
-    frm_mod_member.action="/bookshop01/admin/member/deleteMember.do";
+    frm_mod_member.action="/attiWell/admin/member/deleteMember.do";
     frm_mod_member.submit();
 }
 </script>
@@ -376,7 +379,7 @@ function fn_delete_member(member_id ,del_yn){
 					  <input name="member_pw" type="password" size="20" value="${member_info.member_pw }" />
 					</td>
 					<td>
-					  <input type="button" class="btn btn-secondary" value="수정하기" onClick="fn_modify_member_info('${member_info.member_id }','member_pw')" />
+					  <input type="button" class="btn btn-secondary" value="수정하기" onClick="fn_modify_member_info('${member_info.member_pw }','member_pw')" />
 					</td>
 				</tr>
 				<tr class="dot_line">
@@ -405,7 +408,7 @@ function fn_delete_member(member_id ,del_yn){
 					   </c:choose>
 					</td>
 					<td>
-					  <input type="button" class="btn btn-secondary"value="수정하기" onClick="fn_modify_member_info('${member_info.member_id }','member_gender')" />
+					  <input type="button" class="btn btn-secondary"value="수정하기" onClick="fn_modify_member_info('${member_info.member_gender}','member_gender')" />
 					</td>
 				</tr>
 				<tr >

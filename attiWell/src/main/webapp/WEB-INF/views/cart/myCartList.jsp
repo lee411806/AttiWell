@@ -6,13 +6,15 @@
 
 <c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
 <c:set var="myCartList"  value="${cartMap.myCartList}"  />
-<c:set var="myGoodsList"  value="${cartMap.myGoodsList}"  />
+<c:set var="myGoodsList"  value="${cartMap.myGoodsList}"  /> 
 
 <c:set  var="totalGoodsNum" value="0" />  <!--주문 개수 -->
 <c:set  var="totalDeliveryPrice" value="0" /> <!-- 총 배송비 --> 
 <c:set  var="totalDiscountedPrice" value="0" /> <!-- 총 할인금액 -->
 <head>
-
+<!-- <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script> 
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>  -->
 <!-- 부트스트랩 4.3.1 적용   -->
  <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -73,71 +75,113 @@
 
 <script type="text/javascript">
 
+function calcGoodsPrice(bookPrice,obj){
+	var totalPrice,final_total_price,totalNum;
+	var goods_qty=document.getElementById("select_goods_qty");
+	//alert("총 상품금액"+goods_qty.value);
+	var p_totalNum=document.getElementById("p_totalNum");
+	var p_totalPrice=document.getElementById("p_totalPrice");
+	var p_final_totalPrice=document.getElementById("p_final_totalPrice");
+	var h_totalNum=document.getElementById("h_totalNum");
+	var h_totalPrice=document.getElementById("h_totalPrice");
+	var h_totalDelivery=document.getElementById("h_totalDelivery");
+	var h_final_total_price=document.getElementById("h_final_totalPrice");
+	if(obj.checked==true){
+	//	alert("체크 했음")
+		
+		totalNum=Number(h_totalNum.value)+Number(goods_qty.value);
+		//alert("totalNum:"+totalNum);
+		totalPrice=Number(h_totalPrice.value)+Number(goods_qty.value*bookPrice);
+		//alert("totalPrice:"+totalPrice);
+		final_total_price=totalPrice+Number(h_totalDelivery.value);
+		//alert("final_total_price:"+final_total_price);
 
-/* window.onload = function() {
-    updateTotalQuantity(); // 총 개수 업데이트 함수 호출
-}; */
-
-
-
-function calcGoodsPrice(goodsSalesPrice, obj, index,item) {
-    var totalPrice, final_total_price, totalNum;
-    var goods_qty = document.getElementById("select_goods_qty");
-
-    var h_totalGoodsNum = document.getElementById("h_totalGoodsNum");
-
-    var p_totalPrice = document.getElementById("p_totalPrice");
-    var p_final_totalPrice = document.getElementById("p_final_totalPrice");
-    var h_totalNum = document.getElementById("h_totalNum");
-    var h_totalPrice = document.getElementById("h_totalPrice");
-    var h_totalDelivery = document.getElementById("h_totalDelivery");
-    var h_final_total_price = document.getElementById("h_final_totalPrice");
+	}else{
+	//	alert("h_totalNum.value:"+h_totalNum.value);
+		totalNum=Number(h_totalNum.value)-Number(goods_qty.value);
+	//	alert("totalNum:"+ totalNum);
+		totalPrice=Number(h_totalPrice.value)-Number(goods_qty.value)*bookPrice;
+	//	alert("totalPrice="+totalPrice);
+		final_total_price=totalPrice-Number(h_totalDelivery.value);
+	//	alert("final_total_price:"+final_total_price);
+	}
 	
-    var delivery = 0;
-    
-    // 이거 할인금액 가져온거임
-    var h_discounted_price = document.getElementById("h_discounted_price").value;
-    var cart_goods_qty = document.getElementById("cart_goods_qty2");
-    
-
-    <c:forEach var="item" items="${myGoodsList}" varStatus="cnt">
-    /*  var cartGoodsQty = document.getElementById("cart_goods_qty").value; */
-     
-     var cartGoodsQty2 = ${myCartList[cnt.count-1].cart_goods_qty};
-    
-    /*  console.log(cartGoodsQty2); */
-   
- 
- if (obj.checked == true) {
-        //   alert("체크 했음")
-
-
-	 totalNum = h_totalGoodsNum;
-							 	  
-     totalPrice = Number(h_totalGoodsPrice.value) + (${item.goods_sales_price} * cartGoodsQty2);
-     console.log(totalPrice);
-     final_total_price = totalPrice;
-
-    } else if (obj.checked == false) {
-
-     
-    	 totalNum = Number(h_totalGoodsNum.value) - Number(cartGoodsQty2);
-    	 console.log(cartGoodsQty2);
-         totalPrice = Number(h_totalGoodsPrice.value) - h_discounted_price;
-         console.log(h_discounted_price);
-         final_total_price = totalPrice;
-
-    } 
- </c:forEach>
-   
-    // totalNum을 개 형식으로 포맷팅
-    p_totalGoodsNum.innerHTML = new Intl.NumberFormat('ko-KR').format(totalNum) + '개';
-    // totalPrice를 원 형식으로 포맷팅
-    p_totalGoodsPrice.innerHTML = new Intl.NumberFormat('ko-KR').format(totalPrice) + '원';
-    p_final_totalPrice.innerHTML = new Intl.NumberFormat('ko-KR').format(final_total_price) + '원';
-    //p_final_totalPrice.innerHTML=final_total_price;
-    
+	h_totalNum.value=totalNum;
+	
+	h_totalPrice.value=totalPrice;
+	h_final_total_price.value=final_total_price;
+	
+	p_totalNum.innerHTML=totalNum;
+	p_totalPrice.innerHTML=totalPrice;
+	p_final_totalPrice.innerHTML=final_total_price;
 }
+
+
+
+
+
+/* var totalQuantity = 0;
+
+ window.onload = function() {
+    updateTotalQuantity(goodsId, goodsSalesPrice); // 총 개수 업데이트 함수 호출
+}; 
+ */
+
+/* function updateTotalQuantity(goodsId, goodsSalesPrice) {
+	<c:forEach var="item" items="${myGoodsList}" varStatus="cnt">
+
+
+
+	    var checkbox = document.getElementById("checkbox_${item.goods_id}");     
+	    
+	    // 체크박스가 있는 경우에만 이벤트 핸들러 등록
+	    if (checkbox) {
+	    	console.log(checkbox);
+	        checkbox.onclick = function() {
+	         	
+	        	   var goodsId = '${item.goods_id}';
+	               var goodsSalesPrice = ${item.goods_sales_price};
+	               var cartGoodsQty = ${myCartList[cnt.count-1].cart_goods_qty};
+	               var discountedPrice = ${item.goods_sales_price} * cartGoodsQty;
+	        		console.log(discountedPrice);
+
+			            // 여기에서 각 항목에 대한 정보를 활용하여 필요한 작업 수행
+			            console.log('상품 ID:', goodsId);
+			            console.log('판매 가격:', goodsSalesPrice);
+			            console.log('장바구니 상품 수량:', cartGoodsQty);
+			            console.log('할인 가격:', discountedPrice);
+		
+			            // 체크박스가 체크되어 있는지 여부를 확인합니다.
+			            if (!checkbox.checked) {
+			                // 체크가 해제되면 총 수량에서 cartGoodsQty를 뺍니다.
+			                totalQuantity -= cartGoodsQty;
+			            	console.log(totalQuantity);
+			                if (p_totalGoodsNum && h_totalGoodsNum) {
+			                    p_totalGoodsNum.innerHTML = new Intl.NumberFormat('ko-KR').format(totalQuantity) + '개';
+			                    h_totalGoodsNum.value = totalQuantity;
+			                }
+			                  
+			            }else if(checkbox.checked){
+			            	
+			            	  totalQuantity += cartGoodsQty;
+			            	  console.log(totalQuantity);
+			            	    if (p_totalGoodsNum && h_totalGoodsNum) {
+			            	        p_totalGoodsNum.innerHTML = new Intl.NumberFormat('ko-KR').format(totalQuantity) + '개';
+			            	        h_totalGoodsNum.value = totalQuantity;
+			            	    }
+			      			
+			            }
+		
+			            // 총 수량 표시를 업데이트합니다.
+			          
+			            // 필요한 로직에 따라 updateTotalQuantity 함수를 호출합니다.
+			         
+			        };
+	    }
+	</c:forEach>
+	  
+	  
+	} */
 
 function modify_cart_qty(goods_id,bookPrice,index){
    //alert(index);
@@ -238,11 +282,12 @@ function fn_order_all_cart_goods(){
    var cart_goods_qty=objForm.cart_goods_qty;
    var h_order_each_goods_qty=objForm.h_order_each_goods_qty;
    var checked_goods=objForm.checked_goods;
-   var length=checked_goods.length;
+   
+    var length=checked_goods.length; 
    
    
    //alert(length);
-   if(length>1){
+  if(length>1){
       for(var i=0; i<length;i++){
          if(checked_goods[i].checked==true){
             order_goods_id=checked_goods[i].value;
@@ -257,7 +302,7 @@ function fn_order_all_cart_goods(){
       order_goods_qty=cart_goods_qty.value;
       cart_goods_qty.value=order_goods_id+":"+order_goods_qty;
       //alert(select_goods_qty.value);
-   }
+   } 
       
     objForm.method="post";
     objForm.action="${contextPath}/order/orderAllCartGoods.do";
@@ -271,7 +316,7 @@ function fn_order_all_cart_goods(){
    <table class="table">
       <tbody align=center >
          <tr style="background:#1b7340; color :white;"  >
-            <td class="fixed" >구분</td>
+            <td class="fixed" style="display: none;" >구분</td> 
             <td colspan=2 class="fixed">상품명</td>
             <td>정가</td>
             <td>판매가</td>
@@ -295,8 +340,11 @@ function fn_order_all_cart_goods(){
                    <c:set var="cart_goods_qty" value="${myCartList[cnt.count-1].cart_goods_qty}" />
                    <c:set var="cart_id" value="${myCartList[cnt.count-1].cart_id}" />
                    <!--체크박스 수정-->
-          <td><input type="checkbox"  class="mycheckbox" name="checked_goods"  checked  
-          value="${item.goods_id }"  onClick="calcGoodsPrice(${item.goods_sales_price },this)"></td>
+				
+				      
+						<td style="display: none;"><input type="checkbox" name="checked_goods"  checked  value="${item.goods_id }"  onClick="calcGoodsPrice(${item.goods_sales_price },this)"></td>
+					<%-- <input type="checkbox" id="checkbox_${item.goods_id}" checked onclick="updateTotalQuantity('${item.goods_id}', ${item.goods_sales_price})"> --%>
+			
                <td class="goods_image">
                <a href="${contextPath}/goods/goodsDetail.do?goods_id=${item.goods_id }">
                   <img width="75" alt="" src="${contextPath}/thumbnails.do?goods_id=${item.goods_id}&fileName=${item.goods_fileName}"  />
@@ -458,18 +506,16 @@ function fn_order_all_cart_goods(){
 </body>
 </html>
 <script>
-function updateTotalQuantity() {
-    var totalQuantity = 0;
 
+var totalQuantity = 0;
+
+ window.onload = function() {
     <c:forEach var="item" items="${myGoodsList}" varStatus="cnt">
-       /*  var cartGoodsQty = document.getElementById("cart_goods_qty").value; */
-        
         var cartGoodsQty2 = ${myCartList[cnt.count-1].cart_goods_qty};
-            totalQuantity += cartGoodsQty2;
-      
+       
+        totalQuantity += cartGoodsQty2;
     </c:forEach>
 
-    // 총 개수를 표시하는 부분의 엘리먼트를 찾아서 업데이트
     var p_totalGoodsNum = document.getElementById("p_totalGoodsNum");
     var h_totalGoodsNum = document.getElementById("h_totalGoodsNum");
 
@@ -477,10 +523,28 @@ function updateTotalQuantity() {
         p_totalGoodsNum.innerHTML = new Intl.NumberFormat('ko-KR').format(totalQuantity) + '개';
         h_totalGoodsNum.value = totalQuantity;
     }
-}
-
-// 페이지 로드시 총 상품 수량 업데이트
-window.onload = function() {
-    updateTotalQuantity();
+    
+  
+    
 };
+
+
+
+/* <c:forEach var="item" items="${myGoodsList}" varStatus="cnt">
+var checkbox = document.getElementById("checkbox_${item.goods_id}");
+if (checkbox) {
+    checkbox.onclick = function() {
+        updateTotalQuantity('${item.goods_id}', ${item.goods_sales_price}, checkbox, ${myCartList[cnt.count-1].cart_goods_qty});
+    };
+}
+</c:forEach> */
+
+
+
+//총 수량 초기화는 위에 window.function 에서 지정해놓았음
+
+
+
+
+
 </script>

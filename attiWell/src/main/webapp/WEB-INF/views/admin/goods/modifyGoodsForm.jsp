@@ -6,6 +6,99 @@
 <c:set var="goods" value="${goodsMap.goods}" />
 <c:set var="imageFileList" value="${goodsMap.imageFileList}" />
 
+
+<head>
+
+
+
+<!-- 부트스트랩 4.3.1 적용   -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        
+ <style>
+ 		   #addFileButton {
+      text-align: center;
+   }
+ 
+		  .fixed_join {
+		    background-color: #eee;
+		}
+    	.custom-select {
+		    width: 200px; /* 필요한 가로 길이로 조정하세요 */
+		    text-align : center;
+		}
+    	.input-form {
+		  /*  max-width: 1050px; */
+		   margin-top: 80px;
+		   padding: 32px;
+		   background: #fff;
+		   -webkit-border-radius: 10px;
+		   -moz-border-radius: 10px;
+		   border-radius: 10px;
+		   -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+		   -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+		   box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
+		}
+        a {
+            color: grey; /* 또는 원하는 색상으로 변경 */
+        }
+
+        .h2 {
+            font-size: 24px; /* Increase the font size to your desired value */
+            font-weight: bold; /* 굴게 만들기 */
+        }
+
+        
+       
+    </style>
+
+ 	  <style>
+	.btn-primary:hover {
+    background-color: #1b7340; /* 이 부분을 비워두거나 다른 색상으로 지정하세요 */
+    color: #ffffff; /* 이 부분을 비워두거나 다른 색상으로 지정하세요 */
+    border-color: #1b7340; /* 이 부분을 비워두거나 다른 색상으로 지정하세요 */
+}
+       .btn-primary {
+    background-color: #1b7340;
+    border: 2px solid #1b7340;
+    color: #ffffff;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+	}
+		
+		.centered {
+   		 text-align: center;
+			}
+		
+        .btn-primary.custom-btn {
+            color: #1b7340; /* 텍스트 색을 녹색으로 지정 */
+            background-color: #fff; /* 배경 색을 흰색으로 지정 */
+            border: 1px solid #1b7340 !important; /* 테두리 색을 #1b7340으로 지정 */
+        }
+
+       
+
+        /* 테이블 글 씨 중앙정렬 */
+        .center-align {
+            text-align: center;
+        }
+        
+        td {
+		   
+		     white-space: nowrap;
+		}
+		 tr h2 {
+        font-size: 15px; /* 예시로 24px로 설정. 원하는 크기로 조절하세요. */
+    }
+    </style>
+
+
+
+
+
+
 <c:choose>
    <c:when test='${not empty goods.goods_status}'>
       <script>
@@ -97,10 +190,12 @@
                   + "'  onchange=readURL(this,'previewImage" + cnt
                   + "') />");
       $("#d_file").append(
-            "<img  id='previewImage"+cnt+"'   width=200 height=200  />");
+            "<img  id='previewImage"+cnt+"'   width=200 height=200  style='margin-right: 60px;'/>" );
+     
+     /*  $("#d_file").append("<td></td>"); */
       $("#d_file")
             .append(
-                  "<input  type='button' value='추가'  onClick=addNewImageFile('detail_image"
+                  "<input  type='button' class='btn btn-secondary' value='추가'  onClick=addNewImageFile('detail_image"
                         + cnt
                         + "','${imageFileList[0].goods_id}','detail_image')  />");
       cnt++;
@@ -191,49 +286,67 @@
          </UL>
          <DIV class="tab_container">
             <DIV class="tab_content" id="tab1">
-               <table>
+            
+            
+               <table  class="table">
                   <tr>
-                     <td width=200>상품분류</td>
+                     <td class="fixed_join" width=200>상품분류</td>
                      <td width=500><select name="goods_sort">
                            <c:choose>
-                              <c:when test="${goods.goods_sort=='컴퓨터와 인터넷' }">
-                                 <option value="컴퓨터와 인터넷" selected>컴퓨터와 인터넷</option>
-                                 <option value="디지털 기기">디지털 기기</option>
+                              <c:when test="${goods.goods_sort=='전통건강식품' }">
+                                 <option value="전통건강식품" selected>전통건강식품</option>
+                                 <option value="디지털 일반건강식품">일반건강식품 기기</option>
+                                 <option value="한방차/커피" selected>한방차/커피</option>
+                                 <option value="건강관리용품">건강관리용품</option>
                               </c:when>
-                              <c:when test="${goods.goods_sort=='디지털 기기' }">
-                                 <option value="컴퓨터와 인터넷">컴퓨터와 인터넷</option>
-                                 <option value="디지털 기기" selected>디지털 기기</option>
+                              <c:when test="${goods.goods_sort=='일반건강식품' }">
+                                  <option value="전통건강식품" selected>전통건강식품</option>
+                                 <option value="디지털 일반건강식품">일반건강식품 기기</option>
+                                 <option value="한방차/커피" selected>한방차/커피</option>
+                                 <option value="건강관리용품">건강관리용품</option>
                               </c:when>
+                               <c:when test="${goods.goods_sort=='한방차/커피' }">
+                                  <option value="전통건강식품" selected>전통건강식품</option>
+                                 <option value="디지털 일반건강식품">일반건강식품 기기</option>
+                                 <option value="한방차/커피" selected>한방차/커피</option>
+                                 <option value="건강관리용품">건강관리용품</option>
+                              </c:when>
+                               <c:when test="${goods.goods_sort=='건강관리용품' }">
+                                  <option value="전통건강식품" selected>전통건강식품</option>
+                                 <option value="디지털 일반건강식품">일반건강식품 기기</option>
+                                 <option value="한방차/커피" selected>한방차/커피</option>
+                                 <option value="건강관리용품">건강관리용품</option>
+                                  </c:when>
                            </c:choose>
                      </select></td>
-                     <td><input type="button" value="수정반영"
+                     <td><input type="button" class="btn btn-secondary"  value="수정반영"
                         onClick="fn_modify_goods('${goods.goods_id }','goods_sort')" />
                      </td>
                   </tr>
                   <tr>
-                     <td>상품이름</td>
+                     <td class="fixed_join" >상품이름</td>
                      <td><input name="goods_title" type="text" size="40"
                         value="${goods.goods_title }" /></td>
-                     <td><input type="button" value="수정반영"
+                     <td><input type="button" class="btn btn-secondary" value="수정반영"
                         onClick="fn_modify_goods('${goods.goods_id }','goods_title')" />
                      </td>
                   </tr>
 
                   <tr>
-                     <td>상품정가</td>
+                     <td class="fixed_join" >상품정가</td>
                      <td><input name="goods_price" type="text" size="40"
                         value="${goods.goods_price }" /></td>
-                     <td><input type="button" value="수정반영"
+                     <td><input type="button" class="btn btn-secondary" value="수정반영"
                         onClick="fn_modify_goods('${goods.goods_id }','goods_price')" />
                      </td>
 
                   </tr>
 
                   <tr>
-                     <td>상품판매가격</td>
+                     <td class="fixed_join" >상품판매가격</td>
                      <td><input name="goods_sales_price" type="text" size="40"
                         value="${goods.goods_sales_price }" /></td>
-                     <td><input type="button" value="수정반영"
+                     <td><input type="button" class="btn btn-secondary" value="수정반영"
                         onClick="fn_modify_goods('${goods.goods_id }','goods_sales_price')" />
                      </td>
 
@@ -252,10 +365,10 @@
 
 
                   <tr>
-                     <td>상품 배송비</td>
+                     <td class="fixed_join">상품 배송비</td>
                      <td><input name="goods_delivery_price" type="text" size="40"
                         value="${goods.goods_delivery_price }" /></td>
-                     <td><input type="button" value="수정반영"
+                     <td><input type="button" class="btn btn-secondary" value="수정반영"
                         onClick="fn_modify_goods('${goods.goods_id }','goods_delivery_price')" />
                      </td>
 
@@ -271,17 +384,15 @@
                   </tr> --%>
 
                   <tr>
-                     <td>상품종류</td>
+                     <td class="fixed_join">상품종류</td>
                      <td><select name="goods_status">
-                           <option value="bestseller">베스트셀러</option>
-                           <option value="steadyseller">스테디셀러</option>
-                           <option value="newbook">신간</option>
-                           <option value="on_sale">판매중</option>
-                           <option value="buy_out" selected>품절</option>
-                           <option value="out_of_print">절판</option>
+                       
+                           <option value="할인상품">할인상품</option>
+                           <option value="인기상품" selected>인기상품</option>
+                           <option value="일반상품">일반상품</option>
                      </select> <input type="hidden" name="h_goods_status"
                         value="${goods.goods_status }" /></td>
-                     <td><input type="button" value="수정반영"
+                     <td><input type="button" class="btn btn-secondary" value="수정반영"
                         onClick="fn_modify_goods('${goods.goods_id }','goods_status')" />
                      </td>
                   </tr>
@@ -290,7 +401,7 @@
                   </tr>
                </table>
             </DIV>
-            <DIV class="tab_content" id="tab2">
+     <%--        <DIV class="tab_content" id="tab2">
                <h4>책목차</h4>
                <table>
                </table>
@@ -304,7 +415,7 @@
                      <td><textarea rows="100" cols="80" name="goods_intro">
                   ${goods.goods_intro }
                   </textarea></td>
-                     <td>&nbsp;&nbsp;&nbsp;&nbsp; <input type="button"
+                     <td>&nbsp;&nbsp;&nbsp;&nbsp; <input type="button" class="btn btn-secondary"
                         value="수정반영"
                         onClick="fn_modify_goods('${goods.goods_id }','goods_intro')" />
                      </td>
@@ -316,74 +427,80 @@
             <DIV class="tab_content" id="tab6">
                <table>
                </table>
-            </DIV>
+            </DIV> --%>
             <DIV class="tab_content" id="tab7">
-               <form id="FILE_FORM" method="post" enctype="multipart/form-data">
-                  <h4>상품이미지</h4>
-                  <table>
-                     <tr>
-                        <c:forEach var="item" items="${imageFileList }"
-                           varStatus="itemNum">
-                           <c:choose>
-                              <c:when test="${item.fileType=='main_image' }">
-                                 <tr>
-                                    <td>메인 이미지</td>
-                                    <td><input type="file" id="main_image"
-                                       name="main_image"
-                                       onchange="readURL(this,'preview${itemNum.count}');" /> <%-- <input type="text" id="image_id${itemNum.count }"  value="${item.fileName }" disabled  /> --%>
-                                       <input type="hidden" name="image_id"
-                                       value="${item.image_id}" /> <br></td>
-                                    <td><img id="preview${itemNum.count }" width=200
-                                       height=200
-                                       src="${contextPath}/download.do?goods_id=${item.goods_id}&fileName=${item.fileName}" />
-                                    </td>
-                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                    <td><input type="button" value="수정"
-                                       onClick="modifyImageFile('main_image','${item.goods_id}','${item.image_id}','${item.fileType}')" />
-                                    </td>
-                                 </tr>
-                                 <tr>
-                                    <td><br></td>
-                                 </tr>
-                              </c:when>
-                              <c:otherwise>
-                                 <tr id="${itemNum.count-1}">
-                                    <td>상세 이미지${itemNum.count-1 }</td>
-                                    <td><input type="file" name="detail_image"
-                                       id="detail_image"
-                                       onchange="readURL(this,'preview${itemNum.count}');" /> <%-- <input type="text" id="image_id${itemNum.count }"  value="${item.fileName }" disabled  /> --%>
-                                       <input type="hidden" name="image_id"
-                                       value="${item.image_id }" /> <br></td>
-                                    <td><img id="preview${itemNum.count }" width=200
-                                       height=200
-                                       src="${contextPath}/download.do?goods_id=${item.goods_id}&fileName=${item.fileName}">
-                                    </td>
-                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                    <td><input type="button" value="수정"
-                                       onClick="modifyImageFile('detail_image','${item.goods_id}','${item.image_id}','${item.fileType}')" />
-                                       <input type="button" value="삭제"
-                                       onClick="deleteImageFile('${item.goods_id}','${item.image_id}','${item.fileName}','${itemNum.count-1}')" />
-                                    </td>
-                                 </tr>
-                                 <tr>
-                                    <td><br></td>
-                                 </tr>
-                              </c:otherwise>
-                           </c:choose>
-                        </c:forEach>
-                     <tr align="center">
-                        <td colspan="3">
-                           <div id="d_file">
-                              <%-- <img  id="preview${itemNum.count }"   width=200 height=200 src="${contextPath}/download.do?goods_id=${item.goods_id}&fileName=${item.fileName}" /> --%>
-                           </div>
-                        </td>
-                     </tr>
-                     <tr>
-                        <td align=center colspan=2><input type="button"
-                           value="이미지파일추가하기" onClick="fn_addFile()" /></td>
-                     </tr>
-                  </table>
-               </form>
-            </DIV>
-            <DIV class="clear"></DIV>
-   </form>
+               <form id="FILE_FORM" method="post" enctype="multipart/form-data"  >
+				<h4>상품이미지</h4>
+				 <table  class="table">
+					 <tr>
+					<c:forEach var="item" items="${imageFileList }"  varStatus="itemNum">
+			        <c:choose>
+			            <c:when test="${item.fileType=='main_image' }">
+			              <tr>
+						    <td class="fixed_join">메인 이미지</td>
+						    <td>
+							  <input type="file"  id="main_image"  name="main_image"  onchange="readURL(this,'preview${itemNum.count}');" />
+						      <%-- <input type="text" id="image_id${itemNum.count }"  value="${item.fileName }" disabled  /> --%>
+							  <input type="hidden"  name="image_id" value="${item.image_id}"  />
+							<br>
+						</td>
+						<td>
+						  <img  id="preview${itemNum.count }"   width=200 height=200 src="${contextPath}/download.do?goods_id=${item.goods_id}&fileName=${item.fileName}" />
+						</td>
+						<td>
+						  &nbsp;&nbsp;&nbsp;&nbsp;
+						</td>
+						 <td>
+						 <input  type="button"  class="btn btn-secondary" value="수정"  onClick="modifyImageFile('main_image','${item.goods_id}','${item.image_id}','${item.fileType}')"/>
+						</td> 
+					</tr>
+					
+			         </c:when>
+			         <c:otherwise>
+			           <tr  id="${itemNum.count-1}">
+						<td class="fixed_join">상세 이미지${itemNum.count-1 }</td>
+						<td>
+							<input type="file" name="detail_image"  id="detail_image"   onchange="readURL(this,'preview${itemNum.count}');" />
+							<%-- <input type="text" id="image_id${itemNum.count }"  value="${item.fileName }" disabled  /> --%>
+							<input type="hidden"  name="image_id" value="${item.image_id }"  />
+							<br>
+						</td>
+						<td>
+						  <img  id="preview${itemNum.count }"   width=200 height=200 src="${contextPath}/download.do?goods_id=${item.goods_id}&fileName=${item.fileName}">
+						</td>
+						<td>
+						  &nbsp;&nbsp;&nbsp;&nbsp;
+						</td>
+						 <td>
+						 <input  type="button"   class="btn btn-secondary" value="수정"  onClick="modifyImageFile('detail_image','${item.goods_id}','${item.image_id}','${item.fileType}')"/>
+						  <input  type="button"   class="btn btn-secondary" value="삭제"  onClick="deleteImageFile('${item.goods_id}','${item.image_id}','${item.fileName}','${itemNum.count-1}')"/>
+						</td> 
+					</tr>
+					
+			         </c:otherwise>
+			       </c:choose>		
+			    </c:forEach>
+			    <tr >
+			    	<td class="fixed_join">
+			    	</td>
+			    	
+			      <td colspan="4">
+				      <div id="d_file">
+						  <%-- <img  id="preview${itemNum.count }"   width=200 height=200 src="${contextPath}/download.do?goods_id=${item.goods_id}&fileName=${item.fileName}" /> --%>
+				      </div>
+			       </td>
+			       
+			       
+			    </tr>
+		   <tr>
+		     <td align=center colspan=5>
+		     
+		     <input  id="addFileButton"  type="button"  class="btn btn-secondary" value="이미지파일추가하기"  onClick="fn_addFile()"  />
+		   </td>
+		</tr> 
+	</table>
+	</form>
+	</DIV>
+	<DIV class="clear"></DIV>
+					
+</form>	

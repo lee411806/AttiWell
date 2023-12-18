@@ -241,16 +241,16 @@ article ul#page_control li a {
    padding: 2px 5px; border: 1px solid rgb(204, 204, 204); border-image: none; display: block;
 }
 article ul#page_control li a:hover {
-   border: 1px solid rgb(255, 0, 0); border-image: none; color: rgb(255, 0, 0);
+   border: 1px solid #1b7340; border-image: none; color: #1b7340;
 }
 article ul#page_control li a.no_border {
    border: currentColor; border-image: none; padding-top: 3px;
 }
 .active {
-   color: rgb(255, 0, 0); font-weight: bold;
+   color: #1b7340; font-weight: bold;
 }
 article ul#page_control li .page_contrl_active {
-   background: rgb(255, 255, 255); border: 1px solid rgb(255, 0, 0); border-image: none; color: rgb(255, 0, 0);
+   background: rgb(255, 255, 255); border: 1px solid #1b7340; border-image: none; color: #1b7340;
 }
 article h3 {
    margin: 5px 0px;
@@ -325,7 +325,7 @@ article h4 {
    background-position: 15px; background-repeat: no-repeat;
 }
 #detail_table ul li a.buy {
-   border-color: rgb(255, 0, 0); color: rgb(255, 0, 0); background-image: url("../imgs/check.png");
+   border-color:#1b7340; color: rgb(255, 0, 0); background-image: url("../imgs/check.png");
 }
 #detail_table ul li a.cart {
    background-image: url("../imgs/cart.png");
@@ -346,10 +346,10 @@ article h4 {
    margin: 40px auto; width: 100%;
 }
 ul.tabs {
-   list-style: none; margin: 0px; padding: 0px; width: 100%; height: 32px; border-bottom-color: rgb(255, 0, 0); border-bottom-width: 1px; border-bottom-style: solid; float: left;
+   list-style: none; margin: 0px; padding: 0px; width: 100%; height: 32px; border-bottom-color: #1b7340; border-bottom-width: 1px; border-bottom-style: solid; float: left;
 }
 ul.tabs li {
-   border-width: 1px; border-style: solid; border-color: rgb(153, 153, 153) rgb(153, 153, 153) rgb(255, 0, 0); margin: 0px 1px; padding: 0px; border-image: none; height: 31px; line-height: 31px; overflow: hidden; float: left; border-top-left-radius: 7px; border-top-right-radius: 7px; background-color: rgb(245, 245, 245);
+   border-width: 1px; border-style: solid; border-color: rgb(153, 153, 153) rgb(153, 153, 153) #1b7340; margin: 0px 1px; padding: 0px; border-image: none; height: 31px; line-height: 31px; overflow: hidden; float: left; border-top-left-radius: 7px; border-top-right-radius: 7px; background-color: rgb(245, 245, 245);
 }
 ul.tabs li a {
    padding: 0px 20px; color: rgb(0, 0, 0); font-size: 12px; font-weight: bold; text-decoration: none; display: block;
@@ -358,10 +358,10 @@ ul.tabs li a:hover {
    background-color: rgb(202, 228, 255);
 }
 ul.tabs li.active {
-   background: rgb(255, 255, 255); border-color: rgb(255, 0, 0) rgb(255, 0, 0) rgb(255, 255, 255); border-bottom-width: 2px; border-bottom-style: solid;
+   background: rgb(255, 255, 255); border-color: #1b7340; border-bottom-width: 2px; border-bottom-style: solid;
 }
 ul.tabs li.active a:hover {
-   background: rgb(255, 255, 255); border-color: rgb(255, 0, 0) rgb(255, 0, 0) rgb(255, 255, 255); border-bottom-width: 2px; border-bottom-style: solid;
+   background: rgb(255, 255, 255); border-color: #1b7340 ; border-bottom-width: 2px; border-bottom-style: solid;
 }
 .tab_container {
    background: rgb(255, 255, 255); width: 100%; clear: both; border-top-color: currentColor; border-top-width: medium; border-top-style: none; float: left;

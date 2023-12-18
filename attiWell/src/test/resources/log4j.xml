@@ -11,7 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="com.spring.bookshop01">
+	<logger name="com.spring.attiWell">
 		<level value="info" />
 	</logger>
 	
