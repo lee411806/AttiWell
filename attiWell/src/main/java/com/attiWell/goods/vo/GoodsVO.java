@@ -10,7 +10,6 @@ public class GoodsVO {
 	private String goods_sort;
 	private int    goods_sales_price;
 	private String goods_delivery_price;
-	private Date goods_delivery_date;
 	private String goods_fileName;
 	private String goods_status;
 	private String goods_intro;
@@ -50,7 +49,6 @@ public class GoodsVO {
 	}
 
 
-
 	public int getGoods_price() {
 		return goods_price;
 	}
@@ -78,11 +76,6 @@ public class GoodsVO {
 	}
 
 
-
-
-
-
-
 	public String getGoods_delivery_price() {
 		return goods_delivery_price;
 	}
@@ -93,43 +86,21 @@ public class GoodsVO {
 		this.goods_delivery_price = goods_delivery_price;
 	}
 
-
-	public Date getGoods_delivery_date() {
-		return goods_delivery_date;
-	}
-
-
-
-	public void setGoods_delivery_date(Date goods_delivery_date) {
-		this.goods_delivery_date = goods_delivery_date;
-	}
-
-
-
-
-
 	public String getGoods_fileName() {
 		return goods_fileName;
 	}
-
-
 
 	public void setGoods_fileName(String goods_fileName) {
 		this.goods_fileName = goods_fileName;
 	}
 
-
-
-	
 	public String getGoods_status() {
 		return goods_status;
 	}
 
-
 	public void setGoods_status(String goods_status) {
 		this.goods_status = goods_status;
 	}
-
 
 	public String getGoods_intro() {
 		return goods_intro;

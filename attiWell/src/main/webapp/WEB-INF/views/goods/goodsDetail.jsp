@@ -6,12 +6,11 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <c:set var="goods" value="${goodsMap.goodsVO}" />
-<%-- <c:set var="cart" value="${cartMap.cartVO}" /> --%>
 <c:set var="imageList" value="${goodsMap.imageList }" />
 <%
 	//치환 변수 선언합니다.
-	//pageContext.setAttribute("crcn", "\r\n"); //개행문자
-	pageContext.setAttribute("crcn", "\n"); //Ajax로 변경 시 개행 문자 
+	pageContext.setAttribute("crcn", "\r\n"); //개행문자
+	//pageContext.setAttribute("crcn", "\n"); //Ajax로 변경 시 개행 문자 
 	pageContext.setAttribute("br", "<br/>"); //br 태그
 %>
 <html>
@@ -44,16 +43,13 @@
 </style>
 <script type="text/javascript">
 	function add_cart(goods_id) {
-	
-		 var orderGoodsQty = document.getElementById('order_goods_qty').value;
-		 console.log('주문 수량:', orderGoodsQty);
 		$.ajax({
 			type : "post",
 			async : false, //false인 경우 동기식으로 처리한다.
 			url : "${contextPath}/cart/addGoodsInCart.do",
 			data : {
-				goods_id : goods_id,
-				orderGoodsQty : orderGoodsQty
+				goods_id : goods_id
+
 			},
 			success : function(data, textStatus) {
 				//alert(data);
@@ -66,7 +62,7 @@
 
 			},
 			error : function(data, textStatus) {
-				alert("에러가 발생했습니다." + data);
+				alert("로그인 후 이용하세요.");
 			},
 			complete : function(data, textStatus) {
 				//alert("작업을완료 했습니다");
@@ -90,8 +86,7 @@
 		}
 	}
 
-	function fn_order_each_goods(goods_id, goods_title, 
-			goods_sales_price,
+	function fn_order_each_goods(goods_id, goods_title, goods_sales_price,
 			fileName) {
 		var _isLogOn = document.getElementById("isLogOn");
 		var isLogOn = _isLogOn.value;
@@ -134,7 +129,7 @@
 		formObj.submit();
 	}
 </script>
-<link rel="s7tylesheet" href="${contextPath}/resources/css/main.css" />
+<link rel="stylesheet" href="${contextPath}/resources/css/main.css" />
 
 </head>
 
@@ -184,27 +179,21 @@
 							var="formattedRoundedDiscount" /> <span> <fmt:formatNumber
 								value="${item.goods_price}" type="number" var="goods_price" />
 							<c:choose>
-								<c:when test="${item.goods_price == item.goods_sales_price }">
+								<c:when test="${goods.goods_price == goods.goods_sales_price }">
 									<span style="color: blue; font-weight: bold">${formattedDiscountedPrice }원</span>
 								</c:when>
 								<c:otherwise>
-									<span style="text-decoration: line-through;">${goods_price}원</span>
-									<br>
-
-									<span style="color: blue; font-weight: bold">${formattedDiscountedPrice }원(${formattedRoundedDiscount}%할인)</span>
+									<span style="color: blue; font-weight: bold">${formattedDiscountedPrice }원<span
+										style="font-size: 15px">(${formattedRoundedDiscount}%할인)</span></span>
 								</c:otherwise>
 							</c:choose>
 					</span> <br>
 				</tr>
-				<%-- <tr>
-					<td class="fixed">포인트적립</td>
-					<td class="active">${goods.goods_point}P(5%적립)</td>
-				</tr> --%>
-				<!-- <tr class="dot_line">
+				<tr class="dot_line">
 					<td class="fixed">포인트 추가적립</td>
 					<td class="fixed">만원이상 구매시 1,000P, 5만원이상 구매시 2,000P추가적립 편의점 배송
 						이용시 300P 추가적립</td>
-				</tr> -->
+				</tr>
 				<tr>
 					<td class="fixed">배송료</td>
 					<td class="fixed"><strong>무료</strong></td>
@@ -274,6 +263,8 @@
 			<form action='${contextPath}/cart/myCartList.do'>
 				<input type="submit" value="장바구니 보기">
 			</form>
+		</div>
+	</div>
 </body>
 </html>
 <input type="hidden" name="isLogOn" id="isLogOn" value="${isLogOn}" />

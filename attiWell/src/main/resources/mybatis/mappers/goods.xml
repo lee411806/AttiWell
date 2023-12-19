@@ -12,10 +12,6 @@
 
       <result property="goods_status" column="goods_status" />
       <result property="goods_sales_price" column="goods_sales_price" />
-      <result property="goods_delivery_price"
-         column="goods_delivery_price" />
-      <result property="goods_delivery_date"
-         column="goods_delivery_date" />
 
       <result property="goods_fileName" column="fileName" />
       <result property="goods_sort" column="goods_sort" />
@@ -34,17 +30,37 @@
    <select id="allGoodsList" parameterType="String"
       resultMap="goodsResult">
     <![CDATA[
-        select * from (
-        select rowNum as recNum, t.*
-          from(
-         select g.*,d.fileName from t_shopping_goods g, t_goods_detail_image d
-           where g.goods_id=d.goods_id 
-           and d.filetype='main_image'
-            order by g.goods_creDate desc)  t
-            )
-                where            
-      recNum between (#{section}-1)*100+ (#{pageNum}-1)*10+1 and (#{section}-1)*100+(#{pageNum})*10
+    SELECT * FROM (
+        SELECT rowNum AS recNum, t.*
+        FROM (
+            SELECT g.*, d.fileName 
+            FROM t_shopping_goods g, t_goods_detail_image d
+            WHERE g.goods_id = d.goods_id 
+            AND d.filetype = 'main_image'
+            ORDER BY
+            ]]>
+      <if test="sort == 'highPrice'">
+         g.goods_sales_price DESC
+      </if>
+      <if test="sort == 'latest'">
+         g.goods_creDate DESC
+      </if>
+      <if test="sort == 'lowPrice'">
+         g.goods_sales_price ASC
+      </if>
+    <![CDATA[
+        ) t
+    )
+    WHERE recNum BETWEEN (#{section}-1)*100 + (#{pageNum}-1)*10+1 AND (#{section}-1)*100 + (#{pageNum})*10
     ]]>
+   </select>
+
+   <select id="getAllGoodsCount" resultType="int">
+      SELECT COUNT(*)
+      FROM
+      t_shopping_goods g, t_goods_detail_image d
+      WHERE g.goods_id =
+      d.goods_id AND d.filetype = 'main_image'
    </select>
 
 
@@ -62,18 +78,33 @@
        ]]>
    </select>
 
-   <select id="selectCategoryList" parameterType="String"
+   <select id="selectCategoryList" parameterType="map"
       resultMap="goodsResult">
-        <![CDATA[
-         select t.*
-          from(
-         select g.*,d.fileName from t_shopping_goods g, t_goods_detail_image d
-           where g.goods_id=d.goods_id 
-           and d.filetype='main_image'
-           and goods_sort=#{goodsSort}
-            order by g.goods_creDate desc)  t
-                where   rowNum < 9
-       ]]>
+    <![CDATA[
+    SELECT * FROM (
+        SELECT rowNum AS recNum, t.*
+        FROM (
+            SELECT g.*, d.fileName 
+            FROM t_shopping_goods g, t_goods_detail_image d
+            WHERE g.goods_id = d.goods_id 
+            AND d.filetype = 'main_image'
+            and goods_sort = #{goodsSort, jdbcType=VARCHAR}
+            ORDER BY
+            ]]>
+      <if test="sort == 'highPrice'">
+         g.goods_sales_price DESC
+      </if>
+      <if test="sort == 'latest'">
+         g.goods_creDate DESC
+      </if>
+      <if test="sort == 'lowPrice'">
+         g.goods_sales_price ASC
+      </if>
+    <![CDATA[
+        ) t
+    )
+    WHERE recNum BETWEEN (#{section}-1)*100 + (#{pageNum}-1)*10+1 AND (#{section}-1)*100 + (#{pageNum})*10
+    ]]>
    </select>
 
    <select id="selectGoodsDetail" resultMap="goodsResult"
@@ -96,15 +127,43 @@
    </select>
 
    <select id="selectGoodsBySearchWord" resultMap="goodsResult"
-      parameterType="String">
-     <![CDATA[
-            select g.*,d.fileName from t_shopping_goods g, t_goods_detail_image d
-          where g.goods_id=d.goods_id
-          and d.filetype='main_image'
-          and g.goods_title like '%'|| #{searchWord} || '%'
-          order by g.goods_creDate desc
-          
-      ]]>
+      parameterType="map">
+    <![CDATA[
+    SELECT * FROM (
+        SELECT rowNum AS recNum, t.*
+        FROM (
+            SELECT g.*, d.fileName 
+            FROM t_shopping_goods g, t_goods_detail_image d
+            WHERE g.goods_id = d.goods_id 
+            AND d.filetype = 'main_image'
+            and g.goods_title like '%'|| #{searchWord} || '%'
+            ORDER BY
+            ]]>
+      <if test="sort == 'highPrice'">
+         g.goods_sales_price DESC
+      </if>
+      <if test="sort == 'latest'">
+         g.goods_creDate DESC
+      </if>
+      <if test="sort == 'lowPrice'">
+         g.goods_sales_price ASC
+      </if>
+    <![CDATA[
+        ) t
+    )
+    WHERE recNum BETWEEN (#{section}-1)*100 + (#{pageNum}-1)*10+1 AND (#{section}-1)*100 + (#{pageNum})*10
+    ]]>
+   </select>
+
+   <select id="countGoodsBySearchWord" parameterType="map"
+      resultType="int">
+    <![CDATA[
+    SELECT COUNT(*)
+    FROM t_shopping_goods g
+    JOIN t_goods_detail_image d ON g.goods_id = d.goods_id
+    WHERE d.filetype = 'main_image'
+    AND g.goods_title LIKE '%' || #{searchWord} || '%'
+    ]]>
    </select>
 
    <select id="selectKeywordSearch" resultType="String"
