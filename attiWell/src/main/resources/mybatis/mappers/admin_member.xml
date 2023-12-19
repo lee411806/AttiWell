@@ -39,8 +39,8 @@
 			    select rowNum as recNum,t.*
 			       from (
 			              select  *  from t_shopping_member 
-			              where to_char(joinDate,'yyyy-mm-dd')  between #{beginDate} and #{endDate}
-			                <if test="search_type=='member_id'">
+			              where to_char(joinDate,'YYYY-MM-DD')  between #{beginDate} and #{endDate}
+			             <!--    <if test="search_type=='member_id'">
 			                  AND member_id=#{search_word}
 			                </if>
 			                <if test="search_type=='member_name'">
@@ -48,7 +48,7 @@
 			                </if>
 			                <if test="search_type=='member_hp_num'">
 			                   AND hp1||hp2||hp3=#{search_word} 
-			                </if>
+			                </if> -->
 			              order by joinDate desc
 					    ) t
 				)							

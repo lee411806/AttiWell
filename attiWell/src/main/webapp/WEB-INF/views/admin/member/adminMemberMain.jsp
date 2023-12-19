@@ -91,8 +91,9 @@
     </style>
 
 <script>
-function search_member(search_period){	
-	temp=calcPeriod(search_period);
+/* function search_member(search_period){	
+	var temp=calcPeriod(search_period);
+	console.log(temp);
 	var date=temp.split(",");
 	beginDate=date[0];
 	endDate=date[1];
@@ -110,11 +111,25 @@ function search_member(search_period){
 	i_endDate.name="endDate";
 	i_endDate.value=endDate;
 	
+	console.log(i_beginDate.name);
+	
     formObj.appendChild(i_beginDate);
     formObj.appendChild(i_endDate);
     document.body.appendChild(formObj); 
     formObj.method="get";
     formObj.action="/attiWell/admin/member/adminMemberMain.do";
+    formObj.submit();
+} */
+
+function search_member(fixeSearchPeriod) {
+    var formObj = document.createElement("form");
+    var i_fixedSearch_period = document.createElement("input");
+    i_fixedSearch_period.name = "fixedSearchPeriod";
+    i_fixedSearch_period.value = fixeSearchPeriod;
+    formObj.appendChild(i_fixedSearch_period);
+    document.body.appendChild(formObj);
+    formObj.method = "get";
+    formObj.action = "${contextPath}/admin/member/adminMemberMain.do";
     formObj.submit();
 }
 
@@ -168,9 +183,9 @@ function  calcPeriod(search_period){
 		dt.setMonth(endMonth-3);
 		beginMonth = dt.getMonth();
 		beginDay = dt.getDate();
-	}else if(search_period=='four_month'){
+	}else if(search_period=='three__month'){
 		beginYear = dt.getFullYear();
-		dt.setMonth(endMonth-4);
+		dt.setMonth(endMonth-6);
 		beginMonth = dt.getMonth();
 		beginDay = dt.getDate();
 	}
@@ -190,6 +205,7 @@ function  calcPeriod(search_period){
 	endDate=endYear+'-'+endMonth +'-'+endDay;
 	beginDate=beginYear+'-'+beginMonth +'-'+beginDay;
 	//alert(beginDate+","+endDate);
+	console.log(beginDate);
 	return beginDate+","+endDate;
 }
 

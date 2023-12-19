@@ -138,7 +138,21 @@ function init(){
 </c:when>
 </c:choose>
 <script>
-function search_order_history(search_period){	
+
+function search_order_history(fixeSearchPeriod) {
+    var formObj = document.createElement("form");
+    var i_fixedSearch_period = document.createElement("input");
+    i_fixedSearch_period.name = "fixedSearchPeriod";
+    i_fixedSearch_period.value = fixeSearchPeriod;
+    formObj.appendChild(i_fixedSearch_period);
+    document.body.appendChild(formObj);
+    formObj.method = "get";
+    formObj.action = "${contextPath}/admin/order/adminOrderMain.do";
+    formObj.submit();
+}
+
+
+/* function search_order_history(search_period){	
 	temp=calcPeriod(search_period);
 	var date=temp.split(",");
 	beginDate=date[0];
@@ -161,7 +175,7 @@ function search_order_history(search_period){
     formObj.method="get";
     formObj.action="${contextPath}/admin/order/adminOrderMain.do";
     formObj.submit();
-}
+} */
 
 
 function  calcPeriod(search_period){
@@ -246,7 +260,7 @@ function fn_modify_order_state(order_id,select_id){
 		success : function(data, textStatus) {
 			if(data.trim()=='mod_success'){
 				alert("주문 정보를 수정했습니다.");
-				location.href="${contextPath}//admin/order/adminOrderMain.do";
+				location.href="${contextPath}/admin/order/adminOrderMain.do";
 			}else if(data.trim()=='failed'){
 				alert("다시 시도해 주세요.");	
 			}
@@ -299,19 +313,19 @@ function fn_detail_order(order_id){
     오늘
 </button>
 
-<button type="button" class="btn btn-primary btn-sm custom-btn mr-3" onclick="javascript:search_order_history('today')">
+<button type="button" class="btn btn-primary btn-sm custom-btn mr-3" onclick="javascript:search_order_history('one_month')">
     최근 1개월
 </button>
 
-<button type="button" class="btn btn-primary btn-sm custom-btn mr-3" onclick="javascript:search_order_history('today')">
+<button type="button" class="btn btn-primary btn-sm custom-btn mr-3" onclick="javascript:search_order_history('two_month')">
     최근 2개월
 </button>
 
-<button type="button" class="btn btn-primary btn-sm custom-btn mr-3" onclick="javascript:search_order_history('today')">
+<button type="button" class="btn btn-primary btn-sm custom-btn mr-3" onclick="javascript:search_order_history('three_month')">
     최근 3개월
 </button>
 
-<button type="button" class="btn btn-primary btn-sm custom-btn mr-3" onclick="javascript:search_order_history('today')">
+<button type="button" class="btn btn-primary btn-sm custom-btn mr-3" onclick="javascript:search_order_history('six_month')">
     최근 6개월
 </button>
 					

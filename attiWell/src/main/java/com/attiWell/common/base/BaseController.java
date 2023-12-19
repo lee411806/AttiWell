@@ -99,8 +99,8 @@ public abstract class BaseController  {
 			cal.add(cal.MONTH,-2);
 		}else if(fixedSearchPeriod.equals("three_month")) {
 			cal.add(cal.MONTH,-3);
-		}else if(fixedSearchPeriod.equals("four_month")) {
-			cal.add(cal.MONTH,-4);
+		}else if(fixedSearchPeriod.equals("six_month")) {
+			cal.add(cal.MONTH,-6);
 		}
 		
 		beginYear   = Integer.toString(cal.get(Calendar.YEAR));
