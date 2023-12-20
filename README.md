@@ -9,39 +9,52 @@
   
 유한비 : 주문페이지
 
-<hr>
- 
+
 - Language
-  Java, HTML, CSS , Javascript
+
+
+   Java, HTML, CSS , Javascript
 
   
 - DB
+
+
   Oracle
 
 
 
 - IDE
+
+
   Eclipse(STS3)
 
 
   -Build
+
+
   maven
 
 
 - 배포
+
+
   AWS
 
 
  - 환경
-    SourceTree, Github
 
-<hr>
+
+     SourceTree, Github
+
+
 
  ## 기술
+
+ 
  Spring, ajax
 
 
-   <hr>
+
   
 ## 주요기능
 
