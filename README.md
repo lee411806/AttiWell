@@ -7,6 +7,16 @@
 기획 ppt
 
 
+
+
+
+
+
+
+  
+## 주요기능
+
+
 로그인_일반회원&관리자
 
 https://github.com/lee411806/AttiWell/assets/132039579/e85872a4-8541-4c6f-aba7-6e8f42ebfaa0
@@ -123,9 +133,8 @@ https://github.com/lee411806/AttiWell/assets/132039579/441bf0c6-bcdc-4724-a597-a
 
 
 
-  
-## 주요기능
 
+<hr>
  로그인 /회원가입
 
 
@@ -136,4 +145,6 @@ https://github.com/lee411806/AttiWell/assets/132039579/441bf0c6-bcdc-4724-a597-a
 
 
 관리자 설정/  주문내역 조회, 주문내역 상세조회/ 상품조회, 상품등록, 상품수정/  회원조회, 회원정보 수정
+
+<hr>
   
