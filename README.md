@@ -1,6 +1,14 @@
 # 팀프로젝트 AttiWell
 
-<img src="https://github.com/lee411806/AttiWell/assets/132039579/d1a8f121-27d2-47c5-a65e-0869492a3507">
+
+
+https://github.com/lee411806/AttiWell/assets/132039579/dc6c2d60-cc2d-43e2-9dd7-77c0ec5d0faa
+
+
+https://github.com/lee411806/AttiWell/assets/132039579/7a768cc8-588e-4a29-97bd-03322e5741b5
+
+
+
 
 ## 조원
 김영광 : 로그인, 회원가입
