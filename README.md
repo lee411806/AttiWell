@@ -67,7 +67,7 @@ https://github.com/lee411806/AttiWell/assets/132039579/8917ba30-415a-4b57-a9a0-b
 https://github.com/lee411806/AttiWell/assets/132039579/d1af641e-963f-4270-b995-a485f3925c85
 
 
-br><br>마이페이지_2
+<br><br>마이페이지_2
 
 https://github.com/lee411806/AttiWell/assets/132039579/ecbb0150-e995-45e5-9945-f5cc5a11a6eb
 
