@@ -32,7 +32,25 @@ https://github.com/lee411806/AttiWell/assets/132039579/cac949a3-5456-42e7-b1ad-3
 https://github.com/lee411806/AttiWell/assets/132039579/b0053ac6-61cf-47d7-bfdd-e74c596b5d5a
 
 
- <br><br>카테고리 & 검색 기능
+ <br><br>카테고리_1
+
+https://github.com/lee411806/AttiWell/assets/132039579/8e9d5f17-c960-4845-af66-ddf313ff6dfa
+
+
+ <br><br>카테고리_2
+https://github.com/lee411806/AttiWell/assets/132039579/b74c61cd-b94b-4a29-9aec-d275d287cd6e
+
+
+ <br><br>카테고리_3
+https://github.com/lee411806/AttiWell/assets/132039579/f3125162-adcf-4903-965e-e4ce71e8bbcc
+
+
+ <br><br>검색 기능_1
+https://github.com/lee411806/AttiWell/assets/132039579/b98f4ab2-7f33-4a69-944b-9a1c7b7ff291
+
+
+<br><br>검색 기능_2
+https://github.com/lee411806/AttiWell/assets/132039579/c393d4d9-d2da-4bc6-a2e3-3269b6b59e57
 
 
  <br><br>상세페이지& 결제
@@ -40,7 +58,12 @@ https://github.com/lee411806/AttiWell/assets/132039579/b0053ac6-61cf-47d7-bfdd-e
 https://github.com/lee411806/AttiWell/assets/132039579/8917ba30-415a-4b57-a9a0-b1f2f53fc7a1
 
 
- <br><br>마이페이지
+ <br><br>마이페이지_1
+https://github.com/lee411806/AttiWell/assets/132039579/d1af641e-963f-4270-b995-a485f3925c85
+
+
+br><br>마이페이지_2
+https://github.com/lee411806/AttiWell/assets/132039579/ecbb0150-e995-45e5-9945-f5cc5a11a6eb
 
 
  <br><br>장바구니
