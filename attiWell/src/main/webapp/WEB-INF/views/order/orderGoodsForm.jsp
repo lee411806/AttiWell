@@ -168,7 +168,6 @@ p {
    box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.5);
 }
 
-
 #close {
    z-index: 4;
    float: right;
@@ -737,8 +736,28 @@ p {
                      <tr>
                         <td><label class="lableBox">휴대폰번호</label></td>
                         <td><select class="inputBox_select" id="hp1" name="hp1">
+                              <c:choose>
+                                 <c:when test="${orderer.hp1 eq '010'}">
+                                    <option value="010" selected>010</option>
+                                 </c:when>
+                                 <c:when test="${orderer.hp1 eq '011'}">
+                                    <option value="011" selected>011</option>
+                                 </c:when>
+                                 <c:when test="${orderer.hp1 eq '016'}">
+                                    <option value="016" selected>016</option>
+                                 </c:when>
+                                 <c:when test="${orderer.hp1 eq '017'}">
+                                    <option value="017" selected>017</option>
+                                 </c:when>
+                                 <c:when test="${orderer.hp1 eq '018'}">
+                                    <option value="018" selected>018</option>
+                                 </c:when>
+                                 <c:when test="${orderer.hp1 eq '019'}">
+                                    <option value="019" selected>019</option>
+                                 </c:when>
+                              </c:choose>
                               <option>없음</option>
-                              <option value="010" selected>010</option>
+                              <option value="010">010</option>
                               <option value="011">011</option>
                               <option value="016">016</option>
                               <option value="017">017</option>
@@ -747,8 +766,8 @@ p {
                         </select> <input class="inputBox_select" size="10px" type="text" id="hp2"
                            name="hp2" value="${orderer.hp2 }"> <input
                            class="inputBox_select" size="10px" type="text" id="hp3"
-                           name="hp3" value="${orderer.hp3 }"><br>
-                        <br> <input type="hidden" id="h_hp1" name="h_hp1"
+                           name="hp3" value="${orderer.hp3 }"><br> <br>
+                           <input type="hidden" id="h_hp1" name="h_hp1"
                            value="${orderer.hp1 }" /> <input type="hidden" id="h_hp2"
                            name="h_hp2" value="${orderer.hp2 }" /> <input type="hidden"
                            id="h_hp3" name="h_hp3" value="${orderer.hp3 }" /> <c:set
@@ -758,6 +777,80 @@ p {
                      <tr>
                         <td><label class="lableBox">유선전화(선택)</label></td>
                         <td><select class="inputBox_select" id="tel1" name="tel1">
+                              <c:choose>
+                                 <c:when test="${orderer.tel1 eq '02'}">
+                                    <option value="02" selected>02</option>
+                                 </c:when>
+                                 <c:when test="${orderer.tel1 eq '031'}">
+                                    <option value="031" selected>031</option>
+                                 </c:when>
+                                 <c:when test="${orderer.tel1 eq '032'}">
+                                    <option value="032" selected>032</option>
+                                 </c:when>
+                                 <c:when test="${orderer.tel1 eq '033'}">
+                                    <option value="033" selected>033</option>
+                                 </c:when>
+                                 <c:when test="${orderer.tel1 eq '041'}">
+                                    <option value="041" selected>041</option>
+                                 </c:when>
+                                 <c:when test="${orderer.tel1 eq '042'}">
+                                    <option value="042" selected>042</option>
+                                 </c:when>
+                                 <c:when test="${orderer.tel1 eq '043'}">
+                                    <option value="043" selected>043</option>
+                                 </c:when>
+                                 <c:when test="${orderer.tel1 eq '044'}">
+                                    <option value="044" selected>044</option>
+                                 </c:when>
+                                 <c:when test="${orderer.tel1 eq '051'}">
+                                    <option value="051" selected>051</option>
+                                 </c:when>
+                                 <c:when test="${orderer.tel1 eq '052'}">
+                                    <option value="052" selected>052</option>
+                                 </c:when>
+                                 <c:when test="${orderer.tel1 eq '053'}">
+                                    <option value="053" selected>053</option>
+                                 </c:when>
+                                 <c:when test="${orderer.tel1 eq '054'}">
+                                    <option value="054" selected>054</option>
+                                 </c:when>
+                                 <c:when test="${orderer.tel1 eq '055'}">
+                                    <option value="055" selected>055</option>
+                                 </c:when>
+                                 <c:when test="${orderer.tel1 eq '061'}">
+                                    <option value="061" selected>061</option>
+                                 </c:when>
+                                 <c:when test="${orderer.tel1 eq '062'}">
+                                    <option value="062" selected>062</option>
+                                 </c:when>
+                                 <c:when test="${orderer.tel1 eq '063'}">
+                                    <option value="063" selected>063</option>
+                                 </c:when>
+                                 <c:when test="${orderer.tel1 eq '064'}">
+                                    <option value="064" selected>064</option>
+                                 </c:when>
+                                 <c:when test="${orderer.tel1 eq '0502'}">
+                                    <option value="0502" selected>0502</option>
+                                 </c:when>
+                                 <c:when test="${orderer.tel1 eq '0503'}">
+                                    <option value="0503" selected>0503</option>
+                                 </c:when>
+                                 <c:when test="${orderer.tel1 eq '0505'}">
+                                    <option value="0505" selected>0505</option>
+                                 </c:when>
+                                 <c:when test="${orderer.tel1 eq '0506'}">
+                                    <option value="0506" selected>0506</option>
+                                 </c:when>
+                                 <c:when test="${orderer.tel1 eq '0507'}">
+                                    <option value="0507" selected>0507</option>
+                                 </c:when>
+                                 <c:when test="${orderer.tel1 eq '0508'}">
+                                    <option value="0508" selected>0508</option>
+                                 </c:when>
+                                 <c:when test="${orderer.tel1 eq '070'}">
+                                    <option value="070" selected>070</option>
+                                 </c:when>
+                              </c:choose>
                               <option value="02">02</option>
                               <option value="031">031</option>
                               <option value="032">032</option>
@@ -795,11 +888,10 @@ p {
                      </tr>
 
                      <tr>
-                        <td>&nbsp;<br>
-                        <label class="lableBox">주소</label></td>
-                        <td style="margin-top: 30px">&nbsp;<br>
-                        <input class="inputBox_select" type="text" id="zipcode"
-                           name="zipcode" size="5" value="${orderer.zipcode }"> <a
+                        <td>&nbsp;<br> <label class="lableBox">주소</label></td>
+                        <td style="margin-top: 30px">&nbsp;<br> <input
+                           class="inputBox_select" type="text" id="zipcode" name="zipcode"
+                           size="5" value="${orderer.zipcode }"> <a
                            href="javascript:execDaumPostcode()" class="button">우편번호검색</a>
                            <br>
                            <p>
@@ -879,7 +971,7 @@ p {
                               value="${item.goods_title }" /></td>
 
                            <!-- 수량 -->
-                           <td class="goods_buttom">${item.order_goods_qty }개 <input
+                           <td class="goods_buttom">${item.order_goods_qty }개<input
                               type="hidden" id="h_order_goods_qty" name="h_order_goods_qty"
                               value="${item.order_goods_qty}" />
                            </td>
@@ -1322,5 +1414,4 @@ p {
    <div class="clear"></div>
    <br>
 </body>
-
 

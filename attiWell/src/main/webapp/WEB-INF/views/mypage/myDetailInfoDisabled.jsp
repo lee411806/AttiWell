@@ -439,6 +439,80 @@ tr h2 {
                   <tr>
                      <td class="fixed_join">전화번호</td>
                      <td><select name="tel1" disabled>
+                           <c:choose>
+                              <c:when test="${memberInfo.tel1 eq '02'}">
+                                 <option value="02" selected>02</option>
+                              </c:when>
+                              <c:when test="${memberInfo.tel1 eq '031'}">
+                                 <option value="031" selected>031</option>
+                              </c:when>
+                              <c:when test="${memberInfo.tel1 eq '032'}">
+                                 <option value="032" selected>032</option>
+                              </c:when>
+                              <c:when test="${memberInfo.tel1 eq '033'}">
+                                 <option value="033" selected>033</option>
+                              </c:when>
+                              <c:when test="${memberInfo.tel1 eq '041'}">
+                                 <option value="041" selected>041</option>
+                              </c:when>
+                              <c:when test="${memberInfo.tel1 eq '042'}">
+                                 <option value="042" selected>042</option>
+                              </c:when>
+                              <c:when test="${memberInfo.tel1 eq '043'}">
+                                 <option value="043" selected>043</option>
+                              </c:when>
+                              <c:when test="${memberInfo.tel1 eq '044'}">
+                                 <option value="044" selected>044</option>
+                              </c:when>
+                              <c:when test="${memberInfo.tel1 eq '051'}">
+                                 <option value="051" selected>051</option>
+                              </c:when>
+                              <c:when test="${memberInfo.tel1 eq '052'}">
+                                 <option value="052" selected>052</option>
+                              </c:when>
+                              <c:when test="${memberInfo.tel1 eq '053'}">
+                                 <option value="053" selected>053</option>
+                              </c:when>
+                              <c:when test="${memberInfo.tel1 eq '054'}">
+                                 <option value="054" selected>054</option>
+                              </c:when>
+                              <c:when test="${memberInfo.tel1 eq '055'}">
+                                 <option value="055" selected>055</option>
+                              </c:when>
+                              <c:when test="${memberInfo.tel1 eq '061'}">
+                                 <option value="061" selected>061</option>
+                              </c:when>
+                              <c:when test="${memberInfo.tel1 eq '062'}">
+                                 <option value="062" selected>062</option>
+                              </c:when>
+                              <c:when test="${memberInfo.tel1 eq '063'}">
+                                 <option value="063" selected>063</option>
+                              </c:when>
+                              <c:when test="${memberInfo.tel1 eq '064'}">
+                                 <option value="064" selected>064</option>
+                              </c:when>
+                              <c:when test="${memberInfo.tel1 eq '0502'}">
+                                 <option value="0502" selected>0502</option>
+                              </c:when>
+                              <c:when test="${memberInfo.tel1 eq '0503'}">
+                                 <option value="0503" selected>0503</option>
+                              </c:when>
+                              <c:when test="${memberInfo.tel1 eq '0505'}">
+                                 <option value="0505" selected>0505</option>
+                              </c:when>
+                              <c:when test="${memberInfo.tel1 eq '0506'}">
+                                 <option value="0506" selected>0506</option>
+                              </c:when>
+                              <c:when test="${memberInfo.tel1 eq '0507'}">
+                                 <option value="0507" selected>0507</option>
+                              </c:when>
+                              <c:when test="${memberInfo.tel1 eq '0508'}">
+                                 <option value="0508" selected>0508</option>
+                              </c:when>
+                              <c:when test="${memberInfo.tel1 eq '070'}">
+                                 <option value="070" selected>070</option>
+                              </c:when>
+                           </c:choose>
                            <option value="00">없음</option>
                            <option value="02">02</option>
                            <option value="031">031</option>
@@ -472,8 +546,28 @@ tr h2 {
                   <tr>
                      <td class="fixed_join">휴대폰번호</td>
                      <td><select name="hp1" disabled>
+                           <c:choose>
+                              <c:when test="${memberInfo.hp1 eq '010'}">
+                                 <option value="010" selected>010</option>
+                              </c:when>
+                              <c:when test="${memberInfo.hp1 eq '011'}">
+                                 <option value="011" selected>011</option>
+                              </c:when>
+                              <c:when test="${memberInfo.hp1 eq '016'}">
+                                 <option value="016" selected>016</option>
+                              </c:when>
+                              <c:when test="${memberInfo.hp1 eq '017'}">
+                                 <option value="017" selected>017</option>
+                              </c:when>
+                              <c:when test="${memberInfo.hp1 eq '018'}">
+                                 <option value="018" selected>018</option>
+                              </c:when>
+                              <c:when test="${memberInfo.hp1 eq '019'}">
+                                 <option value="019" selected>019</option>
+                              </c:when>
+                           </c:choose>
                            <option>없음</option>
-                           <option selected value="010">010</option>
+                           <option value="010">010</option>
                            <option value="011">011</option>
                            <option value="016">016</option>
                            <option value="017">017</option>
@@ -510,8 +604,7 @@ tr h2 {
                            <option value="empal.com">empal.com</option>
                            <option value="korea.com">korea.com</option>
                            <option value="freechal.com">freechal.com</option>
-                     </select><Br>
-                     <br> <c:choose>
+                     </select><Br> <br> <c:choose>
                            <c:when test="${memberInfo.emailsts_yn=='true' }">
                               <input type="checkbox" name="emailsts_yn" value="Y" checked
                                  disabled /> 쇼핑몰에서 발송하는 e-mail을 수신합니다.
@@ -527,9 +620,9 @@ tr h2 {
                         value="${memberInfo.zipcode }" disabled> <a
                         href="javascript:execDaumPostcode()">우편번호검색</a> <br>
                         <p>
-                           지번 주소:<br>
-                           <input type="text" id="roadAddress" name="roadAddress"
-                              size="50" value="${memberInfo.roadAddress }" disabled><br>
+                           지번 주소:<br> <input type="text" id="roadAddress"
+                              name="roadAddress" size="50"
+                              value="${memberInfo.roadAddress }" disabled><br>
                            <br> 도로명 주소: <input type="text" id="jibunAddress"
                               name="jibunAddress" size="50"
                               value="${memberInfo.jibunAddress }" disabled><br>

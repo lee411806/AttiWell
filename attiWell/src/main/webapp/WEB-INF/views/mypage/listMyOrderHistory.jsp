@@ -27,12 +27,14 @@ a {
 
       // delivery_state 파라미터를 추가
       var i_delivery_state = document.createElement("input");
+      i_delivery_state.type = "hidden";
       i_delivery_state.name = "delivery_state";
       i_delivery_state.value = deliveryState;
       formObj.appendChild(i_delivery_state);
 
       // fixedSearchPeriod 파라미터를 추가
       var i_fixedSearch_period = document.createElement("input");
+      i_fixedSearch_period.type = "hidden";
       i_fixedSearch_period.name = "fixedSearchPeriod";
       i_fixedSearch_period.value = fixedSearchPeriod;
       formObj.appendChild(i_fixedSearch_period);
@@ -100,7 +102,7 @@ a {
                   onclick="search_order_history('three_month')">최근 3개월</button>
                <button type="button"
                   class="btn btn-primary btn-sm custom-btn mr-3"
-                  onclick="search_order_history('four_month')">최근 4개월</button>
+                  onclick="search_order_history('six_month')">최근 6개월</button>
             </tr>
 
          </tbody>

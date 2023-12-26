@@ -84,17 +84,8 @@ a {
                   onclick="search_order_history('three_month')">최근 3개월</button>
                <button type="button"
                   class="btn btn-primary btn-sm custom-btn mr-3"
-                  onclick="search_order_history('four_month')">최근 4개월</button>
+                  onclick="search_order_history('six_month')">최근 6개월</button>
             </tr>
-            <!-- <tr>
-               <td><select name="search_condition">
-                     <option value="2015" checked>전체</option>
-                     <option value="2014">수령자</option>
-                     <option value="2013">주문자</option>
-                     <option value="2012">주문번호</option>
-               </select> <input type="text" name="searchInput" size="30" /> <input
-                  type="button" value="조회" onclick="searchOrder()" /></td>
-            </tr> -->
 
          </tbody>
       </table>
