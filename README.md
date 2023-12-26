@@ -1,6 +1,10 @@
 # 팀프로젝트 AttiWell
 
-<img src = "[![Uploading 주문관리.gif…]()](https://github.com/lee411806/AttiWell/issues/2#issue-2056196198)" >
+
+
+
+https://github.com/lee411806/AttiWell/assets/132039579/d1c35ebd-bb12-4f52-910a-da4899f7ed5a
+
 
 
 
