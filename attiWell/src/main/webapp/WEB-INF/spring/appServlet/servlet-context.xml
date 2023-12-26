@@ -11,64 +11,31 @@
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
 	<!-- Enables the Spring MVC @Controller programming model -->
-	<!--이렇게 <annotation-driven />를 설정함으로써, Spring MVC는 애노테이션을 사용한 편리한 컨트롤러 프로그래밍을 지원하게 됩니다.  -->
 	<annotation-driven />
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
-	
 	<resources mapping="/resources/**" location="/resources/" />
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
-	
-	<!-- TilesConfigurer은 definition이라는 속성을 이용해 tiles파일 위치를 지정해준다. 타일즈의 설정파일들의 위치를 지정한다.
-		definitions는 타일즈의 정의파일들의 위치를 나타낸다.
-	 -->
 <beans:bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
 	<beans:property name="definitions">
 		<beans:list>
-		<!-- 타일즈 폴더 안의 xml파일들 -->
 			<beans:value>classpath:tiles/*.xml</beans:value>
 		</beans:list>
 	</beans:property>
-	
-	<!--타일즈 뷰에서 고정된 viewpage의 데이터를 가져와 빈으로 만들어 필요할때 효과적으로 불러올 수 있다.  -->
 	<beans:property name="preparerFactoryClass" value="org.springframework.web.servlet.view.tiles2.SpringBeanPreparerFactory"/>
 </beans:bean>
- 
-  <!-- UrlBasedViewResolver클래스는 URL기반의 뷰를 해석하고 Rendering해준다. 
-  	(viewResolver : 내보낼 view를 결정하고 해당 뷰를 렌더링한다.)
-  	TilewView : 뷰 리졸버가 타일뷰를 사용하겠다.
-  	쉽게 말해 URL기반의 뷰 리졸버가 URL을 사용하여 타일즈뷰를 사용하고 나타내겠다는 말이다.
-   -->
-<beans:bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver"> 
-	<beans:property name="viewClass" value="org.springframework.web.servlet.view.tiles2.TilesView"/> 
+<beans:bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+	<beans:property name="viewClass" value="org.springframework.web.servlet.view.tiles2.TilesView"/>
 </beans:bean>
-
-
-<!-- 지정된 패키지에서 스테레오타입4가지를 찾아 에너테이션이 붙은 클래스를 찾고 빈으로 등록한다. -->
 	<context:component-scan base-package="com.attiWell" />
-	
-	<!--mvc:interceptors 인터셉터 기능을 사용하도록 설정합니다. 
-	<mvc:mapping path="/*/*.do"/>  
-	<mvc:mapping path="/*/*/*.do"/>  이 경로들에서만 인터셉터 빈을 수행합니다.(사실상 모든경로)
-	ViewNameInterceptor 인터셉터 기능을 수행할 빈
-	-->
 	
 	<mvc:interceptors>
   <mvc:interceptor>
-    <mvc:mapping path="/*/*.do"/> 
-    <mvc:mapping path="/*/*/*.do"/> 
+    <mvc:mapping path="/*/*.do"/>
+    <mvc:mapping path="/*/*/*.do"/>
       <beans:bean class="com.attiWell.common.interceptor.ViewNameInterceptor" />
   </mvc:interceptor>
  </mvc:interceptors>
- 
- 
- <!--파일 업로드를 처리하기 위한 멀티파틑 리졸버클래스를 설정하는 부분입니다.
- CommonsMultipartResolver 클래스를 빈으로 등록하고 있습니다. 
-  <beans:property name="maxUploadSize" value="52428800" />: maxUploadSize 속성은 클라이언트가 업로드할 수 있는 최대 파일 크기를 지정합니다. 
-  <beans:property name="maxInMemorySize" value="52428800" />: maxInMemorySize 속성은 인메모리에 저장할 최대 크기를 나타냅니다
-  <beans:property name="defaultEncoding" value="utf-8" />: defaultEncoding 속성은 요청 파라미터 등을 디코딩할 때 사용할 인코딩을 설정합니다
-  (파일이름 인코딩 설정)
-  -->
  
  	<!-- 멀티파트 리졸버 -->
     <beans:bean id="multipartResolver"  class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

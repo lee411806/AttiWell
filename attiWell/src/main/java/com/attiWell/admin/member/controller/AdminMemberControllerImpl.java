@@ -86,19 +86,28 @@ public class AdminMemberControllerImpl extends BaseController  implements AdminM
 	public void modifyMemberInfo(HttpServletRequest request, HttpServletResponse response)  throws Exception{
 		HashMap<String,String> memberMap=new HashMap<String,String>();
 		String val[]=null;
+		String val2 = null;
 		PrintWriter pw=response.getWriter();
 		String member_id=request.getParameter("member_id");
 		String mod_type=request.getParameter("mod_type");
 		String value =request.getParameter("value");
+			
+		System.out.println(member_id);
+		  System.out.println("member_gender value: " + request.getParameter("value"));
+		  
 		
 		if(mod_type.equals("member_pw")) {
-			val=value.split(",");
-			memberMap.put("member_pw",val[0]);
+//			val=value.split(",");
+			val2 = value;
+			System.out.println("pw" + value);
+			memberMap.put("member_pw",value);
 			
 		}else if(mod_type.equals("member_gender")) {
-			val=value.split(",");
-			memberMap.put("member_gender",val[0]);
+//			val=value.split(",");
+			System.out.println("gender" + value);
 			
+			memberMap.put("member_gender",value);
+			System.out.println(val);
 		}else if(mod_type.equals("member_birth")){
 			val=value.split(",");
 			memberMap.put("member_birth_y",val[0]);
@@ -135,6 +144,7 @@ public class AdminMemberControllerImpl extends BaseController  implements AdminM
 		adminMemberService.modifyMemberInfo(memberMap);
 		pw.print("mod_success");
 		pw.close();		
+		System.out.println("HashMap 내용 확인: " + memberMap.toString());
 		
 	}
 	

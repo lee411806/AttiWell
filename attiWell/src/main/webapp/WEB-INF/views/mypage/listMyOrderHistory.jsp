@@ -63,19 +63,6 @@ a {
       }
    }
 
-   /*    function searchOrder() {
-    var formObj = document.createElement("form");
-    var searchCondition = document.getElementsByName("search_condition")[0].value;
-    if (searchCondition === '2012') {
-   
-    } else if (searchCondition === '2013') {
-
-    } else if (searchCondition === '2014') {
-
-    } else {
-
-    }
-    } */
 </script>
 <style>
 .custom-btn {
@@ -87,7 +74,8 @@ a {
 
 </head>
 <body>
-   <H3>주문 배송 조회</H3>
+   <H3 style="font-size: 20px; font-weight: bold; color:gray">주문 내역 조회</H3>
+   <br>
    <form method="post">
       <table>
          <tbody>
@@ -114,15 +102,6 @@ a {
                   class="btn btn-primary btn-sm custom-btn mr-3"
                   onclick="search_order_history('four_month')">최근 4개월</button>
             </tr>
-            <tr>
-               <td><select name="search_condition">
-                     <option value="2015" checked>전체</option>
-                     <option value="2014">수령자</option>
-                     <option value="2013">주문자</option>
-                     <option value="2012">주문번호</option>
-               </select> <input type="text" name="searchInput" size="30" /> <input
-                  type="button" value="조회" onclick="searchOrder()" /></td>
-            </tr>
 
          </tbody>
       </table>
@@ -131,7 +110,7 @@ a {
    <div class="clear"></div>
    <table class="list_view">
       <tbody align=center>
-         <tr style="background: #33ff00">
+         <tr style="background: #EFE7E1">
             <td class="fixed">주문번호</td>
             <td class="fixed">주문일자</td>
             <td>주문내역</td>

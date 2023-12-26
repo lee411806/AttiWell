@@ -21,6 +21,7 @@ a {
    function search_order_history(fixedSearchPeriod) {
       var formObj = document.createElement("form");
       var i_fixedSearch_period = document.createElement("input");
+      i_fixedSearch_period.type = "hidden";
       i_fixedSearch_period.name = "fixedSearchPeriod";
       i_fixedSearch_period.value = fixedSearchPeriod;
       formObj.appendChild(i_fixedSearch_period);
@@ -47,31 +48,6 @@ a {
       }
    }
 
-   /* function searchOrder() {
-        // 검색 조건 선택값 가져오기
-        var searchCondition = document.getElementsByName("search_condition")[0].value;
-        // 검색 입력값 가져오기
-        var searchInput = document.getElementsByName("searchInput")[0].value;
-
-        // 선택된 검색 조건에 따라 다르게 처리
-        switch (searchCondition) {
-            case "2012":
-                // 주문번호로 조회
-            
-                break;
-            case "2013":
-                // 주문자로 조회
-
-                break;
-            case "2014":
-                // 수령자로 조회
-
-                break;
-            default:
-                // 전체 처리
-
-        }
-    } */
 </script>
 <style>
 .custom-btn {
@@ -83,7 +59,7 @@ a {
 
 </head>
 <body>
-   <H3>주문 배송 조회</H3>
+   <H3 style="font-size: 20px; font-weight: bold; color:gray">주문 내역 조회</H3>
    <form method="post">
       <table>
          <tbody>
@@ -110,7 +86,7 @@ a {
                   class="btn btn-primary btn-sm custom-btn mr-3"
                   onclick="search_order_history('four_month')">최근 4개월</button>
             </tr>
-            <tr>
+            <!-- <tr>
                <td><select name="search_condition">
                      <option value="2015" checked>전체</option>
                      <option value="2014">수령자</option>
@@ -118,7 +94,7 @@ a {
                      <option value="2012">주문번호</option>
                </select> <input type="text" name="searchInput" size="30" /> <input
                   type="button" value="조회" onclick="searchOrder()" /></td>
-            </tr>
+            </tr> -->
 
          </tbody>
       </table>
@@ -127,7 +103,7 @@ a {
    <div class="clear"></div>
    <table class="list_view">
       <tbody align=center>
-         <tr style="background: #33ff00">
+         <tr style="background: #EFE7E1">
             <td class="fixed">주문번호</td>
             <td class="fixed">주문일자</td>
             <td>주문내역</td>

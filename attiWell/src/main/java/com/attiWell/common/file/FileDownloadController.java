@@ -30,7 +30,7 @@ public class FileDownloadController {
 		response.setHeader("Cache-Control","no-cache");
 		response.addHeader("Content-disposition", "attachment; fileName="+fileName);
 		FileInputStream in=new FileInputStream(image); 
-		byte[] buffer=new byte[1024*8];
+		byte[] buffer=new byte[2048*8];
 		while(true){
 			int count=in.read(buffer); //버퍼에 읽어들인 문자개수
 			if(count==-1)  //버퍼의 마지막에 도달했는지 체크
@@ -51,9 +51,9 @@ public class FileDownloadController {
 		File image=new File(filePath);
 		
 		if (image.exists()) { 
-			Thumbnails.of(image).size(121,154).outputFormat("png").toOutputStream(out);
+			Thumbnails.of(image).size(450,500).outputFormat("png").toOutputStream(out);
 		}
-		byte[] buffer = new byte[1024 * 8];
+		byte[] buffer = new byte[2048* 8];
 		out.write(buffer);
 		out.close();
 	}

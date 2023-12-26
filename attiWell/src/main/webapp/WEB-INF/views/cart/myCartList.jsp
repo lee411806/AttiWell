@@ -1,3 +1,5 @@
+
+
 <%@ page language="java" contentType="text/html; charset=utf-8"
    pageEncoding="utf-8"
    isELIgnored="false" %>
@@ -42,7 +44,7 @@
 .table {
     width: calc(100% - 20px); /* 부모의 padding을 고려하여 계산 */
 }
- 		a {
+       a {
             color: grey; /* 또는 원하는 색상으로 변경 */
         }
         .h2 {
@@ -66,122 +68,147 @@
         }
         
         tr {
-		   
-		     white-space: nowrap;
-		}
+         
+           white-space: nowrap;
+      }
 </style>
 
 
 
 <script type="text/javascript">
 
-function calcGoodsPrice(bookPrice,obj){
-	var totalPrice,final_total_price,totalNum;
-	var goods_qty=document.getElementById("select_goods_qty");
-	//alert("총 상품금액"+goods_qty.value);
-	var p_totalNum=document.getElementById("p_totalNum");
-	var p_totalPrice=document.getElementById("p_totalPrice");
-	var p_final_totalPrice=document.getElementById("p_final_totalPrice");
-	var h_totalNum=document.getElementById("h_totalNum");
-	var h_totalPrice=document.getElementById("h_totalPrice");
-	var h_totalDelivery=document.getElementById("h_totalDelivery");
-	var h_final_total_price=document.getElementById("h_final_totalPrice");
-	if(obj.checked==true){
-	//	alert("체크 했음")
-		
-		totalNum=Number(h_totalNum.value)+Number(goods_qty.value);
-		//alert("totalNum:"+totalNum);
-		totalPrice=Number(h_totalPrice.value)+Number(goods_qty.value*bookPrice);
-		//alert("totalPrice:"+totalPrice);
-		final_total_price=totalPrice+Number(h_totalDelivery.value);
-		//alert("final_total_price:"+final_total_price);
 
-	}else{
-	//	alert("h_totalNum.value:"+h_totalNum.value);
-		totalNum=Number(h_totalNum.value)-Number(goods_qty.value);
-	//	alert("totalNum:"+ totalNum);
-		totalPrice=Number(h_totalPrice.value)-Number(goods_qty.value)*bookPrice;
-	//	alert("totalPrice="+totalPrice);
-		final_total_price=totalPrice-Number(h_totalDelivery.value);
-	//	alert("final_total_price:"+final_total_price);
-	}
-	
-	h_totalNum.value=totalNum;
-	
-	h_totalPrice.value=totalPrice;
-	h_final_total_price.value=final_total_price;
-	
-	p_totalNum.innerHTML=totalNum;
-	p_totalPrice.innerHTML=totalPrice;
-	p_final_totalPrice.innerHTML=final_total_price;
+
+
+function calcTot(checkbox) {
+   var totalPrice = 0;
+   var totalQty = 0;
+   var objForm = document.frm_order_all_cart;
+   var checked_goods = objForm.checked_goods;
+   console.log(checked_goods);
+   /* var checked_cnt = 0; */
+   
+   
+
+     var car_qty = 0;
+      var deliveryCharge = 0;
+      
+     
+      
+       if (checked_goods instanceof NodeList || checked_goods instanceof HTMLCollection) {
+              // 여러 개의 체크박스가 선택된 경우의 처리
+               console.log(checked_goods);
+              for (var i = 0; i < checked_goods.length; i++) {
+                  if (checked_goods[i].checked == true) {
+                      var price = parseFloat(checked_goods[i].getAttribute("price"))
+                      var qty = parseFloat(checked_goods[i].getAttribute("qty"))
+                      totalPrice += (price * qty);
+                      car_qty += qty;
+                  }
+              }
+          } else if (checked_goods instanceof HTMLInputElement) {
+              // 단일 체크박스가 선택된 경우의 처리
+                 
+                             if (checkbox.checked) {
+                                   console.log(checked_goods);
+                                   var price = parseFloat(checked_goods.getAttribute("price"))
+                                  
+                                   var qty = parseFloat(checked_goods.getAttribute("qty"))
+                                   totalPrice += (price * qty);
+                                  
+                                   car_qty += qty;
+                                   
+                                   console.log(totalPrice);
+                                   console.log(qty);
+                   } else {
+                         console.log(checked_goods);
+                          var price = parseFloat(checked_goods.getAttribute("price"))
+                         
+                          var qty = parseFloat(checked_goods.getAttribute("qty"))
+                          totalPrice =0
+                         
+                          car_qty = 0;
+                          
+                          console.log(totalPrice);
+                          console.log(qty);
+                   }
+           
+          }
+   
+   document.getElementById("p_totalGoodsNum").innerHTML = car_qty
+         + "개";
+   
+ 
+   document.getElementById("p_totalGoodsPrice").innerHTML = totalPrice
+         .toLocaleString('en-US')
+         + "원";
+   
+    var p_totalDeliveryPrice = document.getElementById("p_totalDeliveryPrice");
+       var h_totalDeliveryPrice = document.getElementById("h_totalDeliveryPrice");
+       var p_final_totalPrice = document.getElementById("p_final_totalPrice");
+       var currentTotalGoodsPrice = parseFloat(h_totalGoodsPrice.value);
+       
+       if(currentTotalGoodsPrice >= 50000){
+          p_totalDeliveryPrice.innerHTML = new Intl.NumberFormat('ko-KR').format(0) + '원';
+          h_totalDeliveryPrice.innerHTML = new Intl.NumberFormat('ko-KR').format(0) + '원';
+       }
+   
+   document.getElementById("p_final_totalPrice").innerHTML = totalPrice
+         .toLocaleString('en-US')
+         + "원";
+
+   document.getElementById("h_final_totalPrice").innerHTML = totalPrice;
+
 }
 
 
 
+/*
+function calcGoodsPrice(bookPrice,obj){
+   var totalPrice,final_total_price,totalNum;
+   var goods_qty=document.getElementById("select_goods_qty");
+   //alert("총 상품금액"+goods_qty.value);
+   var p_totalNum=document.getElementById("p_totalNum");
+   var p_totalPrice=document.getElementById("p_totalPrice");
+   var p_final_totalPrice=document.getElementById("p_final_totalPrice");
+   var h_totalNum=document.getElementById("h_totalNum");
+   var h_totalPrice=document.getElementById("h_totalPrice");
+   var h_totalDelivery=document.getElementById("h_totalDelivery");
+   var h_final_total_price=document.getElementById("h_final_totalPrice");
+   if(obj.checked==true){
+   //   alert("체크 했음")
+      
+      totalNum=Number(h_totalNum.value)+Number(goods_qty.value);
+      //alert("totalNum:"+totalNum);
+      totalPrice=Number(h_totalPrice.value)+Number(goods_qty.value*bookPrice);
+      //alert("totalPrice:"+totalPrice);
+      final_total_price=totalPrice+Number(h_totalDelivery.value);
+      //alert("final_total_price:"+final_total_price);
+
+   }else{
+   //   alert("h_totalNum.value:"+h_totalNum.value);
+      totalNum=Number(h_totalNum.value)-Number(goods_qty.value);
+   //   alert("totalNum:"+ totalNum);
+      totalPrice=Number(h_totalPrice.value)-Number(goods_qty.value)*bookPrice;
+   //   alert("totalPrice="+totalPrice);
+      final_total_price=totalPrice-Number(h_totalDelivery.value);
+   //   alert("final_total_price:"+final_total_price);
+   }
+   
+   h_totalNum.value=totalNum;
+   
+   h_totalPrice.value=totalPrice;
+   h_final_total_price.value=final_total_price;
+   
+   p_totalNum.innerHTML=totalNum;
+   p_totalPrice.innerHTML=totalPrice;
+   p_final_totalPrice.innerHTML=final_total_price;
+}
+*/
 
 
-/* var totalQuantity = 0;
-
- window.onload = function() {
-    updateTotalQuantity(goodsId, goodsSalesPrice); // 총 개수 업데이트 함수 호출
-}; 
- */
-
-/* function updateTotalQuantity(goodsId, goodsSalesPrice) {
-	<c:forEach var="item" items="${myGoodsList}" varStatus="cnt">
 
 
-
-	    var checkbox = document.getElementById("checkbox_${item.goods_id}");     
-	    
-	    // 체크박스가 있는 경우에만 이벤트 핸들러 등록
-	    if (checkbox) {
-	    	console.log(checkbox);
-	        checkbox.onclick = function() {
-	         	
-	        	   var goodsId = '${item.goods_id}';
-	               var goodsSalesPrice = ${item.goods_sales_price};
-	               var cartGoodsQty = ${myCartList[cnt.count-1].cart_goods_qty};
-	               var discountedPrice = ${item.goods_sales_price} * cartGoodsQty;
-	        		console.log(discountedPrice);
-
-			            // 여기에서 각 항목에 대한 정보를 활용하여 필요한 작업 수행
-			            console.log('상품 ID:', goodsId);
-			            console.log('판매 가격:', goodsSalesPrice);
-			            console.log('장바구니 상품 수량:', cartGoodsQty);
-			            console.log('할인 가격:', discountedPrice);
-		
-			            // 체크박스가 체크되어 있는지 여부를 확인합니다.
-			            if (!checkbox.checked) {
-			                // 체크가 해제되면 총 수량에서 cartGoodsQty를 뺍니다.
-			                totalQuantity -= cartGoodsQty;
-			            	console.log(totalQuantity);
-			                if (p_totalGoodsNum && h_totalGoodsNum) {
-			                    p_totalGoodsNum.innerHTML = new Intl.NumberFormat('ko-KR').format(totalQuantity) + '개';
-			                    h_totalGoodsNum.value = totalQuantity;
-			                }
-			                  
-			            }else if(checkbox.checked){
-			            	
-			            	  totalQuantity += cartGoodsQty;
-			            	  console.log(totalQuantity);
-			            	    if (p_totalGoodsNum && h_totalGoodsNum) {
-			            	        p_totalGoodsNum.innerHTML = new Intl.NumberFormat('ko-KR').format(totalQuantity) + '개';
-			            	        h_totalGoodsNum.value = totalQuantity;
-			            	    }
-			      			
-			            }
-		
-			            // 총 수량 표시를 업데이트합니다.
-			          
-			            // 필요한 로직에 따라 updateTotalQuantity 함수를 호출합니다.
-			         
-			        };
-	    }
-	</c:forEach>
-	  
-	  
-	} */
 
 function modify_cart_qty(goods_id,bookPrice,index){
    //alert(index);
@@ -208,7 +235,9 @@ function modify_cart_qty(goods_id,bookPrice,index){
          //alert(data);
          if(data.trim()=='modify_success'){
             alert("수량을 변경했습니다!!");   
-            location.reload(); // 페이지 새로고침
+             location.reload();  // 페이지 새로고침
+          
+             
          }else{
             alert("다시 시도해 주세요!!");   
          }
@@ -316,7 +345,7 @@ function fn_order_all_cart_goods(){
    <table class="table">
       <tbody align=center >
          <tr style="background:#1b7340; color :white;"  >
-            <td class="fixed" style="display: none;" >구분</td> 
+            <td class="fixed" >구분</td> 
             <td colspan=2 class="fixed">상품명</td>
             <td>정가</td>
             <td>판매가</td>
@@ -340,11 +369,14 @@ function fn_order_all_cart_goods(){
                    <c:set var="cart_goods_qty" value="${myCartList[cnt.count-1].cart_goods_qty}" />
                    <c:set var="cart_id" value="${myCartList[cnt.count-1].cart_id}" />
                    <!--체크박스 수정-->
-				
-				      
-						<td style="display: none;"><input type="checkbox" name="checked_goods"  checked  value="${item.goods_id }"  onClick="calcGoodsPrice(${item.goods_sales_price },this)"></td>
-					<%-- <input type="checkbox" id="checkbox_${item.goods_id}" checked onclick="updateTotalQuantity('${item.goods_id}', ${item.goods_sales_price})"> --%>
-			
+            
+                  
+               <td><input type="checkbox" name="checked_goods"
+                           value="${item.goods_id }" onclick="calcTot(this)"
+                           price="${item.goods_sales_price}" qty="${cart_goods_qty }"
+                           checked></td>
+               <%-- <input type="checkbox" id="checkbox_${item.goods_id}" checked onclick="updateTotalQuantity('${item.goods_id}', ${item.goods_sales_price})"> --%>
+         
                <td class="goods_image">
                <a href="${contextPath}/goods/goodsDetail.do?goods_id=${item.goods_id }">
                   <img width="75" alt="" src="${contextPath}/thumbnails.do?goods_id=${item.goods_id}&fileName=${item.goods_fileName}"  />
@@ -359,36 +391,36 @@ function fn_order_all_cart_goods(){
                <td>
                   <strong>
                      <c:set var="goodsPrice" value="${item.goods_price}" />
-								<c:set var="goodsSalesPrice" value="${item.goods_sales_price}" />
-								<c:set var="discountedPrice"
-									value="${goodsPrice - (goodsPrice - goodsSalesPrice)}" />
-								<c:set var="discount"
-									value="${(goodsPrice - goodsSalesPrice) / goodsPrice * 100}" />
+                        <c:set var="goodsSalesPrice" value="${item.goods_sales_price}" />
+                        <c:set var="discountedPrice"
+                           value="${goodsPrice - (goodsPrice - goodsSalesPrice)}" />
+                        <c:set var="discount"
+                           value="${(goodsPrice - goodsSalesPrice) / goodsPrice * 100}" />
 
-								<%
-									double roundedDiscount = Math.ceil(Double.parseDouble(pageContext.getAttribute("discount").toString()));
-										pageContext.setAttribute("roundedDiscount", roundedDiscount);
-								%>
+                        <%
+                           double roundedDiscount = Math.ceil(Double.parseDouble(pageContext.getAttribute("discount").toString()));
+                              pageContext.setAttribute("roundedDiscount", roundedDiscount);
+                        %>
 
-								<fmt:formatNumber value="${discountedPrice}" type="number"
-									var="formattedDiscountedPrice" />
+                        <fmt:formatNumber value="${discountedPrice}" type="number"
+                           var="formattedDiscountedPrice" />
 
-								<fmt:formatNumber value="${roundedDiscount}" type="number"
-									var="formattedRoundedDiscount" />
-								<fmt:formatNumber value="${item.goods_sales_price*cart_goods_qty}" type="number"
-									var="formattedInvidualTotal" />
+                        <fmt:formatNumber value="${roundedDiscount}" type="number"
+                           var="formattedRoundedDiscount" />
+                        <fmt:formatNumber value="${item.goods_sales_price*cart_goods_qty}" type="number"
+                           var="formattedInvidualTotal" />
 
-								<span> <fmt:formatNumber value="${item.goods_price}"
-										type="number" var="goods_price" /> <c:choose>
-										<c:when test="${item.goods_price == item.goods_sales_price }">
-											<span>${formattedDiscountedPrice }원</span>
-										</c:when>
-										<c:otherwise>
+                        <span> <fmt:formatNumber value="${item.goods_price}"
+                              type="number" var="goods_price" /> <c:choose>
+                              <c:when test="${item.goods_price == item.goods_sales_price }">
+                                 <span>${formattedDiscountedPrice }원</span>
+                              </c:when>
+                              <c:otherwise>
 
-											<span>${formattedDiscountedPrice }원(${formattedRoundedDiscount}%할인)</span>
-										</c:otherwise>
-									</c:choose>
-								</span>
+                                 <span>${formattedDiscountedPrice }원(${formattedRoundedDiscount}%할인)</span>
+                              </c:otherwise>
+                           </c:choose>
+                        </span>
                      </strong>
                </td>
                <td>
@@ -507,12 +539,12 @@ function fn_order_all_cart_goods(){
 </html>
 <script>
 
-var totalQuantity = 0;
+ var totalQuantity = 0;
 
  window.onload = function() {
     <c:forEach var="item" items="${myGoodsList}" varStatus="cnt">
         var cartGoodsQty2 = ${myCartList[cnt.count-1].cart_goods_qty};
-       
+          
         totalQuantity += cartGoodsQty2;
     </c:forEach>
 
@@ -524,18 +556,19 @@ var totalQuantity = 0;
         h_totalGoodsNum.value = totalQuantity;
     }
     
-  
+    
     var p_totalDeliveryPrice = document.getElementById("p_totalDeliveryPrice");
     var h_totalDeliveryPrice = document.getElementById("h_totalDeliveryPrice");
     var p_final_totalPrice = document.getElementById("p_final_totalPrice");
     var currentTotalGoodsPrice = parseFloat(h_totalGoodsPrice.value);
     
     if(currentTotalGoodsPrice >= 50000){
-    	p_totalDeliveryPrice.innerHTML = new Intl.NumberFormat('ko-KR').format(0) + '원';
-    	h_totalDeliveryPrice.innerHTML = new Intl.NumberFormat('ko-KR').format(0) + '원';
+       p_totalDeliveryPrice.innerHTML = new Intl.NumberFormat('ko-KR').format(0) + '원';
+       h_totalDeliveryPrice.innerHTML = new Intl.NumberFormat('ko-KR').format(0) + '원';
     }
   
-};
+    
+};  
 
 
 
@@ -556,4 +589,5 @@ if (checkbox) {
 
 
 
-</script>
+</script> 
+

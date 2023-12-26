@@ -306,5 +306,21 @@ public class AdminGoodsControllerImpl extends BaseController  implements AdminGo
 			e.printStackTrace();
 		}
 	}
+	
+	
+	@Override
+	@RequestMapping(value="/removeGoods.do" ,method={RequestMethod.GET})
+	public void removeGoods(@RequestParam("goods_id") int goods_id,
+			                      HttpServletRequest request, HttpServletResponse response)  throws Exception {
+		
+		adminGoodsService.removeGoods(goods_id);
+		
+		response.sendRedirect(request.getContextPath() + "/admin/goods/adminGoodsMain.do");
+	
+		
+	}
+	
+	
+	
 
 }

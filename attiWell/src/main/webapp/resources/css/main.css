@@ -54,34 +54,28 @@ header #search .btn1 {
    border: 1px solid #1b7340; border-image: none; width: 55px; line-height: 34px; color: white; margin-left: 2px; background-color: #1b7340;
 }
 aside {
-   width: 205px; float: left;
+   width: 250px; float: left;
 }
 nav {
-   margin: 25px 0px 0px 10px; font-family: Noto; font-size: 0.8em;
+   font-family: Noto; font-size: 0.8em;
 }
 nav ul {
    list-style: none;
 }
 nav ul li {
-   padding: 5px 10px; text-transform: uppercase;
+   text-transform: uppercase;
 }
 nav ul li a {
    display: block;
 }
 nav ul li h3 {
-   background-position: top; padding: 5px 20px; border-radius: 20px; border: 1px solid rgb(204, 204, 204); border-image: none; text-transform: capitalize; font-size: 14px; background-image: url("../imgs/nav_back.jpg"); background-repeat: repeat-x; background-color: rgb(229, 229, 229);
+   background-position: top; border-radius: 20px; padding: 5px 20px; border: 1px solid rgb(204, 204, 204); border-image: none; text-transform: capitalize; font-size: 14px; background-image: url("../imgs/nav_back.jpg"); background-repeat: repeat-x; background-color: rgb(229, 229, 229);
 }
 nav ul li ul {
    margin: 10px 0px 0px;
 }
 nav ul li ul li {
    padding: 0px 0px 0px 20px; line-height: 2em;
-}
-aside #banner {
-   margin: 10px 15px;
-}
-#notice {
-   margin: 20px 0px 15px 15px; font-size: 0.75em;
 }
 #notice h2 {
    background-position: left; padding: 2px 0px 5px 10px; color: rgb(51, 102, 153); font-family: Noto; font-size: 1.2em; border-bottom-color: rgb(51, 102, 153); border-bottom-width: 1px; border-bottom-style: solid; background-image: url("../imgs/notice_h2.gif"); background-repeat: no-repeat;
@@ -101,7 +95,7 @@ article {
 }
 
 article #ad_main_banner {
-   margin: 10px 0px;
+   margin: 10px 0px; border:solid 1px;
 }
 article #ad_sub_banner {
    margin: 10px 0px;
@@ -182,7 +176,7 @@ article #sorting ul li a {
    padding: 0px 8px; border-right-color: rgb(153, 153, 153); border-right-width: 1px; border-right-style: solid; display: block;
 }
 article table#list_view {
-   width: 100%; color: rgb(51, 51, 51); font-size: 0.75em; margin-top: 20px; border-top-color: rgb(51, 51, 51); border-top-width: 2px; border-top-style: solid; border-collapse: collapse;
+   width: 100%; color: rgb(51, 51, 51); font-size: 0.75em; margin-top: 10px; border-top-color: rgb(51, 51, 51); border-top-width: 2px; border-top-style: solid; border-collapse: collapse;
 }
 
 
@@ -229,10 +223,10 @@ article table#list_view td.buy_btns ul li a:hover {
    color: rgb(255, 255, 255); background-color: rgb(0, 51, 102);
 }
 article #page_wrap {
-   margin: 10px auto 50px; padding: 0px; width: 400px;
+   margin: 10px auto 50px; padding: 2px 5px; width: 500px; text-align: center;
 }
 article ul#page_control {
-   list-style: none; padding: 0px; font-size: 11px;
+   list-style: none; padding: 0px; font-size: 20px; 
 }
 article ul#page_control li {
    padding: 0px 5px; float: left;
@@ -241,16 +235,16 @@ article ul#page_control li a {
    padding: 2px 5px; border: 1px solid rgb(204, 204, 204); border-image: none; display: block;
 }
 article ul#page_control li a:hover {
-   border: 1px solid #1b7340; border-image: none; color: #1b7340;
+   border: 1px solid rgb(255, 0, 0); border-image: none; color: rgb(255, 0, 0);
 }
 article ul#page_control li a.no_border {
    border: currentColor; border-image: none; padding-top: 3px;
 }
 .active {
-   color: #1b7340; font-weight: bold;
+   color: rgb(255, 0, 0); font-weight: bold;
 }
 article ul#page_control li .page_contrl_active {
-   background: rgb(255, 255, 255); border: 1px solid #1b7340; border-image: none; color: #1b7340;
+   background: rgb(255, 255, 255); border: 1px solid rgb(255, 0, 0); border-image: none; color: rgb(255, 0, 0);
 }
 article h3 {
    margin: 5px 0px;
@@ -280,7 +274,7 @@ article h4 {
    border: 1px solid rgb(255, 255, 255); border-image: none; width: 150px; height: auto; box-shadow: 2px 2px 25px #666;
 }
 #detail_table {
-   width: 460px; font-size: 0.75em; float: left;
+   width: 450px; font-size: 0.75em; float: left;
 }
 #detail_table table {
    width: 95%; border-top-color: rgb(51, 51, 51); border-bottom-color: rgb(51, 51, 51); border-top-width: 2px; border-bottom-width: 1px; border-top-style: solid; border-bottom-style: solid; border-collapse: collapse;
@@ -325,7 +319,7 @@ article h4 {
    background-position: 15px; background-repeat: no-repeat;
 }
 #detail_table ul li a.buy {
-   border-color:#1b7340; color: rgb(255, 0, 0); background-image: url("../imgs/check.png");
+   border-color: rgb(255, 0, 0); color: rgb(255, 0, 0); background-image: url("../imgs/check.png");
 }
 #detail_table ul li a.cart {
    background-image: url("../imgs/cart.png");
@@ -358,10 +352,10 @@ ul.tabs li a:hover {
    background-color: rgb(202, 228, 255);
 }
 ul.tabs li.active {
-   background: rgb(255, 255, 255); border-color: #1b7340; border-bottom-width: 2px; border-bottom-style: solid;
+   background: rgb(255, 255, 255); border-color: #1b7340 #1b7340 rgb(255, 255, 255); border-bottom-width: 2px; border-bottom-style: solid;
 }
 ul.tabs li.active a:hover {
-   background: rgb(255, 255, 255); border-color: #1b7340 ; border-bottom-width: 2px; border-bottom-style: solid;
+   background: rgb(255, 255, 255); border-color: #1b7340 #1b7340 rgb(255, 255, 255); border-bottom-width: 2px; border-bottom-style: solid;
 }
 .tab_container {
    background: rgb(255, 255, 255); width: 100%; clear: both; border-top-color: currentColor; border-top-width: medium; border-top-style: none; float: left;
@@ -401,8 +395,8 @@ footer img {
 }
 #sticky {
    /* padding: 10px 5px; border-radius: 10px; top: 115px; width: 82px; font-size: 0.75em; float: right; position: relative; background-color: rgb(153, 153, 153); */
-   padding: 10px 5px; border-radius: 10px; right:-1400px; top: 115px; width: 115px; font-size: 0.75em; position: relative; background-color:#1b7340;
-   
+    padding: 10px 5px; border-radius: 10px; right:-1400px; top: 115px; max-width: 137px; min-width: 137px; position: relative; background-color:#1b7340; 
+   /* padding: 10px 5px; border-radius: 10px; right: 100px; top:115px; width: 115px; font-size: 0.75em; position: absolute; background-color:#1b7340; */
 }
 #sticky ul {
    list-style: none;

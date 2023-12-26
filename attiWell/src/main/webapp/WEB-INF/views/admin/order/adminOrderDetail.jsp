@@ -137,7 +137,7 @@ function fn_modify_order_state(order_id){
 				<td colspan=2 class="fixed">주문상품명</td>
 				<td>수량</td>
 				<td>주문금액</td>
-				<td>배송비</td>
+				<!-- <td>배송비</td> -->
 				<td>예상적립금</td>
 				<td>주문금액합계</td>
 			</tr>
@@ -158,7 +158,7 @@ function fn_modify_order_state(order_id){
 					  <h2>${item.order_goods_qty }개<h2>
 					</td>
 					<td><h2>${item.order_goods_qty *item.goods_sales_price}원 (10% 할인)</h2></td>
-					<td><h2>0원</h2></td>
+				<!-- 	<td><h2>2500원</h2></td> -->
 					<td><h2>${1500 *item.order_goods_qty }원</h2></td>
 					<td>
 					  <h2>${item.order_goods_qty *item.goods_sales_price}원</h2>

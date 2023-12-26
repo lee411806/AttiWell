@@ -45,10 +45,4 @@ public class MyPageDAOImpl implements MyPageDAO{
 	public void updateMyOrderCancel(String order_id) throws DataAccessException{
 		sqlSession.update("mapper.mypage.updateMyOrderCancel",order_id);
 	}
-	
-	//나의 주소록 추가
-	public MemberVO selectMyAddress(String member_id) throws DataAccessException{
-		MemberVO memberVO=(MemberVO)sqlSession.selectOne("mapper.mypage.selectMyAddress",member_id);
-		return memberVO;
-	}
 }

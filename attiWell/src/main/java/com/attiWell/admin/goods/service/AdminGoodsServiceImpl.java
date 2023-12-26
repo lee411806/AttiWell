@@ -85,6 +85,10 @@ public class AdminGoodsServiceImpl implements AdminGoodsService {
 		adminGoodsDAO.insertGoodsImageFile(imageFileList);
 	}
 	
-
+	public void removeGoods(int goods_id)throws Exception{
+			
+		adminGoodsDAO.deleteGoods(goods_id);
+	}
+	
 	
 }

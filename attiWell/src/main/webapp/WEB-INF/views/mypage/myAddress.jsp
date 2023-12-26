@@ -3,6 +3,24 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+<style>
+a {
+	color: grey; /* 또는 원하는 색상으로 변경 */
+}
+
+.input-form {
+	max-width: 1200px;
+	margin-top: 80px;
+	padding: 32px;
+	background: #fff;
+	border-radius: 10px;
+	box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+}
+</style>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -62,85 +80,90 @@
 					}
 				}).open();
 	}
-	
-	function fn_modify_member_info(attribute){
+
+	function fn_modify_member_info(attribute) {
 		var value;
 		// alert(member_id);
 		// alert("mod_type:"+mod_type);
-			var frm_mod_member=document.frm_mod_member;
-			if(attribute=='address'){
-				var zipcode=frm_mod_member.zipcode;
-				var roadAddress=frm_mod_member.roadAddress;
-				var jibunAddress=frm_mod_member.jibunAddress;
-				var namujiAddress=frm_mod_member.namujiAddress;
-				
-				value_zipcode=zipcode.value;
-				value_roadAddress=roadAddress.value;
-				value_jibunAddress=jibunAddress.value;
-				value_namujiAddress=namujiAddress.value;
-				value=value_zipcode+","+value_roadAddress+","+value_jibunAddress+","+value_namujiAddress;
-			}
-			console.log(attribute);
-		 	
-			var data = {
-			        attribute: 'multiple_attributes',  // 여러 속성을 수정하는 요청임을 나타내는 값
+		var frm_mod_member = document.frm_mod_member;
+		if (attribute == 'address') {
+			var zipcode = frm_mod_member.zipcode;
+			var roadAddress = frm_mod_member.roadAddress;
+			var jibunAddress = frm_mod_member.jibunAddress;
+			var namujiAddress = frm_mod_member.namujiAddress;
 
-			        value_zipcode: value_zipcode,
-			        value_roadAddress: value_roadAddress,
-			        value_jibunAddress: value_jibunAddress,
-			        value_namujiAddress: value_namujiAddress,
-			    };
-			
-			$.ajax({
-				type : "post",
-				async : false, //false인 경우 동기식으로 처리한다.
-				url : "${contextPath}/mypage/myAdddress.do",
-				data : data,
-				success : function(data, textStatus) {
-					if(data.trim()=='mod_success'){
-						alert("회원 정보를 수정했습니다.");
-					}else if(data.trim()=='failed'){
-						alert("다시 시도해 주세요.");	
-					}
-					
-				},
-				error : function(data, textStatus) {
-					alert("에러가 발생했습니다."+data);
-				},
-				complete : function(data, textStatus) {
-					//alert("작업을완료 했습니다");
-					
+			value_zipcode = zipcode.value;
+			value_roadAddress = roadAddress.value;
+			value_jibunAddress = jibunAddress.value;
+			value_namujiAddress = namujiAddress.value;
+			value = value_zipcode + "," + value_roadAddress + ","
+					+ value_jibunAddress + "," + value_namujiAddress;
+		}
+		console.log(attribute);
+
+		var data = {
+			attribute : 'multiple_attributes', // 여러 속성을 수정하는 요청임을 나타내는 값
+
+			value_zipcode : value_zipcode,
+			value_roadAddress : value_roadAddress,
+			value_jibunAddress : value_jibunAddress,
+			value_namujiAddress : value_namujiAddress,
+		};
+
+		$.ajax({
+			type : "post",
+			async : false, //false인 경우 동기식으로 처리한다.
+			url : "${contextPath}/mypage/myAdddress.do",
+			data : data,
+			success : function(data, textStatus) {
+				if (data.trim() == 'mod_success') {
+					alert("회원 정보를 수정했습니다.");
+				} else if (data.trim() == 'failed') {
+					alert("다시 시도해 주세요.");
 				}
-			}); //end ajax
+
+			},
+			error : function(data, textStatus) {
+				alert("에러가 발생했습니다." + data);
+			},
+			complete : function(data, textStatus) {
+				//alert("작업을완료 했습니다");
+
+			}
+		}); //end ajax
 	}
 </script>
 </head>
 <body>
-	<table>
-		<thead>
-			<tr>
-				<th scope="cols">기본 배송지</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr class="dot_line">
-				<td class="fixed_join">주소</td>
-				<td><input type="text" id="zipcode" name="zipcode" size=5
-					value="${memberInfo.zipcode }" disabled> <a
-					href="javascript:execDaumPostcode()">우편번호검색</a> <br>
-					<p>
-						지번 주소:<br> <input type="text" id="roadAddress"
-							name="roadAddress" size="50" value="${memberInfo.roadAddress }"
-							disabled><br> <br> 도로명 주소: <input type="text"
-							id="jibunAddress" name="jibunAddress" size="50"
-							value="${memberInfo.jibunAddress }" disabled><br> <br>
-						나머지 주소: <input type="text" name="namujiAddress" size="50"
-							value="${memberInfo.namujiAddress }" />
-					</p></td>
-				<td><input type="button" value="수정하기"
-					onClick="fn_modify_member_info('address')" /></td>
-			</tr>
-		</tbody>
-	</table>
+	<div class="container" style="margin-left: 40px">
+		<div class="input-form">
+			<table>
+				<thead>
+					<tr>
+						<th scope="cols">기본 배송지</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="dot_line">
+						<td class="fixed_join">주소</td>
+						<td><input type="text" id="zipcode" name="zipcode" size=5
+							value="${memberInfo.zipcode }" disabled> <a
+							href="javascript:execDaumPostcode()">우편번호검색</a> <br>
+							<p>
+								지번 주소:<br> <input type="text" id="roadAddress"
+									name="roadAddress" size="50" value="${memberInfo.roadAddress }"
+									disabled><br> <br> 도로명 주소: <input type="text"
+									id="jibunAddress" name="jibunAddress" size="50"
+									value="${memberInfo.jibunAddress }" disabled><br>
+								<br> 나머지 주소: <input type="text" name="namujiAddress"
+									size="50" value="${memberInfo.namujiAddress }" />
+							</p></td>
+						<td><input type="button" value="수정하기"
+							onClick="fn_modify_member_info('address')" /></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
 </body>
 </html>

@@ -33,6 +33,4 @@ public interface MyPageController {
 
    public ResponseEntity modifyMyInfo(@RequestParam("attribute") String attribute, @RequestParam("value") String value,
          HttpServletRequest request, HttpServletResponse response) throws Exception;
-
-   public ModelAndView myAddress(HttpServletRequest request, HttpServletResponse response) throws Exception;
 }

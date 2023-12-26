@@ -1,6 +1,7 @@
 package com.attiWell.goods.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -23,6 +24,12 @@ public class GoodsDAOImpl  implements GoodsDAO{
       List<GoodsVO> goodsList = (ArrayList)sqlSession.selectList("mapper.goods.allGoodsList",condMap);
       return goodsList;
    }
+   
+   @Override
+   public int getAllGoodsCount() throws DataAccessException {
+       int totalCount = sqlSession.selectOne("mapper.goods.getAllGoodsCount");
+       return totalCount;
+   }
 
    @Override
    public List<GoodsVO> selectGoodsList(String goodsStatus ) throws DataAccessException {
@@ -33,10 +40,11 @@ public class GoodsDAOImpl  implements GoodsDAO{
    
 //   selectCategoryList Ãß°¡
    @Override
-   public List<GoodsVO> selectCategoryList(String goodsSort) throws DataAccessException {
-      List<GoodsVO> goodsList=(ArrayList)sqlSession.selectList("mapper.goods.selectCategoryList",goodsSort);
+   public List<GoodsVO> selectCategoryList(Map<String, Object> condMap) throws DataAccessException {
+      List<GoodsVO> goodsList=(ArrayList)sqlSession.selectList("mapper.goods.selectCategoryList",condMap);
       return goodsList;
    }
+
    
    @Override
    public List<String> selectKeywordSearch(String keyword) throws DataAccessException {
@@ -44,10 +52,17 @@ public class GoodsDAOImpl  implements GoodsDAO{
       return list;
    }
    
+   
    @Override
-   public ArrayList selectGoodsBySearchWord(String searchWord) throws DataAccessException{
-      ArrayList list=(ArrayList)sqlSession.selectList("mapper.goods.selectGoodsBySearchWord",searchWord);
+   public List<GoodsVO> selectGoodsBySearchWord(Map<String, Object> condMap) throws DataAccessException{
+      List<GoodsVO> list=(ArrayList)sqlSession.selectList("mapper.goods.selectGoodsBySearchWord",condMap);
        return list;
+   }
+   
+   @Override
+   public int countGoodsBySearchWord(String searchWord) throws DataAccessException{
+      int totalCount=sqlSession.selectOne("mapper.goods.countGoodsBySearchWord", searchWord);
+       return totalCount;
    }
    
    @Override

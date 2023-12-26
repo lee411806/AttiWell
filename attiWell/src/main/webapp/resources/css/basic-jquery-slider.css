@@ -35,8 +35,8 @@ ol.bjqs-markers li {
 	margin: 0px 3px; float: left;
 }
 ol.bjqs-markers li a {
-	background: rgb(255, 255, 255); padding: 3px; border-radius: 10px; border: 1px solid rgb(51, 51, 51); border-image: none; width: 9px; height: 9px; text-align: center; overflow: hidden; font-size: 0.7em; display: block;
+	background: rgb(255, 255, 255); padding: 3px; border-radius: 10px; border: 1px solid rgb(51, 51, 51); border-image: none; width: 9px; line-height: 9px; text-align: center; overflow: hidden; font-size: 0.7em; display: block;
 }
 ol.bjqs-markers li.active-marker a {
-	background: rgb(255, 153, 0);
+	background: #1b7340; color:white; opacity:.8;
 }

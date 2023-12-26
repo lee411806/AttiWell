@@ -182,7 +182,12 @@ public class MyPageControllerImpl extends BaseController implements MyPageContro
          memberMap.put("member_birth_y", val[0]);
          memberMap.put("member_birth_m", val[1]);
          memberMap.put("member_birth_d", val[2]);
-      } else if (attribute.equals("hp")) {
+      } else if (attribute.equals("tel")) {
+          val = value.split(",");
+          memberMap.put("tel1", val[0]);
+          memberMap.put("tel2", val[1]);
+          memberMap.put("tel3", val[2]);
+       } else if (attribute.equals("hp")) {
          val = value.split(",");
          memberMap.put("hp1", val[0]);
          memberMap.put("hp2", val[1]);
@@ -216,15 +221,6 @@ public class MyPageControllerImpl extends BaseController implements MyPageContro
       message = "mod_success";
       resEntity = new ResponseEntity(message, responseHeaders, HttpStatus.OK);
       return resEntity;
-   }
-
-   // 나의 주소록 추가
-   @Override
-   @RequestMapping(value = "/myAddress.do", method = RequestMethod.GET)
-   public ModelAndView myAddress(HttpServletRequest request, HttpServletResponse response) throws Exception {
-      String viewName = (String) request.getAttribute("viewName");
-      ModelAndView mav = new ModelAndView(viewName);
-      return mav;
    }
 
 }

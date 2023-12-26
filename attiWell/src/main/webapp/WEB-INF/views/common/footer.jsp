@@ -6,8 +6,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
 <div class="clear"></div>
-<a href="#"><img width="170px" style="padding-left:200px" height="90px" alt="Booktopia" src="${contextPath}/resources/image/logo3.png" /></a>
-<div style="padding-left:400px">
+<a href="#"><img id="footer_img" width="170px" style="margin:100px 0px 0px 200px; height:90px" alt="Booktopia" src="${contextPath}/resources/image/logo3.png" /></a>
+<div style="padding:100px 0px 0px 400px;">
 	 ㈜아띠웰 <br>
 	 대표이사: 김아띠웰   <br>
 	 주소 : 우편번호 03133 서울시 종로구 종로3 <br>  

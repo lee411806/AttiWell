@@ -1,5 +1,6 @@
 package com.attiWell.goods.service;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,23 +26,20 @@ public class GoodsServiceImpl implements GoodsService{
       goodsMap.put("할인상품",goodsList);
       goodsList=goodsDAO.selectGoodsList("인기상품");
       goodsMap.put("인기상품",goodsList);
-      
       goodsList=goodsDAO.selectGoodsList("일반상품");
       goodsMap.put("일반상품",goodsList);
       return goodsMap;
    }
    
 //   categoryList 추가
-   public Map<String,List<GoodsVO>> categoryList() throws Exception {
-      Map<String,List<GoodsVO>> goodsMap=new HashMap<String,List<GoodsVO>>();
-      List<GoodsVO> goodsList=goodsDAO.selectCategoryList("전통건강식품");
-      goodsMap.put("전통건강식품",goodsList);
-      goodsList=goodsDAO.selectCategoryList("일반건강식품");
-      goodsMap.put("일반건강식품",goodsList);      
-      goodsList=goodsDAO.selectCategoryList("한방차/커피");
-      goodsMap.put("한방차/커피",goodsList);
-      goodsList=goodsDAO.selectCategoryList("건강관리용품");
-      goodsMap.put("건강관리용품",goodsList);
+   public Map<String,List<GoodsVO>> categoryList(Map<String, Object> condMap) throws Exception {
+      Map<String, List<GoodsVO>> goodsMap = new HashMap<String, List<GoodsVO>>();
+      for (String category : Arrays.asList("전통건강식품", "일반건강식품", "한방차/커피", "건강관리용품")) {
+          condMap.put("goodsSort", category);
+          List<GoodsVO> goodsList = goodsDAO.selectCategoryList(condMap);
+          goodsMap.put(category, goodsList);
+      }
+
       return goodsMap;
    }
    
@@ -59,8 +57,8 @@ public class GoodsServiceImpl implements GoodsService{
       return list;
    }
    
-   public List<GoodsVO> searchGoods(String searchWord) throws Exception{
-      List goodsList=goodsDAO.selectGoodsBySearchWord(searchWord);
+   public List<GoodsVO> searchGoods(Map<String, Object> condMap) throws Exception{
+      List goodsList=goodsDAO.selectGoodsBySearchWord(condMap);
       return goodsList;
    }
    
@@ -68,6 +66,18 @@ public class GoodsServiceImpl implements GoodsService{
    public List<GoodsVO> allGoodsList(Map condMap) throws Exception{
       List allgoodsList=goodsDAO.allGoodsList(condMap);
       return allgoodsList;
+   }
+   
+   @Override
+   public int getAllGoodsCount() throws Exception {
+       int totalCount = goodsDAO.getAllGoodsCount();
+       return totalCount;
+   }
+   
+   @Override
+   public int countSearchWord(String searchWord) throws Exception {
+       int totalCount = goodsDAO.countGoodsBySearchWord(searchWord);
+       return totalCount;
    }
    
    

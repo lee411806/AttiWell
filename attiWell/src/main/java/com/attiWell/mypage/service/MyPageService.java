@@ -14,6 +14,5 @@ public interface MyPageService{
 	public MemberVO  modifyMyInfo(Map memberMap) throws Exception;
 	public void cancelOrder(String order_id) throws Exception;
 	public MemberVO myDetailInfo(String member_id) throws Exception;
-	//나의 주소록 추가
-	public MemberVO myAddress(String member_id) throws Exception;
+
 }

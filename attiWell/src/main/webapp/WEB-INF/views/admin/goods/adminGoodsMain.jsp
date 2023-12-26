@@ -17,18 +17,18 @@
       <!-- style 파트 -->    
         
     <style>
-    	.input-form {
-		   max-width: 850px;
-		   margin-top: 80px;
-		   padding: 32px;
-		   background: #fff;
-		   -webkit-border-radius: 10px;
-		   -moz-border-radius: 10px;
-		   border-radius: 10px;
-		   -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
-		   -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
-		   box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
-		}
+       .input-form {
+         max-width: 850px;
+         margin-top: 80px;
+         padding: 32px;
+         background: #fff;
+         -webkit-border-radius: 10px;
+         -moz-border-radius: 10px;
+         border-radius: 10px;
+         -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+         -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+         box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
+      }
 
         a {
             color: grey; /* 또는 원하는 색상으로 변경 */
@@ -69,8 +69,8 @@
         
          /* 페이지 선택 호버 안먹게 해줌 */
        .no-hover:hover {
-   	 background-color: transparent !important; /* 특정 행의 hover 배경색을 투명으로 설정 */
-  		}
+       background-color: transparent !important; /* 특정 행의 hover 배경색을 투명으로 설정 */
+        }
     </style>
 
   
@@ -255,6 +255,7 @@
                 <th>상품이름</th>
                 <th>상품가격</th>
                 <th>입고일자</th>
+             	<th>-</th>
             </tr>
         </thead>
 
@@ -291,7 +292,11 @@
                             <td>
                                 <strong>${item.goods_credate }</strong>
                             </td>
-
+							<td>
+								<a href="${pageContext.request.contextPath}/admin/goods/removeGoods.do?goods_id=${item.goods_id}">
+								 삭제 
+							</td>
+							
                         </tr>
                     </c:forEach>
                 </c:otherwise>

@@ -5,9 +5,6 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.1.xsd">
 	<aop:aspectj-autoproxy />
-
-
-	<!-- 위 코드의 구성은 PropertyPlaceholderConfigurer클래스를 사용하여 프로퍼티 파일에서 값들을 읽어와 빈(bean)에 설정하는 구성입니다. -->
 	<bean id="propertyPlaceholderConfigurer"
 	class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 	<property name="locations">
@@ -15,11 +12,6 @@
 	</property>
 	</bean>
 	
-
-	<!-- 위 코드로 생성된 dataSource 빈은 MyBatis에서 사용되어 데이터베이스와의 연결을 관리합니다. 
-	외부 프로퍼티 파일에서 읽어온 값들을 사용하여 데이터베이스 연결 설정을 동적으로 구성할 수 있습니다.
-    이 빈이 사용할 클래스는 PooledDataSource 입니다.
-    PooledDataSource는 MyBatis에서 제공하는 데이터 소스 중 하나로 커넥션 풀 역할을 합니다. -->
 	<bean id="dataSource"
 		class="org.apache.ibatis.datasource.pooled.PooledDataSource">
 		<property name="driver"
@@ -28,23 +20,17 @@
 		<property name="username" value="${jdbc.username}" />
 		<property name="password" value="${jdbc.password}" />
 	</bean>
-
-	<!-- 위 코드로 생성된 sqlSessionFactory 빈은 MyBatis에서 SQL세션을 생성하는데 사용됩니다. 
-	SQL세션은 데이터베이스와의 상호작용을 담당하며, MyBatis를 통해 정의된 SQL 쿼리를 실행하는데 사용됩니다.
-즉! Mybatis에서의 세션범위는 트랜잭션이다. -->
 	<bean id ="sqlSessionFactory" class= "org.mybatis.spring.SqlSessionFactoryBean" >
 	    <property name="dataSource" ref="dataSource" />
 	  <property name="configLocation" value="classpath:mybatis/models/modelConfig.xml"  />
 	  <property name="mapperLocations" value="classpath:mybatis/mappers/*.xml" />
 	</bean >
-	<!-- 이 코드는 Spring에서 데이터베이스 트랜잭션을 관리하기 위한 DataSourceTransactionManager를 빈으로 등록하는 설정입니다. -->
+	
 	<bean id ="transactionManager"
 	    class= "org.springframework.jdbc.datasource.DataSourceTransactionManager" >
 	    <property name ="dataSource" ref= "dataSource"></property >
 	</bean >
-	<!--SqlSessionTemplate은 SqlSessionFactory를 생성자로 받아 MyBatis의 SqlSession을 관리하며, Spring의 트랜잭션과 연동하여 사용할 수 있도록 합니다.
-SqlSessionFactory-> SQL세션생성
-SqlSessionTemplate -> SqlSessionFactory를 생성자로 받아 Mybatis의 SQL세션을 관리하며 Spring의 트랜잭션과 연동하여 사용할 수 있도록 합니다.  -->
+	
 	<bean id ="sqlSession"
 	    class= "org.mybatis.spring.SqlSessionTemplate" >
 	    <constructor-arg ref= "sqlSessionFactory"></constructor-arg >
@@ -52,6 +38,3 @@ SqlSessionTemplate -> SqlSessionFactory를 생성자로 받아 Mybatis의 SQL세
 
 
 </beans>
-
-
-

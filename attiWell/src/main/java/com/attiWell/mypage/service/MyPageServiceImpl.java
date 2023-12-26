@@ -46,8 +46,4 @@ public class MyPageServiceImpl  implements MyPageService{
 	public MemberVO myDetailInfo(String member_id) throws Exception{
 		return myPageDAO.selectMyDetailInfo(member_id);
 	}
-	
-	public MemberVO myAddress(String member_id) throws Exception{
-		return myPageDAO.selectMyAddress(member_id);
-	}
 }

@@ -31,10 +31,11 @@
 	text-align: center;
 	left: 50%;
 	top: 45%;
-	width: 300px;
-	height: 200px;
-	background-color: #ccffff;
-	border: 3px solid #87cb42;
+	width: 400px;
+	height: 220px;
+	background-color: aliceblue;
+	border: 3px solid #234F12;
+	color: #234F12;
 }
 
 #close {
@@ -44,9 +45,9 @@
 </style>
 <script type="text/javascript">
 	function add_cart(goods_id) {
-	
-		 var orderGoodsQty = document.getElementById('order_goods_qty').value;
-		 console.log('주문 수량:', orderGoodsQty);
+
+		var orderGoodsQty = document.getElementById('order_goods_qty').value;
+		console.log('주문 수량:', orderGoodsQty);
 		$.ajax({
 			type : "post",
 			async : false, //false인 경우 동기식으로 처리한다.
@@ -66,7 +67,7 @@
 
 			},
 			error : function(data, textStatus) {
-				alert("에러가 발생했습니다." + data);
+				alert("로그인 후 이용하세요.");
 			},
 			complete : function(data, textStatus) {
 				//alert("작업을완료 했습니다");
@@ -90,8 +91,7 @@
 		}
 	}
 
-	function fn_order_each_goods(goods_id, goods_title, 
-			goods_sales_price,
+	function fn_order_each_goods(goods_id, goods_title, goods_sales_price,
 			fileName) {
 		var _isLogOn = document.getElementById("isLogOn");
 		var isLogOn = _isLogOn.value;
@@ -246,7 +246,7 @@
 	<div id="container">
 		<ul class="tabs">
 			<li><a href="#tab1">상품소개</a></li>
-			<li><a href="#tab6">리뷰</a></li>
+			<!-- <li><a href="#tab6">리뷰</a></li> -->
 		</ul>
 		<div class="tab_container">
 			<div class="tab_content" id="tab1">
@@ -257,9 +257,9 @@
 						src="${contextPath}/download.do?goods_id=${goods.goods_id}&fileName=${image.fileName}">
 				</c:forEach>
 			</div>
-			<div class="tab_content" id="tab6">
+			<!-- <div class="tab_content" id="tab6">
 				<h4>리뷰</h4>
-			</div>
+			</div> -->
 		</div>
 	</div>
 	<div class="clear"></div>
@@ -270,10 +270,13 @@
 			<a href="javascript:"
 				onClick="javascript:imagePopup('close', '.layer01');"> <img
 				src="${contextPath}/resources/image/close.png" id="close" />
-			</a> <br /> <font size="12" id="contents">장바구니에 담았습니다.</font><br>
+			</a> <br /> <font size="12" id="contents">&nbsp;장바구니에<br>담았습니다
+			</font><br>
 			<form action='${contextPath}/cart/myCartList.do'>
-				<input type="submit" value="장바구니 보기">
+				<br> <input type="submit" value="장바구니 보기">
 			</form>
+		</div>
+	</div>
 </body>
 </html>
 <input type="hidden" name="isLogOn" id="isLogOn" value="${isLogOn}" />
