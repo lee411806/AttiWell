@@ -8,6 +8,10 @@ https://github.com/lee411806/AttiWell/assets/132039579/d1c35ebd-bb12-4f52-910a-d
 
 
 
+https://github.com/lee411806/AttiWell/assets/132039579/f1bebe65-c325-4689-b6a1-4b5aa0cbc509
+
+
+
 
 ## 조원
 김영광 : 로그인, 회원가입
