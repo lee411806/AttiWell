@@ -9,7 +9,6 @@
 
 로그인_일반회원&관리자
 
-
 https://github.com/lee411806/AttiWell/assets/132039579/e85872a4-8541-4c6f-aba7-6e8f42ebfaa0
 
 
@@ -19,6 +18,7 @@ https://github.com/lee411806/AttiWell/assets/132039579/cac949a3-5456-42e7-b1ad-3
 
 
 메인페이지 구성
+
 https://github.com/lee411806/AttiWell/assets/132039579/b0053ac6-61cf-47d7-bfdd-e74c596b5d5a
 
 
@@ -26,6 +26,7 @@ https://github.com/lee411806/AttiWell/assets/132039579/b0053ac6-61cf-47d7-bfdd-e
 
 
 상세페이지& 결제
+
 https://github.com/lee411806/AttiWell/assets/132039579/8917ba30-415a-4b57-a9a0-b1f2f53fc7a1
 
 
@@ -33,19 +34,25 @@ https://github.com/lee411806/AttiWell/assets/132039579/8917ba30-415a-4b57-a9a0-b
 
 
 장바구니
+
 https://github.com/lee411806/AttiWell/assets/132039579/0597803c-6a61-4ad5-b6ee-26426371bea3
 
 
 관리자_상품관리
+
 https://github.com/lee411806/AttiWell/assets/132039579/3c63a3ff-980f-484a-b638-f4bf647b9450
 
 
-주문관리
+관리자_주문관리
+
 https://github.com/lee411806/AttiWell/assets/132039579/8e326a72-d708-4631-ba37-95d2c7e8c579
 
 
-회원관리
-Uploading 회원관리.mp4…
+관리자_회원관리
+
+https://github.com/lee411806/AttiWell/assets/132039579/441bf0c6-bcdc-4724-a597-a8977f7cb530
+
+
 
 
 
