@@ -1,37 +1,72 @@
 # 팀프로젝트 AttiWell
 
-## 팀소개
+## 조원
+김영광 : 로그인, 회원가입
 
-## 목차
-- 개요
-- 프로젝트 정보
+이재용 : 장바구니, 관리자(회원, 상품, 주문) , 깃허브
 
-## 기술스택
-- Environment
-
-  <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white"> <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
+  소은 : 메인페이지, 상세페이지
+  
+유한비 : 주문페이지
 
 
+ ## 기술스택
+
+ 
 - Language
 
-   <img src="https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java&logoColor=white">
-  <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
-  <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white">
-  <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+
+   Java, HTML, CSS , Javascript
+
   
 - DB
 
-  <img src="https://img.shields.io/badge/oracle-F80000?style=for-the-badge&logo=oracle&logoColor=white">
 
+  Oracle
+
+
+
+- IDE
+
+
+  Eclipse(STS3)
+
+
+  -Build
+
+
+  maven
+
+
+- 배포
+
+
+  AWS
+
+
+ - 환경
+
+
+     SourceTree, Github
+
+
+- 기술
+
+  
+ Spring(프레임워크), ajax
+
+
+
+  
 ## 주요기능
 
-- 로그인
-
-- 장바구니
-
-- 주문
-
-- 관리자 설정
+ 로그인 /회원가입
 
 
-## 배포주소
+ 장바구니 담기 / 삭제
+
+
+ 주문 내역 조회/ 주문하기
+
+
+관리자 설정/  주문내역 조회, 주문내역 상세조회/ 상품조회, 상품등록, 상품수정/  회원조회, 회원정보 수정
