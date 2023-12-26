@@ -1,6 +1,6 @@
 # 팀프로젝트 AttiWell
 
-![Uploading 주문관리.gif…]()
+[![Uploading 주문관리.gif…]()](https://github.com/lee411806/AttiWell/issues/2#issue-2056196198)
 
 
 
