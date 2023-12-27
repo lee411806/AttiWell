@@ -5,20 +5,12 @@
   # 팀프로젝트 attiWell
 ![logo3](https://github.com/lee411806/AttiWell/assets/132039579/0cc1d267-c29c-4ff6-9115-ffba0ef5971b)
 
-
-</div>
-
   attiWell은 '아띠(atti : 친한친구) + 웰(well:건강한/건강에 좋은)을 결합한 네이밍입니다.
 
   건강을 위해, 친한 친구 같이 자주 찾게 되는 건강식 이란 뜻입니다.
 
-<div align ="center">
-
-  
-  
-
-
 </div>
+
 
 
 기획 excel
