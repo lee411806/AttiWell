@@ -1,4 +1,4 @@
-# 팀프로젝트 AttiWell
+# ♥팀프로젝트 AttiWell
 
 
 기획 excel
@@ -11,7 +11,7 @@ https://docs.google.com/presentation/d/1LCFiftKx_s75g7L0-daYIAWMItezOkuvvGjUwW-M
 <br><br>
 
 
-## 조원
+## 👨‍💻조원
 김영광 : 로그인, 회원가입, 상세페이지
 
 이재용 : 장바구니, 관리자(회원, 상품, 주문) , 깃허브
@@ -23,7 +23,7 @@ https://docs.google.com/presentation/d/1LCFiftKx_s75g7L0-daYIAWMItezOkuvvGjUwW-M
 <br><br>
 
   
-## 주요기능
+## 📌주요기능
 
 
 로그인_일반회원&관리자
@@ -103,79 +103,3 @@ https://github.com/lee411806/AttiWell/assets/132039579/441bf0c6-bcdc-4724-a597-a
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- ## 기술스택
-
- 
-- Language
-
-
-   Java, HTML, CSS , Javascript
-
-  
-- DB
-
-
-  Oracle
-
-
-
-- IDE
-
-
-  Eclipse(STS3)
-
-
-  -Build
-
-
-  maven
-
-
-- 배포
-
-
-  AWS
-
-
- - 환경
-
-
-     SourceTree, Github
-
-
-- 기술
-
-  
- Spring(프레임워크), ajax
-
-
-
-
-<hr>
- 로그인 /회원가입
-
-
- 장바구니 담기 / 삭제
-
-
- 주문 내역 조회/ 주문하기
-
-
-관리자 설정/  주문내역 조회, 주문내역 상세조회/ 상품조회, 상품등록, 상품수정/  회원조회, 회원정보 수정
-
-<hr>
-  
