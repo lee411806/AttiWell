@@ -1,6 +1,8 @@
+
+<div align ="center">
 # 팀프로젝트 AttiWell
 ![logo3](https://github.com/lee411806/AttiWell/assets/132039579/0cc1d267-c29c-4ff6-9115-ffba0ef5971b)
-
+</div>
 
 기획 excel
 
