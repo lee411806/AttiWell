@@ -8,7 +8,7 @@
 
 
 https://docs.google.com/presentation/d/1LCFiftKx_s75g7L0-daYIAWMItezOkuvvGjUwW-MBdc/edit#slide=id.p1
-
+<br><br>
 
 
 ## 조원
@@ -20,8 +20,7 @@ https://docs.google.com/presentation/d/1LCFiftKx_s75g7L0-daYIAWMItezOkuvvGjUwW-M
   
 유한비 : 주문, PPT
 
-
-
+<br><br>
 
   
 ## 주요기능
