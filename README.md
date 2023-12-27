@@ -5,10 +5,18 @@
 
 
 기획 ppt
+https://docs.google.com/presentation/d/1LCFiftKx_s75g7L0-daYIAWMItezOkuvvGjUwW-MBdc/edit#slide=id.p1
 
 
 
+## 조원
+김영광 : 로그인, 회원가입, 상세페이지
 
+이재용 : 장바구니, 관리자(회원, 상품, 주문) , 깃허브
+
+정소은 : 메인, 상품리스트, 내 정보, aws배포
+  
+유한비 : 주문, PPT
 
 
 
@@ -105,14 +113,7 @@ https://github.com/lee411806/AttiWell/assets/132039579/441bf0c6-bcdc-4724-a597-a
 
 
 
-## 조원
-김영광 : 로그인, 회원가입
 
-이재용 : 장바구니, 관리자(회원, 상품, 주문) , 깃허브
-
-  소은 : 메인페이지, 상세페이지
-  
-유한비 : 주문페이지
 
 
  ## 기술스택
