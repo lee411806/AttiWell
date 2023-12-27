@@ -5,7 +5,7 @@
   # 팀프로젝트 attiWell
 ![logo3](https://github.com/lee411806/AttiWell/assets/132039579/0cc1d267-c29c-4ff6-9115-ffba0ef5971b)
 
-  attiWell은 '아띠(atti : 친한친구) + 웰(well:건강한/건강에 좋은)을 결합한 네이밍입니다.
+  attiWell은 '<strong>아띠(순우리말 : 친한친구)</strong> + <strong>웰(well:건강한/건강에 좋은)</strong>을 결합한 네이밍입니다.
 
   건강을 위해, 친한 친구 같이 자주 찾게 되는 건강식 이란 뜻입니다.
 
