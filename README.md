@@ -17,11 +17,11 @@
 <!-- Badge 이미지 링크 -->
 [Spring]: https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white
 [MyBatis]: https://img.shields.io/badge/MyBatis-B7178C?style=for-the-badge&logo=databricks&logoColor=white
-[Oracle]: https://img.shields.io/badge/Oracle-F80000?style=for-the-badge&logo=redhat&logoColor=white 
+[Oracle]: https://img.shields.io/badge/Oracle-F80000?style=for-the-badge&logo=oracle&logoColor=white
 [Tiles]: https://img.shields.io/badge/Apache%20Tiles-D22128?style=for-the-badge&logo=apache&logoColor=white
-[JSP]: https://img.shields.io/badge/JSP-007396?style=for-the-badge&logo=openjdk&logoColor=white     
+[JSP]: https://img.shields.io/badge/JSP-007396?style=for-the-badge&logo=java&logoColor=white
 [Maven]: https://img.shields.io/badge/Maven-C71A36?style=for-the-badge&logo=apache-maven&logoColor=white
-[AWS]: https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazon&logoColor=white  
+[AWS]: https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white
 
 <!-- 웹사이트 링크 -->
 [Spring-url]: https://spring.io/
@@ -31,7 +31,6 @@
 [JSP-url]: https://docs.oracle.com/javaee/5/tutorial/doc/bnagx.html
 [Maven-url]: https://maven.apache.org/
 [AWS-url]: https://aws.amazon.com/
-
 
 <br>
 
