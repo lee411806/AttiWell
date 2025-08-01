@@ -39,19 +39,24 @@
 
 <h2 align="center"> Spring 기반 레거시 웹 개발 구조 구현 </h2>
 
-### 1. Spring XML 설정 및 MyBatis 매핑
+
+### 1. 주요 기능 구현
+- 장바구니 기능: 상품 담기, 수정, 삭제 CRUD API 구현
+- 관리자 기능: 물품, 사용자, 주문정보 CRUD API 구현
+
+### 2. Spring XML 설정 및 MyBatis 매핑
 - Spring XML 기반 설정, MyBatis SQL 수동 매핑
 - 동적 SQL(if, set)과 selectKey를 활용한 효율적 Update 및 시퀀스 기반 ID 할당
 
-### 2. 파일 업로드 및 이미지 처리
+### 3. 파일 업로드 및 이미지 처리
 - Spring 기반 파일 업로드 기능 구현
 - 임시 저장소를 활용한 이미지 관리
 
-### 3. View / Template
+### 4. View / Template
 - Tiles 기반 레이아웃(header/footer/menu) 분리
-- Bootstrap 활용으로 View 통일성 확보
+- JSP기반 Bootstrap 활용으로 View 통일성 확보
 
-### 4. AOP, 인터셉터, 필터 적용
+### 5. AOP, 인터셉터, 필터 적용
 - AspectJ를 활용한 로그 출력
 - Interceptor로 URL 전처리, 필터로 UTF-8 인코딩 처리
 
