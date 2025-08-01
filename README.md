@@ -1,20 +1,66 @@
 
 <div align ="center">
 
-  
-  # 팀프로젝트 attiWell
-![logo3](https://github.com/lee411806/AttiWell/assets/132039579/0cc1d267-c29c-4ff6-9115-ffba0ef5971b)
-
-  <!-- attiWell은 <strong>아띠(순우리말 : 친한친구)</strong>와 <strong>웰(well:건강한/건강에 좋은)</strong>을 결합한 네이밍입니다.
-
-  `건강을 위해, 친한 친구 같이 자주 찾게 되는 건강식` 이란 뜻입니다. -->
+# 팀프로젝트 attiWell <img src="https://github.com/lee411806/AttiWell/assets/132039579/0cc1d267-c29c-4ff6-9115-ffba0ef5971b" alt="logo" width="40"/>
 
 </div>
 
-<hr>
+
+[![Spring][Spring]][Spring-url]
+[![MyBatis][MyBatis]][MyBatis-url]
+[![Oracle][Oracle]][Oracle-url]
+[![Tiles][Tiles]][Tiles-url]
+[![JSP][JSP]][JSP-url]
+[![Maven][Maven]][Maven-url]
+[![AWS][AWS]][AWS-url]
+
+<!-- Badge 이미지 링크 -->
+[Spring]: https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white
+[MyBatis]: https://img.shields.io/badge/MyBatis-B7178C?style=for-the-badge&logo=databricks&logoColor=white
+[Oracle]: https://img.shields.io/badge/Oracle-F80000?style=for-the-badge&logo=redhat&logoColor=white 
+[Tiles]: https://img.shields.io/badge/Apache%20Tiles-D22128?style=for-the-badge&logo=apache&logoColor=white
+[JSP]: https://img.shields.io/badge/JSP-007396?style=for-the-badge&logo=openjdk&logoColor=white     
+[Maven]: https://img.shields.io/badge/Maven-C71A36?style=for-the-badge&logo=apache-maven&logoColor=white
+[AWS]: https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazon&logoColor=white  
+
+<!-- 웹사이트 링크 -->
+[Spring-url]: https://spring.io/
+[MyBatis-url]: https://mybatis.org/
+[Oracle-url]: https://www.oracle.com/database/
+[Tiles-url]: https://tiles.apache.org/
+[JSP-url]: https://docs.oracle.com/javaee/5/tutorial/doc/bnagx.html
+[Maven-url]: https://maven.apache.org/
+[AWS-url]: https://aws.amazon.com/
 
 
+<br>
 
+
+## 🔥프로젝트 경험
+
+<h2 align="center"> Spring 기반 레거시 웹 개발 구조 구현 </h2>
+
+### 1. Spring XML 설정 및 MyBatis 매핑
+- Spring XML 기반 설정, MyBatis SQL 수동 매핑
+- 동적 SQL(if, set)과 selectKey를 활용한 효율적 Update 및 시퀀스 기반 ID 할당
+
+### 2. 파일 업로드 및 이미지 처리
+- Spring 기반 파일 업로드 기능 구현
+- 임시 저장소를 활용한 이미지 관리
+
+### 3. View / Template
+- Tiles 기반 레이아웃(header/footer/menu) 분리
+- Bootstrap 활용으로 View 통일성 확보
+
+### 4. AOP, 인터셉터, 필터 적용
+- AspectJ를 활용한 로그 출력
+- Interceptor로 URL 전처리, 필터로 UTF-8 인코딩 처리
+
+
+<br>
+<br>
+
+## 📝 기획
 기획 excel
 
 
@@ -26,8 +72,11 @@ https://docs.google.com/spreadsheets/d/1VNUWKuh5GJ20PGx-ewqrJmpM5J3J3gbCG1z3VRUQ
 
 
 https://docs.google.com/presentation/d/1LCFiftKx_s75g7L0-daYIAWMItezOkuvvGjUwW-MBdc/edit#slide=id.p1
-<br><br>
 
+<br>
+
+<br>
+<br>
 
 ## 👨‍💻조원
 조원1 : 로그인, 회원가입, 상세페이지, 전체적인 CSS
@@ -41,7 +90,7 @@ https://docs.google.com/presentation/d/1LCFiftKx_s75g7L0-daYIAWMItezOkuvvGjUwW-M
 <br><br>
 
   
-## 📌주요기능
+## 📌주요기능 동영상
 
 <!--
 로그인_일반회원&관리자
