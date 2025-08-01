@@ -37,7 +37,7 @@
 
 ## 🔥프로젝트 경험
 
-<h2 align="center"> Spring 기반 레거시 웹 개발 구조 구현 </h2>
+<h2 align="center"> Spring 기반 MVC 웹 애플리케이션 구현</h2>
 
 
 ### 1. 주요 기능 구현
